@@ -1,0 +1,62 @@
+[core]
+    pager = delta
+
+[pager]
+	branch = false
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = false
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[init]
+	defaultBranch = main
+
+[alias]
+    alias = "!f(){ git config -l | grep alias | sort | fzf; };f"
+    st = status --short --branch
+	ct = commit
+	cta = commit --amend --no-edit
+	cl = "!f() { echo 'Remove following files?'; echo; git clean -dn; echo; echo 'Press ENTER to confirm'; read -p 'Press ^C to stop cleanup and exit' a && git clean -df; }; f"
+	co = checkout
+	cp = cherry-pick
+	br = branch
+	bra = branch -avv --list
+	dc = diff --cached
+	di = diff
+	ds = "stash show stash@{0} -p"
+	ss = "!f(){ git stash show -p stash@{${1}}; };f"
+	sl = stash list
+	sm = submodule
+	sup = submodule update
+	sll = "!f() { for s in `git stash list --pretty=format:%gd`; do git stash show -p $s; done; };f"
+	fa = fetch --all
+	fp = fetch --prune
+	unstash = stash pop
+	ff = "!f(){ B=$(git rev-parse --abbrev-ref HEAD) && git merge --ff-only origin/$B; };f"
+	me = merge --no-ff
+	mm = merge --no-ff -
+	mt = mergetool
+	k = "!f(){ gitk HEAD origin/`git rev-parse --abbrev-ref HEAD`; };f"
+	rmbranch = "!f(){ git branch -d ${1} && git push origin --delete ${1}; };f"
+	mkbranch = "!f(){ git checkout -b ${1} && git push origin -u ${1}; };f"
+	ls = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n         %aD (%ar %C(red)- %an%Creset)' --graph --color
+	ll = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n         %aD (%ar %C(red)- %an%Creset)' --graph --color --all
+	puff = "push --force-with-lease"
+	unfuck = "!f(){ git reset --hard origin/`git rev-parse --abbrev-ref HEAD`; rm -rfv `git status --short | grep ^? | cut -d' '  -f2-`; }; f"
+	up = "pull --ff-only --stat --prune"
+	vim = "!f(){ vim -p `git st | cut -c 2- | grep '^M\\|\\?' | cut -d' ' -f2-`; }; f"
+	stash-stage = "!f(){ git stash -- $(git diff --name-only --staged); }; f"
