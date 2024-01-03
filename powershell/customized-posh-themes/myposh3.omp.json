@@ -47,6 +47,24 @@
           "style": "plain",
           "foreground": "#C94A16",
           "template": "x{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#67f2d1",
+          "template": "<#ffffff>took</> {{ .FormattedMs }} ",
+          "properties": {
+            "threshold": 0
+          }
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "#b7c1ac",
+          "template": "<#ffffff>at</> {{ .CurrentDate | date .Format }}",
+          "properties": {
+            "time_format": "15:04 pm | Monday"
+          }
         }
       ]
     },
