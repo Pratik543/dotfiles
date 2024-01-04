@@ -19,6 +19,14 @@
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 	side-by-side = false
+	minus-style = syntax "#69140E"
+	minus-non-emph-style = syntax "#69140E"
+	minus-empty-line-marker-style = syntax "#69140E"
+	minus-emph-style = syntax "#B80018"
+	plus-emph-style = syntax "#7BC950"
+	plus-style = syntax "#58641D"
+	plus-non-emph-style = syntax "#58641D"
+	plus-empty-line-marker-style = syntax "#58641D"
 
 [merge]
     conflictstyle = diff3
@@ -69,4 +77,4 @@
 	corb = "!f() { git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} | delta' | xargs git checkout; }; f"
 	ghpr = "!f() { GH_FORCE_TTY=100% gh pr list | fzf --ansi --layout=reverse --preview 'gh pr view {1}' --preview-window 'down,60%' --header-lines 3 | awk '{print $1}' | xargs gh pr checkout -f; }; f"
 	ghgist = "!f() { GH_FORCE_TTY=100% gh gist list | fzf --ansi --layout=reverse --preview 'gh gist view {1}' --preview-window down | awk '{print $1}' | xargs gh gist edit; }; f"
-	ghissue = "!f() { GH_FORCE_TTY=100% gh pr list | fzf --ansi --layout=reverse --preview 'gh issue view {1}' --preview-window 'down,60%' --header-lines 3 | awk '{print $1}' | xargs gh issue checkout -f; }; f"
+	ghissue = "!f() { GH_FORCE_TTY=100% gh issue list | fzf --ansi --layout=reverse --preview 'gh issue view {1}' --preview-window 'down,60%' --header-lines 3 | awk '{print $1}' | xargs gh issue checkout -f; }; f"
