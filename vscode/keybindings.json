@@ -86,6 +86,20 @@
     "command": "-extension.vim_winCtrlQ",
     "when": "editorTextFocus && vim.active && vim.use<C-q> && !inDebugRepl"
   },
+  {
+    "key": "ctrl+shift+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
 
   // EDITOR KEYBINDINGS
   {
@@ -151,22 +165,14 @@
   {
     "key": "ctrl+n",
     "command": "editor.action.addSelectionToNextFindMatch",
-    "when": "editorFocus"
+    "when": "editorFocus || editorHasSelection"
   },
   {
     "key": "ctrl+l",
     "command": "editor.action.toggleTabFocusMode",
     "when": "editorFocus"
   },
-  {
-    "key": "ctrl+d",
-    "command": "-editor.action.addSelectionToNextFindMatch",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "-workbench.action.togglePanel"
-  },
+
   {
     "key": "ctrl+d",
     "command": "workbench.action.splitEditor"
@@ -177,9 +183,9 @@
   },
   {
     "key": "ctrl+enter",
-    "command": "editor.action.replaceAll"
+    "command": "editor.action.replaceAll",
+    "when": "editorHasSelection"
   },
-
   // TERMINAL KEYBINDINGS
   {
     "key": "alt+enter",
@@ -210,51 +216,46 @@
     "command": "workbench.action.terminal.focusNext",
     "when": "terminalFocus"
   },
-  // ---------------------------------------------------------------------------------------------------
   {
     "key": "ctrl+alt+t",
     "command": "workbench.action.selectTheme"
   },
-
   // EDITOR GROUP KEYBINDINGS
   {
-    "key": "ctrl+shift+1",
-    "command": "workbench.action.focusFirstEditorGroup"
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.focusNextGroup"
   },
   {
-    "key": "ctrl+shift+2",
-    "command": "workbench.action.focusSecondEditorGroup"
-  },
-  {
-    "key": "ctrl+shift+3",
-    "command": "workbench.action.focusThirdEditorGroup"
-  },
-  {
-    "key": "ctrl+shift+4",
-    "command": "workbench.action.focusFourthEditorGroup"
-  },
-  {
+    // for selecting next in Selection Panel
     "key": "ctrl+j",
-    "command": "selectNextSuggestion"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "selectNextSuggestion || inQuickOpen"
+    "command": "workbench.action.quickOpenSelectNext"
   },
   {
     "key": "ctrl+k",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "selectPrevSuggestion || inQuickOpen"
+    "command": "workbench.action.quickOpenSelectPrevious"
   },
-
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible"
+  },
   {
     "key": "ctrl+k",
-    "command": "workbench.action.quickOpenNavigatePrevious",
-    "when": "inQuickOpen && suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    "command": "selectPrevSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible"
   },
   {
     "key": "shift+backspace",
     "command": "deleteRight"
+  },
+  {
+    "key": "alt+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus || editorHasSelection"
+  },
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus || editorHasSelection"
   }
 ]

@@ -58,7 +58,6 @@
   "rapidapi.terminalLink.enabled": false,
   "explorer.compactFolders": false,
   "window.density.editorTabHeight": "default",
-  "workbench.activityBar.location": "side",
 
   //Default Formatter
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -114,8 +113,6 @@
   "workbench.startupEditor": "none",
   "css.lint.unknownAtRules": "ignore",
   "editor.cursorSmoothCaretAnimation": "on",
-  "workbench.colorTheme": "Bearded Theme Arc Reversed",
-  "workbench.iconTheme": "material-icon-theme",
   "editor.cursorBlinking": "phase",
   "zenMode.hideLineNumbers": false,
   // "zenMode.showTabs": "single",
@@ -140,10 +137,16 @@
   "workbench.statusBar.visible": true,
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "editor.colorDecorators": false,
-  "window.menuBarVisibility": "compact",
   "window.commandCenter": false,
+  "codeium.enableCodeLens": false,
+  "window.menuBarVisibility": "compact",
+  "workbench.activityBar.location": "top",
   "workbench.layoutControl.enabled": false,
+  "glassit.alpha": 235,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
   "workbench.sideBar.location": "right",
+  "editor.lineNumbers": "relative",
 
   // Auto Import
   "javascript.preferences.importModuleSpecifier": "non-relative",
@@ -162,12 +165,17 @@
   "npm-intellisense.scanDevDependencies": true,
 
   // Fonts
-  "editor.fontFamily": "'Monaspace Neon','Fira Code','Operator Mono',Consolas,'Courier New', monospace",
+  "editor.fontFamily": "'Monaspace Neon','Geist Mono','Fira Code','Operator Mono',Consolas,'Courier New', monospace",
   // "editor.fontLigatures": true, //for Fira Code
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "editor.fontWeight": "200",
   "editor.renderWhitespace": "all",
   "editor.fontSize": 15,
+  "scm.inputFontFamily": "Geist Mono",
+  "chat.editor.fontFamily": "Geist Mono",
+  "debug.console.fontFamily": "Geist Mono",
+  "editor.codeLensFontFamily": "Geist Mono",
+  "markdown.preview.fontFamily": "Geist Mono",
 
   // Vim
   "vim.leader": "<space>",
