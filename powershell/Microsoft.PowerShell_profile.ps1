@@ -1,7 +1,7 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-oh-my-posh --init --shell pwsh --config $env:POSH_THEMES_PATH/myposh3.omp.json | Invoke-Expression
+oh-my-posh --init --shell pwsh --config $HOME/dotfiles/powershell/customized-posh-themes/myposh3.omp.json | Invoke-Expression
 
 Import-Module Terminal-Icons
 
@@ -85,6 +85,7 @@ function ExplorerFromHere {
 Set-Alias -Name ll -Value longlisting
 Set-Alias -Name tree -Value treeview
 Set-Alias -Name g -Value git
+Set-Alias -Name lg -Value lazygit
 Set-Alias -Name touch -Value New-Item
 Set-Alias -Name open -Value Invoke-Item
 Set-Alias -Name su -Value admin

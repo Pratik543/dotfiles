@@ -44,37 +44,42 @@
 	cta = commit --amend --no-edit
 	cl = "!f() { echo 'Remove following files?'; echo; git clean -dn; echo; echo 'Press ENTER to confirm'; read -p 'Press ^C to stop cleanup and exit' a && git clean -df; }; f"
 	co = checkout
+	cob = checkout -b
+	cop = checkout --patch
 	cp = cherry-pick
 	br = branch
 	bra = branch -avv --list
+	su  = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 	dc = diff --cached
 	di = diff
-	ds = "stash show stash@{0} -p"
+	dis  = !DELTA_FEATURES=+side-by-side git diff
+	sd = "stash show stash@{0} -p"
 	ss = "!f(){ git stash show -p stash@{${1}}; };f"
 	sl = stash list
 	sm = submodule
 	sup = submodule update
 	sll = "!f() { for s in `git stash list --pretty=format:%gd`; do git stash show -p $s; done; };f"
+	slp  = "!git stash list --pretty='%C(yellow)%gd %<(14)%Cgreen%cr %C(blue)%gs' | fzf --ansi --no-multi --preview 'git stash show --color=always -p {1}' | cut -f 1 -d ' ' | xargs -t -o git stash branch stash-$(date +%Y%m%d%H%M)"
 	fa = fetch --all
 	fp = fetch --prune
 	unstash = stash pop
 	ff = "!f(){ B=$(git rev-parse --abbrev-ref HEAD) && git merge --ff-only origin/$B; };f"
 	me = merge --no-ff
-	mm = merge --no-ff -
 	mt = mergetool
 	k = "!f(){ gitk HEAD origin/`git rev-parse --abbrev-ref HEAD`; };f"
 	rmbranch = "!f(){ git branch -d ${1} && git push origin --delete ${1}; };f"
 	mkbranch = "!f(){ git checkout -b ${1} && git push origin -u ${1}; };f"
 	ls = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n         %aD (%ar %C(red)- %an%Creset)' --graph --color
 	ll = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n         %aD (%ar %C(red)- %an%Creset)' --graph --color --all
+	lt  = diff-tree --stat -r HEAD~0
 	puff = "push --force-with-lease"
 	unfuck = "!f(){ git reset --hard origin/`git rev-parse --abbrev-ref HEAD`; rm -rfv `git status --short | grep ^? | cut -d' '  -f2-`; }; f"
 	up = "pull --ff-only --stat --prune"
 	vim = "!f(){ vim -p `git st | cut -c 2- | grep '^M\\|\\?' | cut -d' ' -f2-`; }; f"
 	stash-stage = "!f(){ git stash -- $(git diff --name-only --staged); }; f"
-	checkshow = "!f() { git log --graph --date-order --date=short --pretty=format:'%C(cyan)%h %C(blue)%ar%C(auto)%d %C(yellow)%s%+b %C(black)%ae' | fzf -i -e +s --layout=reverse --tiebreak=index --no-multi --ansi --header \"Select commit to show\" --preview-window wrap --preview 'echo {} | grep -o \"[a-f0-9]\\{7\\}\" | head -1 | xargs -I % sh -c \"git show --color=always % | delta\"' ; }; f"
-	dipc = "!f() { git diff --name-only | fzf -m --ansi --preview-window wrap --preview 'git diff --color=always -- {-1} | delta' --cycle --header \"Check diff between the current state and the previous commit\"; }; f"
-	corb = "!f() { git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview-window wrap --preview 'git diff {1} | delta' | xargs git checkout; }; f"
+	checkshow = "!f() { git log --graph --date-order --date=short --pretty=format:'%C(cyan)%h %C(blue)%ar%C(auto)%d %C(yellow)%s%+b %C(black)%ae' | fzf -i -e +s --layout=reverse --tiebreak=index --no-multi --ansi --header \"Select commit to checkout to that hash\" --preview-window wrap --preview 'echo {} | grep -o \"[a-f0-9]\\{7\\}\" | head -1 | xargs -I % sh -c \"git show --color=always % | delta\"' | awk '{print $2}' | xargs -I % git checkout %; }; f"
+	dipc = "!f() { git diff --name-only | fzf -m --ansi --preview-window wrap --preview 'git diff --color=always -- {-1} | delta' --cycle --header \"Check diff of files with preview\"; }; f"
+	corb = "!f() { git branch --sort=committerdate | fzf --header 'Checkout Recent Branch which is ahead of main that is on top' --preview-window wrap --preview 'git diff {1} | delta' | xargs git checkout; }; f"
 	ghpr = "!f() { GH_FORCE_TTY=100% gh pr list | fzf --ansi --layout=reverse --preview 'gh pr view {1}' --preview-window 'down,60%,wrap' --header-lines 3 | awk '{print $1}' | xargs gh pr checkout -f; }; f"
 	ghgist = "!f() { GH_FORCE_TTY=100% gh gist list | fzf --ansi --layout=reverse --preview 'gh gist view {1}' --preview-window 'down,wrap' | awk '{print $1}' | xargs gh gist edit; }; f"
 	ghissue = "!f() { GH_FORCE_TTY=100% gh issue list | fzf --ansi --layout=reverse --preview 'gh issue view {1}' --preview-window 'down,60%,wrap' --header-lines 3 | awk '{print $1}' | xargs gh issue checkout -f; }; f"
