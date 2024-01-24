@@ -1,6 +1,21 @@
+ # Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.log
 
+logs/
+build/
+dist/
+node_modules/
+dist-ssr
+*.local
 # Prerequisites
 *.d
 
@@ -35,4 +50,3 @@ a.out
 *.out
 *.app
 
-build/
