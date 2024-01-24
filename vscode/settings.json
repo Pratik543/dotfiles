@@ -1,190 +1,19 @@
 {
-  // Todo Highlights Settings
-  "todohighlight.defaultStyle": {},
-  "todohighlight.isEnable": true,
-  "todohighlight.include": [
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.html",
-    "**/*.php",
-    "**/*.css",
-    "**/*.cpp",
-    "**/*.scss"
-  ],
-  "todohighlight.keywords": [
-    {
-      "text": "DONE",
-      "color": "#fff",
-      "backgroundColor": "#60CD34",
-      "overviewRulerColor": "#60CD34"
-    },
-    {
-      "text": "PARTIAL",
-      "color": "#fff",
-      "backgroundColor": "#CC3B8C",
-      "overviewRulerColor": "#CC3B8C"
-    },
-    {
-      "text": "[+]",
-      "color": "#fff",
-      "backgroundColor": "#60CD34",
-      "overviewRulerColor": "#60CD34"
-    },
-    {
-      "text": "[-]",
-      "color": "#fff",
-      "backgroundColor": "#ff1a1a",
-      "overviewRulerColor": "#CC3BBC"
-    },
-    {
-      "text": "[*]",
-      "color": "#fff",
-      "backgroundColor": "#0974f1",
-      "overviewRulerColor": "#0974f1"
-    }
-  ],
-  "editor.minimap.enabled": false,
-  "editor.minimap.renderCharacters": false,
-  "editor.minimap.autohide": true,
-
-  // Live Server Settings
-  "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.AdvanceCustomBrowserCmdLine": "brave",
-  "liveServer.settings.fullReload": true,
-  "terminal.integrated.env.windows": {},
-  "window.titleBarStyle": "custom",
-  "rapidapi.terminalLink.enabled": false,
-  "explorer.compactFolders": false,
-  "window.density.editorTabHeight": "default",
-
-  //Default Formatter
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "prettier.semi": true,
-  "prettier.singleAttributePerLine": true,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
-  // For Javascript
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // For Markdown
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // For Cpp
-  // "[cpp]": {
-  //   "editor.formatOnSave": true,
-  //   "editor.defaultFormatter": "ms-vscode.cpptools"
-  // },
-  //clang
-  // "clang-format.executable": "/absolute/path/to/clang-format",
-  // For HTML
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // For Java
-  "[java]": {
-    // "editor.defaultFormatter": "redhat.java"
-  },
-  //  ----------------------------------------------------------------------------------------------------------------
-  "editor.codeActionsOnSave": {
-    "source.addMissingImports": "explicit",
-    "source.organizeImports": "explicit"
-  },
-  // Editor Appearance
-  "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
-  "svg.preview.mode": "svg",
-  "svg.preview.background": "transparent",
-  "editor.suggestSelection": "first",
-  "editor.unicodeHighlight.invisibleCharacters": false,
-  "editor.unicodeHighlight.allowedCharacters": {
-    " ": true,
-    "‘": true
-  },
-  "editor.unicodeHighlight.ambiguousCharacters": false,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active",
-  "security.workspace.trust.untrustedFiles": "open",
-  "explorer.confirmDragAndDrop": false,
-  "workbench.startupEditor": "none",
-  "css.lint.unknownAtRules": "ignore",
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorBlinking": "phase",
-  "zenMode.hideLineNumbers": false,
-  // "zenMode.showTabs": "single",
-  "window.zoomLevel": -0.5,
-  "editor.inlineSuggest.enabled": true,
-  "projectManager.git.baseFolders": ["C:\\Users\\Pratik"],
-  "projectManager.sortList": "Recent",
-  "projectManager.removeCurrentProjectFromList": false,
-  "editor.stickyScroll.enabled": true,
-  "editor.smoothScrolling": true,
-  "editor.suggest.insertMode": "replace",
-  "editor.linkedEditing": true,
-  "editor.cursorSurroundingLines": 5,
-  "editor.tabCompletion": "on",
-  "editor.mouseWheelZoom": false,
-  "code-runner.clearPreviousOutput": true,
-  "explorer.confirmDelete": false,
-  "code-runner.runInTerminal": true,
-  "editor.accessibilitySupport": "off",
-  "emmet.showSuggestionsAsSnippets": true,
-  "git.autofetch": true,
-  "workbench.statusBar.visible": true,
-  "workbench.trustedDomains.promptInTrustedWorkspace": true,
-  "editor.colorDecorators": false,
-  "window.commandCenter": false,
-  "codeium.enableCodeLens": false,
-  "window.menuBarVisibility": "compact",
-  "workbench.activityBar.location": "top",
-  "workbench.layoutControl.enabled": false,
-  "glassit.alpha": 235,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
-  "workbench.sideBar.location": "right",
-  "editor.lineNumbers": "relative",
-
   // Auto Import
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+
   // Extensions
-  "extensions.autoUpdate": "onlyEnabledExtensions",
-  "extensions.ignoreRecommendations": true,
-  "npm.autoDetect": "on",
-  "npm-intellisense.importES6": true,
-  "npm-intellisense.importQuotes": "'",
-  "npm-intellisense.importLinebreak": ";\r\n",
-  "npm-intellisense.importDeclarationType": "const",
-  "npm-intellisense.showBuildInLibs": true,
-  "npm-intellisense.scanDevDependencies": true,
-
-  // Fonts
-  "editor.fontFamily": "'Monaspace Neon','Geist Mono','Fira Code','Operator Mono',Consolas,'Courier New', monospace",
-  // "editor.fontLigatures": true, //for Fira Code
-  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
-  "editor.fontWeight": "200",
-  "editor.renderWhitespace": "all",
-  "editor.fontSize": 15,
-  "scm.inputFontFamily": "Geist Mono",
-  "chat.editor.fontFamily": "Geist Mono",
-  "debug.console.fontFamily": "Geist Mono",
-  "editor.codeLensFontFamily": "Geist Mono",
-  "markdown.preview.fontFamily": "Geist Mono",
-
-  // Vim
+  // ->Vim Settings
   "vim.leader": "<space>",
   "vim.hlsearch": true, // Enables highlighting of search matches
-  "vim.useSystemClipboard": true,
   "vim.foldfix": true,
-  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+  "vim.useSystemClipboard": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.textColor": "white",
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
   "vim.insertModeKeyBindingsNonRecursive": [
     {
       "before": ["<C-g>"],
@@ -247,5 +76,156 @@
       "after": ["$"],
       "before": ["L"]
     }
-  ]
+  ],
+  // ->Todo Highlights Settings
+  "todohighlight.defaultStyle": {},
+  "todohighlight.isEnable": true,
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.php",
+    "**/*.css",
+    "**/*.cpp",
+    "**/*.scss"
+  ],
+  "todohighlight.keywords": [
+    {
+      "text": "DONE",
+      "color": "#fff",
+      "backgroundColor": "#60CD34",
+      "overviewRulerColor": "#60CD34"
+    },
+    {
+      "text": "PARTIAL",
+      "color": "#fff",
+      "backgroundColor": "#CC3B8C",
+      "overviewRulerColor": "#CC3B8C"
+    },
+    {
+      "text": "[+]",
+      "color": "#fff",
+      "backgroundColor": "#60CD34",
+      "overviewRulerColor": "#60CD34"
+    },
+    {
+      "text": "[-]",
+      "color": "#fff",
+      "backgroundColor": "#ff1a1a",
+      "overviewRulerColor": "#CC3BBC"
+    },
+    {
+      "text": "[*]",
+      "color": "#fff",
+      "backgroundColor": "#0974f1",
+      "overviewRulerColor": "#0974f1"
+    }
+  ],
+  // ->Live Server Settings
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "brave",
+  "liveServer.settings.fullReload": true,
+  // ->Prettier Formatter Settings
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.singleAttributePerLine": true,
+  "prettier.trailingComma": "all",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit"
+  },
+
+  // Other Extensions
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.ignoreRecommendations": true,
+  "npm.autoDetect": "on",
+  "npm-intellisense.importES6": true,
+  "npm-intellisense.importQuotes": "'",
+  "npm-intellisense.importLinebreak": ";\r\n",
+  "npm-intellisense.importDeclarationType": "const",
+  "npm-intellisense.showBuildInLibs": true,
+  "npm-intellisense.scanDevDependencies": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "svg.preview.mode": "svg",
+  "svg.preview.background": "transparent",
+  "symbols.hidesExplorerArrows": false,
+  "rapidapi.terminalLink.enabled": false,
+  "projectManager.git.baseFolders": ["C:\\Users\\Pratik"],
+  "projectManager.sortList": "Recent",
+  "projectManager.removeCurrentProjectFromList": false,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.runInTerminal": true,
+  "codeium.enableCodeLens": false,
+  "glassit.alpha": 235,
+  // "git.autofetch": true,
+
+  // Fonts
+  "editor.fontFamily": "'Monaspace Neon','Geist Mono','Fira Code','Operator Mono',Consolas,'Courier New', monospace",
+  // "editor.fontLigatures": true, //for Fira Code
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
+  "editor.fontWeight": "200",
+  "editor.fontSize": 15,
+  "scm.inputFontFamily": "Geist Mono",
+  "chat.editor.fontFamily": "Geist Mono",
+  "debug.console.fontFamily": "Geist Mono",
+  "editor.codeLensFontFamily": "Geist Mono",
+  "markdown.preview.fontFamily": "Geist Mono",
+
+  // Terminal Appearance
+  "terminal.integrated.env.windows": {},
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+
+  // Editor Appearance
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
+  "window.zoomLevel": -0.5,
+  "window.commandCenter": false,
+  "window.titleBarStyle": "custom",
+  "window.menuBarVisibility": "compact",
+  "window.density.editorTabHeight": "default",
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.location": "top",
+  "workbench.layoutControl.enabled": false,
+  "workbench.iconTheme": "symbols",
+  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
+  "workbench.trustedDomains.promptInTrustedWorkspace": true,
+  "workbench.sideBar.location": "right",
+  "zenMode.hideLineNumbers": false,
+  // "zenMode.showTabs": "single",
+  "css.lint.unknownAtRules": "ignore",
+  "editor.suggestSelection": "first",
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.allowedCharacters": {
+    " ": true,
+    "‘": true
+  },
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.guides.bracketPairs": "active",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSurroundingLines": 5,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.inlineSuggest.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.smoothScrolling": true,
+  "editor.suggest.insertMode": "replace",
+  "editor.linkedEditing": true,
+  "editor.tabCompletion": "on",
+  "editor.mouseWheelZoom": false,
+  "editor.accessibilitySupport": "off",
+  "editor.colorDecorators": true,
+  "editor.renderWhitespace": "all",
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false
 }
