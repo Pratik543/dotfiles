@@ -153,6 +153,11 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
     "key": "p",
     "command": "filesExplorer.paste",
     "when": "filesExplorerFocus && !inputFocus"
@@ -222,8 +227,9 @@
   },
   // EDITOR GROUP KEYBINDINGS
   {
-    "key": "ctrl+shift+tab",
-    "command": "workbench.action.focusNextGroup"
+    "key": "shift+tab",
+    "command": "workbench.action.focusNextGroup",
+    "when": "editorFocus || editorTextFocus"
   },
   {
     // for selecting next in Selection Panel
