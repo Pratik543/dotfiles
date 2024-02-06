@@ -61,7 +61,7 @@ function admin {
 }
 
 function treeview {
-    eza -lha --tree
+    eza -lha --icons --tree --level=2
 }
 
 function longlisting{
@@ -83,7 +83,7 @@ function ExplorerFromHere {
 
 # Alias
 Set-Alias -Name ll -Value longlisting
-Set-Alias -Name tree -Value treeview
+Set-Alias -Name llt -Value treeview
 Set-Alias -Name g -Value git
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name touch -Value New-Item

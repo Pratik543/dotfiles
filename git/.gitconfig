@@ -60,7 +60,7 @@
 	sm = submodule
 	sup = submodule update
 	sll = "!f() { for s in `git stash list --pretty=format:%gd`; do git stash show -p $s; done; };f"
-	slp  = "!git stash list --pretty='%C(yellow)%gd %<(14)%Cgreen%cr %C(blue)%gs' | fzf --ansi --no-multi --preview 'git stash show --color=always -p {1}' | cut -f 1 -d ' ' | xargs -t -o git stash branch stash-$(date +%Y%m%d%H%M)"
+	slp  = "!git stash list --pretty='%C(yellow)%gd %<(14)%Cgreen%cr %C(blue)%gs' | fzf --ansi --no-multi --preview 'git stash show --color=always -p {1}' | cut -f 1 -d ' ' | xargs -t -o git stash branch stash-$(date +%d/%m/%Y@%H-%M)"
 	fa = fetch --all
 	fp = fetch --prune
 	unstash = stash pop
@@ -70,8 +70,8 @@
 	k = "!f(){ gitk HEAD origin/`git rev-parse --abbrev-ref HEAD`; };f"
 	rmbranch = "!f(){ git branch -d ${1} && git push origin --delete ${1}; };f"
 	mkbranch = "!f(){ git checkout -b ${1} && git push origin -u ${1}; };f"
-	ls = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n         %aD (%ar %C(red)- %an%Creset)' --graph --color
-	ll = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n         %aD (%ar %C(red)- %an%Creset)' --graph --color --all
+	ls = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n          %aD (%ar %C(red)- %an%Creset)' --graph --color
+	ll = log --pretty=format:'%C(green)%h%Creset - %s%C(yellow)%d%Creset%n          %aD (%ar %C(red)- %an%Creset)' --graph --color --all
 	lt  = diff-tree --stat -r HEAD~0
 	puff = "push --force-with-lease"
 	unfuck = "!f(){ git reset --hard origin/`git rev-parse --abbrev-ref HEAD`; rm -rfv `git status --short | grep ^? | cut -d' '  -f2-`; }; f"

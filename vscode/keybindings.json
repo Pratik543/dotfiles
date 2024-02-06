@@ -263,5 +263,15 @@
     "key": "alt+k",
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus || editorHasSelection"
+  },
+  {
+    "key": "alt+shift+j",
+    "command": "editor.action.insertCursorBelow",
+    "when": "editorTextFocus || editorHasSelection"
+  },
+  {
+    "key": "alt+shift+k",
+    "command": "editor.action.insertCursorAbove",
+    "when": "editorTextFocus || editorHasSelection"
   }
 ]
