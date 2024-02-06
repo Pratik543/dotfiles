@@ -43,8 +43,8 @@
     },
     {
       // Selects all text in the file
-      "after": ["g", "g", "V", "G"],
-      "before": ["<c-a>"]
+      "before": ["<c-a>"],
+      "after": ["g", "g", "V", "G"]
     },
     {
       // Shows hover information for the symbol under the cursor
@@ -68,15 +68,19 @@
     },
     {
       // Moves the cursor to the start of the line
-      "after": ["^"],
-      "before": ["H"]
+      "before": ["H"],
+      "after": ["^"]
     },
     {
       // Moves the cursor to the end of the line
-      "after": ["$"],
-      "before": ["L"]
+      "before": ["L"],
+      "after": ["$"]
     }
   ],
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1 //To improve performance
+  },
+
   // ->Todo Highlights Settings
   "todohighlight.defaultStyle": {},
   "todohighlight.isEnable": true,
@@ -129,14 +133,15 @@
   "liveServer.settings.fullReload": true,
   // ->Prettier Formatter Settings
   "prettier.semi": true,
-  "prettier.singleQuote": true,
+  "prettier.singleQuote": false,
   "prettier.singleAttributePerLine": true,
   "prettier.trailingComma": "all",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
-    "source.organizeImports": "explicit"
+    "source.organizeImports": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
 
   // Other Extensions
@@ -163,7 +168,7 @@
   "code-runner.clearPreviousOutput": true,
   "code-runner.runInTerminal": true,
   "codeium.enableCodeLens": false,
-  "glassit.alpha": 235,
+  "glassit.alpha": 255,
   // "git.autofetch": true,
 
   // Fonts
@@ -171,7 +176,7 @@
   // "editor.fontLigatures": true, //for Fira Code
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "editor.fontWeight": "200",
-  "editor.fontSize": 15,
+  "editor.fontSize": 16,
   "scm.inputFontFamily": "Geist Mono",
   "chat.editor.fontFamily": "Geist Mono",
   "debug.console.fontFamily": "Geist Mono",
@@ -184,6 +189,9 @@
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
 
   // Editor Appearance
+  "workbench.colorCustomizations": {
+    "list.focusBackground": "#6e7b968C" //for highlighting explorer focused item in hack the box theme
+  },
   "security.workspace.trust.untrustedFiles": "open",
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
@@ -198,7 +206,7 @@
   "workbench.activityBar.location": "top",
   "workbench.layoutControl.enabled": false,
   "workbench.iconTheme": "symbols",
-  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
+  "workbench.colorTheme": "Bearded Theme Arc Blueberry",
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "workbench.sideBar.location": "right",
   "zenMode.hideLineNumbers": false,
