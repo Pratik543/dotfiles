@@ -40,7 +40,8 @@
 
 [alias]
 	alias = "!f(){ git config -l | grep alias | sort | fzf; };f"
-	st = status --short --branch
+	s = status --short --branch
+	st = status
 	ct = commit
 	cta = commit --amend --no-edit
 	cl = "!f() { echo 'Remove following files?'; echo; git clean -dn; echo; echo 'Press ENTER to confirm'; read -p 'Press ^C to stop cleanup and exit' a && git clean -df; }; f"
@@ -48,10 +49,11 @@
 	cob = checkout -b
 	cop = checkout --patch
 	cp = cherry-pick
-	br = branch
+	br = branch -v
 	bra = branch -avv --list
 	su  = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
-	dc = diff --cached
+	pnb = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+	dc = diff --staged
 	di = diff
 	dis  = -c delta.side-by-side=true diff
 	sd = "stash show stash@{0} -p"
@@ -84,3 +86,7 @@
 	ghpr = "!f() { GH_FORCE_TTY=100% gh pr list | fzf --ansi --layout=reverse --preview 'gh pr view {1}' --preview-window 'down,60%,wrap' --header-lines 3 | awk '{print $1}' | xargs gh pr checkout -f; }; f"
 	ghgist = "!f() { GH_FORCE_TTY=100% gh gist list | fzf --ansi --layout=reverse --preview 'gh gist view {1}' --preview-window 'down,wrap' | awk '{print $1}' | xargs gh gist edit; }; f"
 	ghissue = "!f() { GH_FORCE_TTY=100% gh issue list | fzf --ansi --layout=reverse --preview 'gh issue view {1}' --preview-window 'down,60%,wrap' --header-lines 3 | awk '{print $1}' | xargs gh issue checkout -f; }; f"
+	browse = "!gh repo view --web"
+	undo = reset --soft HEAD~1
+	day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"`git config --get user.name`\"'"
+	deleted = "!git log --diff-filter=D --summary | grep delete"

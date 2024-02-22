@@ -26,15 +26,6 @@ function Invoke-EditPwshProfile {
     code (Get-Item $PROFILE).Directory
 }
 
-function uptime {
-    #Windows Powershell only
-	if ($PSVersionTable.PSVersion.Major -eq 5 ) {
-	    Get-WmiObject win32_operatingsystem | Select-Object @{EXPRESSION={ $_.ConverttoDateTime($_.lastbootuptime)}} | Format-Table -HideTableHeaders
-	} else {
-        net statistics workstation | Select-String "since" | foreach-object {$_.ToString().Replace('Statistics since ', '')}
-    }
-}
-
 function unzip ($file) {
     Write-Output("Extracting", $file, "to", $pwd)
     Expand-Archive  $file 
@@ -50,10 +41,6 @@ function pkill($name) {
 
 function pgrep($name) {
     Get-Process $name
-}
-
-function df {
-    get-volume
 }
 
 function admin {
@@ -93,3 +80,5 @@ Set-Alias -Name profile-edit -Value Invoke-EditPwshProfile
 Set-Alias -Name fzfp -Value previewFileWithSyntaxHighlighting
 Set-Alias -Name tldrp -Value previewtldrpages
 Set-Alias -Name this.explorer -Value ExplorerFromHere
+Set-Alias -Name pn -Value pnpm
+Set-Alias -Name of -Value onefetch

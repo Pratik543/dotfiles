@@ -2,6 +2,7 @@
   // Auto Import
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.suggest.paths": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
 
@@ -93,7 +94,8 @@
     "**/*.php",
     "**/*.css",
     "**/*.cpp",
-    "**/*.scss"
+    "**/*.scss",
+    "**/*.json"
   ],
   "todohighlight.keywords": [
     {
@@ -119,14 +121,52 @@
       "color": "#fff",
       "backgroundColor": "#ff1a1a",
       "overviewRulerColor": "#CC3BBC"
-    },
-    {
-      "text": "[*]",
-      "color": "#fff",
-      "backgroundColor": "#0974f1",
-      "overviewRulerColor": "#0974f1"
     }
   ],
+  // ->Todo Tree Settings TODO:
+  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.general.statusBar": "top three",
+  "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+  "todo-tree.general.tags": ["TODO", "FIXME", "FIXIT", "FIX", "BUG"],
+  "todo-tree.general.tagGroups": {
+    "FIXME": ["FIXME", "FIXIT", "FIX"]
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "gutterIcon": true,
+      "icon": "tasklist",
+      "iconColour": "#FF8C00",
+      "type": "tag",
+      "background": "#CF7200",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold"
+    },
+    "FIXME": {
+      "gutterIcon": true,
+      "icon": "tools",
+      "iconColour": "#00FF00",
+      "type": "tag",
+      "background": "#008000",
+      "foreground": "#FFFF00",
+      "fontWeight": "bold"
+    },
+    "BUG": {
+      "gutterIcon": true,
+      "icon": "bug",
+      "iconColour": "#FF0000",
+      "type": "tag",
+      "background": "#800000",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold"
+    }
+  },
+  // ->GitLens Settings
+  "gitlens.statusBar.enabled": true,
+  "gitlens.statusBar.command": "gitlens.openCommitOnRemote",
+  "gitlens.blame.avatars": true,
+  "gitlens.hovers.avatars": true,
+  "gitlens.hovers.avatarSize": 60,
+  "gitlens.hovers.changesDiff": "hunk",
   // ->Live Server Settings
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.AdvanceCustomBrowserCmdLine": "brave",
@@ -138,9 +178,16 @@
   "prettier.trailingComma": "all",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.organizeImports": "explicit",
+    "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit"
   },
 
@@ -167,9 +214,13 @@
   "projectManager.removeCurrentProjectFromList": false,
   "code-runner.clearPreviousOutput": true,
   "code-runner.runInTerminal": true,
-  "codeium.enableCodeLens": false,
+  "codeium.enableCodeLens": true,
   "glassit.alpha": 255,
   // "git.autofetch": true,
+  "eslint.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
 
   // Fonts
   "editor.fontFamily": "'Monaspace Neon','Geist Mono','Fira Code','Operator Mono',Consolas,'Courier New', monospace",
@@ -187,11 +238,11 @@
   "terminal.integrated.env.windows": {},
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
-
-  // Editor Appearance
-  "workbench.colorCustomizations": {
-    "list.focusBackground": "#6e7b968C" //for highlighting explorer focused item in hack the box theme
+  // -------------------------------------------------
+  "files.readonlyInclude": {
+    "dist/**": true
   },
+  // Editor Appearance
   "security.workspace.trust.untrustedFiles": "open",
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
@@ -206,9 +257,11 @@
   "workbench.activityBar.location": "top",
   "workbench.layoutControl.enabled": false,
   "workbench.iconTheme": "symbols",
-  "workbench.colorTheme": "Bearded Theme Arc Blueberry",
+  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "workbench.sideBar.location": "right",
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.tree.indent": 9,
   "zenMode.hideLineNumbers": false,
   // "zenMode.showTabs": "single",
   "css.lint.unknownAtRules": "ignore",
@@ -221,6 +274,7 @@
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "editor.guides.bracketPairs": "active",
   "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.cursorBlinking": "phase",
   "editor.cursorSurroundingLines": 5,
   "editor.cursorSmoothCaretAnimation": "on",
@@ -235,5 +289,7 @@
   "editor.colorDecorators": true,
   "editor.renderWhitespace": "all",
   "editor.lineNumbers": "relative",
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "editor.showDeprecated": true,
+  "editor.suggest.showStatusBar": true
 }
