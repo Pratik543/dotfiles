@@ -32,7 +32,7 @@ function unzip ($file) {
 }
 
 function reload {
-    & $profile
+    . $profile
 }
 
 function pkill($name) {
@@ -68,6 +68,24 @@ function ExplorerFromHere {
     explorer (Get-Location).Path 
 }
 
+function ripGrepPreviewInFile {
+    # This function uses fzf to select a file and ripgrep search term to preview in the selected file with syntax highlighting.
+    $result = rg --smart-case --color=always --line-number --no-heading @Args |
+      fzf --ansi `
+       --color 'hl:-1:underline,hl+:-1:underline:reverse' `
+        --delimiter ':' `
+         --layout=reverse `
+          --border `
+           --padding=1 `
+            --preview "bat --color=always {1} --highlight-line {2} --wrap=auto" `
+             --preview-window 'up,60%,wrap,border-bottom,+{2}+3/3,~3' `
+              --header='Live Grep Preview Enter filename or extension search the keyword in that file.'
+       if ($result) {
+        $parts = $result.Split(':')
+        & code -g "$($parts[0]):$($parts[1])"
+    }
+}
+
 # Alias
 Set-Alias -Name ll -Value longlisting
 Set-Alias -Name llt -Value treeview
@@ -82,3 +100,4 @@ Set-Alias -Name tldrp -Value previewtldrpages
 Set-Alias -Name this.explorer -Value ExplorerFromHere
 Set-Alias -Name pn -Value pnpm
 Set-Alias -Name of -Value onefetch
+Set-Alias -Name rgp -Value ripGrepPreviewInFile

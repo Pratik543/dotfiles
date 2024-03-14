@@ -3,7 +3,7 @@
 	email = 71585947+Pratik543@users.noreply.github.com
 
 [core]
-    pager = delta
+	pager = delta
 
 [pager]
 	branch = false
@@ -13,11 +13,11 @@
 	show = delta
 
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
 
 [delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 	side-by-side = false
 	line-numbers = true
 	minus-style = syntax "#69140E"
@@ -28,12 +28,22 @@
 	plus-style = syntax "#58641D"
 	plus-non-emph-style = syntax "#58641D"
 	plus-empty-line-marker-style = syntax "#58641D"
+	line-numbers-zero-style = white
+	line-numbers-plus-style = green
+	line-numbers-minus-style = red
+	whitespace = red reverse
+	hyperlinks = true
+	whitespace-error-style = 22 reverse
+	file-style = brightyellow italic
+	file-decoration-style = yellow box
+	commit-regex = > [0-9a-f]{7,}
+	file-modified-label = modified:
 
 [merge]
-    conflictstyle = diff3
+	conflictstyle = diff3
 
 [diff]
-    colorMoved = default
+	colorMoved = default
 
 [init]
 	defaultBranch = main
@@ -81,7 +91,8 @@
 	vim = "!f(){ vim -p `git st | cut -c 2- | grep '^M\\|\\?' | cut -d' ' -f2-`; }; f"
 	stash-stage = "!f(){ git stash -- $(git diff --name-only --staged); }; f"
 	checkshow = "!f() { git log --graph --date-order --date=short --pretty=format:'%C(cyan)%h %C(blue)%ar%C(auto)%d %C(yellow)%s%+b %C(black)%ae' | fzf -i -e +s --layout=reverse --tiebreak=index --no-multi --ansi --header \"Select commit to checkout to that hash\" --preview-window wrap --preview 'echo {} | grep -o \"[a-f0-9]\\{7\\}\" | head -1 | xargs -I % sh -c \"git show --color=always % | delta\"' | awk '{print $2}' | xargs -I % git checkout %; }; f"
-	dip = "!f() { git diff --name-only | fzf -m --ansi --layout=reverse --preview-window 'up,70%,wrap' --preview 'git diff --color=always -- {-1} | delta' --cycle --header \"Check diff of files with preview\"; }; f"
+	dip = "!f() { git diff --name-only | fzf -m --ansi --layout=reverse --preview-window 'up,70%,wrap' --preview 'git diff --color=always -- {-1} | delta' --cycle --header \"Check diff of files with preview commit that are unstaged\"; }; f"
+	dips = "!f() { git diff --staged --name-only | fzf -m --ansi --layout=reverse --preview-window 'up,70%,wrap' --preview 'git diff --staged --color=always -- {-1} | delta' --cycle --header \"Check diff of files that are staged but not committed\"; }; f"
 	corb = "!f() { git branch --sort=committerdate | fzf --header 'Checkout Recent Branch which is ahead of main that is on top' --preview-window wrap --preview 'git diff {1} | delta' | xargs git checkout; }; f"
 	ghpr = "!f() { GH_FORCE_TTY=100% gh pr list | fzf --ansi --layout=reverse --preview 'gh pr view {1}' --preview-window 'down,60%,wrap' --header-lines 3 | awk '{print $1}' | xargs gh pr checkout -f; }; f"
 	ghgist = "!f() { GH_FORCE_TTY=100% gh gist list | fzf --ansi --layout=reverse --preview 'gh gist view {1}' --preview-window 'down,wrap' | awk '{print $1}' | xargs gh gist edit; }; f"

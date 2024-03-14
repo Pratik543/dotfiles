@@ -291,5 +291,12 @@
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.showDeprecated": true,
-  "editor.suggest.showStatusBar": true
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.preview": true,
+  "terminal.integrated.shellIntegration.suggestEnabled": true,
+  "editor.snippetSuggestions": "top",
+  "search.showLineNumbers": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "gitlens.ai.experimental.provider": "openai",
+  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106"
 }
