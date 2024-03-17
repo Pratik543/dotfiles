@@ -1,10 +1,12 @@
 {
   // Auto Import
-  "javascript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "shortest",
+  "typescript.preferences.importModuleSpecifier": "shortest",
   "javascript.suggest.paths": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.importModuleSpecifierEnding": "minimal",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
 
   // Extensions
   // ->Vim Settings
@@ -81,59 +83,32 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1 //To improve performance
   },
-
-  // ->Todo Highlights Settings
-  "todohighlight.defaultStyle": {},
-  "todohighlight.isEnable": true,
-  "todohighlight.include": [
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.html",
-    "**/*.php",
-    "**/*.css",
-    "**/*.cpp",
-    "**/*.scss",
-    "**/*.json"
-  ],
-  "todohighlight.keywords": [
-    {
-      "text": "DONE",
-      "color": "#fff",
-      "backgroundColor": "#60CD34",
-      "overviewRulerColor": "#60CD34"
-    },
-    {
-      "text": "PARTIAL",
-      "color": "#fff",
-      "backgroundColor": "#CC3B8C",
-      "overviewRulerColor": "#CC3B8C"
-    },
-    {
-      "text": "[+]",
-      "color": "#fff",
-      "backgroundColor": "#60CD34",
-      "overviewRulerColor": "#60CD34"
-    },
-    {
-      "text": "[-]",
-      "color": "#fff",
-      "backgroundColor": "#ff1a1a",
-      "overviewRulerColor": "#CC3BBC"
-    }
-  ],
-  // ->Todo Tree Settings TODO:
+  // ->Todo Tree Settings
   "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.general.showActivityBarBadge": true,
   "todo-tree.general.statusBar": "top three",
   "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
-  "todo-tree.general.tags": ["TODO", "FIXME", "FIXIT", "FIX", "BUG"],
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "FIXIT",
+    "FIX",
+    "BUG",
+    "[-]",
+    "[x]",
+    "DEBUG",
+    "NOW",
+    "WARN",
+    "WIP"
+  ],
   "todo-tree.general.tagGroups": {
     "FIXME": ["FIXME", "FIXIT", "FIX"]
   },
+  "todo-tree.highlights.defaultHighlight": {
+    "gutterIcon": true
+  },
   "todo-tree.highlights.customHighlight": {
     "TODO": {
-      "gutterIcon": true,
       "icon": "tasklist",
       "iconColour": "#FF8C00",
       "type": "tag",
@@ -141,25 +116,77 @@
       "foreground": "#FFFFFF",
       "fontWeight": "bold"
     },
+    "[-]": {
+      "icon": "tasklist",
+      "iconColour": "#FF8C00",
+      "type": "tag",
+      "background": "#60CD34",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold"
+    },
+    "[x]": {
+      "icon": "tasklist",
+      "iconColour": "#FF8C00",
+      "type": "tag",
+      "background": "#ff1a1a",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold"
+    },
     "FIXME": {
-      "gutterIcon": true,
       "icon": "tools",
       "iconColour": "#00FF00",
       "type": "tag",
-      "background": "#008000",
+      // "background": "#008000",
       "foreground": "#FFFF00",
       "fontWeight": "bold"
     },
     "BUG": {
-      "gutterIcon": true,
       "icon": "bug",
       "iconColour": "#FF0000",
       "type": "tag",
       "background": "#800000",
       "foreground": "#FFFFFF",
       "fontWeight": "bold"
+    },
+    "DEBUG": {
+      "icon": "dependabot",
+      "iconColour": "#ffd500",
+      "type": "tag",
+      "background": "#aa0202",
+      "foreground": "#f3ee6d",
+      "fontWeight": "bold"
+    },
+    "WIP": {
+      "icon": "flame",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold"
+    },
+    "NOW": {
+      "icon": "hourglass",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold"
+    },
+    "WARN": {
+      "icon": "alert",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold"
     }
   },
+  "todo-tree.filtering.excludeGlobs": [
+    "**/node_modules/**",
+    "**/vendor/**",
+    "**/.github/**"
+  ],
+
   // ->GitLens Settings
   "gitlens.statusBar.enabled": true,
   "gitlens.statusBar.command": "gitlens.openCommitOnRemote",
@@ -216,7 +243,7 @@
   "code-runner.runInTerminal": true,
   "codeium.enableCodeLens": true,
   "glassit.alpha": 255,
-  // "git.autofetch": true,
+  "git.autofetch": true,
   "eslint.enable": true,
   "eslint.codeAction.showDocumentation": {
     "enable": true
@@ -227,7 +254,7 @@
   // "editor.fontLigatures": true, //for Fira Code
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "editor.fontWeight": "200",
-  "editor.fontSize": 16,
+  "editor.fontSize": 19,
   "scm.inputFontFamily": "Geist Mono",
   "chat.editor.fontFamily": "Geist Mono",
   "debug.console.fontFamily": "Geist Mono",
@@ -238,6 +265,8 @@
   "terminal.integrated.env.windows": {},
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+  "terminal.integrated.stickyScroll.enabled": true,
+  "terminal.integrated.fontSize": 16,
   // -------------------------------------------------
   "files.readonlyInclude": {
     "dist/**": true
@@ -252,6 +281,8 @@
   "window.titleBarStyle": "custom",
   "window.menuBarVisibility": "compact",
   "window.density.editorTabHeight": "default",
+  "window.confirmBeforeClose": "always",
+  "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.location": "top",
@@ -297,6 +328,18 @@
   "editor.snippetSuggestions": "top",
   "search.showLineNumbers": true,
   "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
   "gitlens.ai.experimental.provider": "openai",
-  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106"
+  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.js": "${capture}.js.map, ${capture}.*.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js, ${capture}.*.js, ${capture}.*.ts, ${capture}.*.tsx",
+    "*.ts": "${capture}.js, ${capture}.*.jsx, ${capture}.*.tsx",
+    "*.tsx": "${capture}.ts, ${capture}.*.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, yarn.lock",
+    "*": "${basename}.*.${extname}"
+  },
+  "explorer.incrementalNaming": "smart"
 }
