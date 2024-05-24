@@ -3,6 +3,8 @@
 
 oh-my-posh --init --shell pwsh --config $HOME/dotfiles/powershell/customized-posh-themes/myposh3.omp.json | Invoke-Expression
 
+fastfetch # This command loads the fastfetch module when the profile is loaded
+
 Import-Module Terminal-Icons
 
 # PSReadLine
@@ -86,6 +88,14 @@ function ripGrepPreviewInFile {
     }
 }
 
+function google {
+    start "https://www.google.com/search?q=$args"
+}
+
+function host {
+    start "http://localhost:$args"
+}
+
 # Alias
 Set-Alias -Name ll -Value longlisting
 Set-Alias -Name llt -Value treeview
@@ -101,3 +111,4 @@ Set-Alias -Name this.explorer -Value ExplorerFromHere
 Set-Alias -Name pn -Value pnpm
 Set-Alias -Name of -Value onefetch
 Set-Alias -Name rgp -Value ripGrepPreviewInFile
+Set-Alias -Name ff -Value fastfetch

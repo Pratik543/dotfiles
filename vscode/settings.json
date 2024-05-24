@@ -1,5 +1,7 @@
 {
   // Auto Import
+  "typescript.suggest.autoImports": true,
+  "javascript.suggest.autoImports": true,
   "javascript.preferences.importModuleSpecifier": "shortest",
   "typescript.preferences.importModuleSpecifier": "shortest",
   "javascript.suggest.paths": true,
@@ -78,6 +80,10 @@
       // Moves the cursor to the end of the line
       "before": ["L"],
       "after": ["$"]
+    },
+    {
+      "before": ["<leader>", "g", "d"],
+      "commands": ["gitlens.diffLineWithWorking"]
     }
   ],
   "extensions.experimental.affinity": {
@@ -194,6 +200,9 @@
   "gitlens.hovers.avatars": true,
   "gitlens.hovers.avatarSize": 60,
   "gitlens.hovers.changesDiff": "hunk",
+  "gitlens.ai.experimental.provider": "openai",
+  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
+  // "gitlens.hovers.currentLine.details": true,
   // ->Live Server Settings
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.AdvanceCustomBrowserCmdLine": "brave",
@@ -230,7 +239,10 @@
   "npm-intellisense.scanDevDependencies": true,
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "javascriptreact": "javascriptreact",
+    "typescriptreact": "typescriptreact"
   },
   "svg.preview.mode": "svg",
   "svg.preview.background": "transparent",
@@ -243,7 +255,6 @@
   "code-runner.runInTerminal": true,
   "codeium.enableCodeLens": true,
   "glassit.alpha": 255,
-  "git.autofetch": true,
   "eslint.enable": true,
   "eslint.codeAction.showDocumentation": {
     "enable": true
@@ -267,10 +278,21 @@
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
   "terminal.integrated.stickyScroll.enabled": true,
   "terminal.integrated.fontSize": 16,
+  "terminal.integrated.shellIntegration.suggestEnabled": true,
+  "terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’|",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.localEchoLatencyThreshold": -1,
+  "terminal.integrated.scrollback": 1000,
+  "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.rightClickBehavior": "paste",
+  "terminal.integrated.gpuAcceleration": "auto",
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.toggleSidebarVisibility",
+    "workbench.files.action.focusFilesExplorer",
+    "workbench.action.gotoSymbol"
+  ],
   // -------------------------------------------------
-  "files.readonlyInclude": {
-    "dist/**": true
-  },
   // Editor Appearance
   "security.workspace.trust.untrustedFiles": "open",
   "explorer.confirmDragAndDrop": false,
@@ -288,14 +310,13 @@
   "workbench.activityBar.location": "top",
   "workbench.layoutControl.enabled": false,
   "workbench.iconTheme": "symbols",
-  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
+  "workbench.colorTheme": "Bearded Theme Arc",
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "workbench.sideBar.location": "right",
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.indent": 9,
   "zenMode.hideLineNumbers": false,
   // "zenMode.showTabs": "single",
-  "css.lint.unknownAtRules": "ignore",
   "editor.suggestSelection": "first",
   "editor.unicodeHighlight.invisibleCharacters": false,
   "editor.unicodeHighlight.allowedCharacters": {
@@ -303,7 +324,7 @@
     "‘": true
   },
   "editor.unicodeHighlight.ambiguousCharacters": false,
-  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairs": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.cursorBlinking": "phase",
@@ -314,7 +335,7 @@
   "editor.smoothScrolling": true,
   "editor.suggest.insertMode": "replace",
   "editor.linkedEditing": true,
-  "editor.tabCompletion": "on",
+  // "editor.tabCompletion": "on",
   "editor.mouseWheelZoom": false,
   "editor.accessibilitySupport": "off",
   "editor.colorDecorators": true,
@@ -324,13 +345,10 @@
   "editor.showDeprecated": true,
   "editor.suggest.showStatusBar": true,
   "editor.suggest.preview": true,
-  "terminal.integrated.shellIntegration.suggestEnabled": true,
   "editor.snippetSuggestions": "top",
   "search.showLineNumbers": true,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.pinnedTabsOnSeparateRow": true,
-  "gitlens.ai.experimental.provider": "openai",
-  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.js": "${capture}.js.map, ${capture}.*.js, ${capture}.d.ts",
@@ -341,5 +359,67 @@
     "package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, yarn.lock",
     "*": "${basename}.*.${extname}"
   },
-  "explorer.incrementalNaming": "smart"
+  "explorer.incrementalNaming": "smart",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/bower_components": true,
+    "**/*.code-search": true
+  },
+  "files.readonlyInclude": {
+    "dist/**": true
+  },
+  "files.enableTrash": true,
+  "workbench.list.smoothScrolling": true,
+  "editor.parameterHints.enabled": true,
+  "editor.suggest.showTypeParameters": true,
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.renderLineHighlight": "all",
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.unicodeHighlight.nonBasicASCII": true,
+  "outline.icons": true,
+  "outline.problems.enabled": true,
+  // Git
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.untrackedChanges": "separate",
+  "git.detectSubmodules": true,
+  "git.showPushSuccessNotification": true,
+
+  // errorlens
+  "errorLens.statusBarIconsEnabled": true,
+  "errorLens.statusBarIconsUseBackground": false,
+  "errorLens.margin": "3ch",
+  "errorLens.enableOnDiffView": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "hint", "info"],
+  "errorLens.messageEnabled": true,
+  "errorLens.messageBackgroundMode": "message",
+  "errorLens.messageTemplate": " ◩ $message $count", // ▣ ◩ ◐ ◩
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconSet": "squareRounded",
+
+  // Css
+  "css.validate": false,
+  "css.completion.completePropertyWithSemicolon": true,
+  "css.completion.triggerPropertyValueCompletion": true,
+  "css.lint.argumentsInColorFunction": "error",
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.boxModel": "warning",
+  "css.customData": [],
+
+  // tailwindcss
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)", // tw`...`
+    "tw=\"([^\"]*)", // <div tw="..." />
+    "tw={\"([^\"}]*)", // <div tw={"..."} />
+    "tw\\.\\w+`([^`]*)", // tw.xxx`...`
+    "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.lint.cssConflict": "error",
+  "prisma.showPrismaDataPlatformNotification": false
 }

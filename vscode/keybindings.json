@@ -273,5 +273,26 @@
     "key": "alt+shift+k",
     "command": "editor.action.insertCursorAbove",
     "when": "editorTextFocus || editorHasSelection"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "codeium.openCodeiumCommand",
+    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "-codeium.openCodeiumCommand",
+    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
+  },
+  {
+    //"when": "isDevelopment",
+    "key": "ctrl+shift+i",
+    "command": "workbench.action.toggleDevTools"
   }
+  // Toggle multiple comments
+  // {
+  //   "key": "ctrl+/",
+  //   "command": "editor.emmet.action.toggleComment",
+  //   "when": "editorTextFocus && !editorReadonly && resourceExtname == '.html' || resourceExtname == '.css'"
+  // }
 ]

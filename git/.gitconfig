@@ -101,3 +101,4 @@
 	undo = reset --soft HEAD~1
 	day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"`git config --get user.name`\"'"
 	deleted = "!git log --diff-filter=D --summary | grep delete"
+	info = remote show origin
