@@ -183,7 +183,7 @@
     "command": "workbench.action.splitEditor"
   },
   {
-    "key": "ctrl+1",
+    "key": "ctrl+alt+1",
     "command": "workbench.action.toggleZenMode"
   },
   {
@@ -193,7 +193,7 @@
   },
   // TERMINAL KEYBINDINGS
   {
-    "key": "alt+enter",
+    "key": "ctrl+alt+m",
     "command": "workbench.action.toggleMaximizedPanel",
     "when": "terminalFocus"
   },
@@ -255,22 +255,22 @@
     "command": "deleteRight"
   },
   {
-    "key": "alt+j",
+    "key": "alt+k",
     "command": "editor.action.moveLinesDownAction",
     "when": "editorTextFocus || editorHasSelection"
   },
   {
-    "key": "alt+k",
+    "key": "alt+i",
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus || editorHasSelection"
   },
   {
-    "key": "alt+shift+j",
+    "key": "alt+shift+n",
     "command": "editor.action.insertCursorBelow",
     "when": "editorTextFocus || editorHasSelection"
   },
   {
-    "key": "alt+shift+k",
+    "key": "alt+shift+p",
     "command": "editor.action.insertCursorAbove",
     "when": "editorTextFocus || editorHasSelection"
   },
@@ -288,6 +288,14 @@
     //"when": "isDevelopment",
     "key": "ctrl+shift+i",
     "command": "workbench.action.toggleDevTools"
+  },
+  {
+    "key": "alt+8",
+    "command": "-workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "alt+4",
+    "command": "-workbench.action.openEditorAtIndex4"
   }
   // Toggle multiple comments
   // {

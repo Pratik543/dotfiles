@@ -1,0 +1,52 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+[[manager.prepend_keymap]]
+on = ["<Enter>"]
+run = "plugin --sync smart-enter"
+desc = "Enter the child directory, or open the selected file"
+
+[[manager.prepend_keymap]]
+on = ["l"]
+run = "plugin --sync smart-enter"
+desc = "Enter the child directory, or open the selected file"
+
+[[manager.prepend_keymap]]
+on = ["<Backspace>"]
+run = "leave"
+desc = "Go back to the parent directory"
+
+[[manager.prepend_keymap]]
+on   = [ "u" ]
+run  = 'undo'
+desc = "for undo the last operation"
+
+[[manager.prepend_keymap]]
+on   = [ "U" ]
+run  = 'redo'
+desc = "for redo the last operation"
+
+## Maximize the preview screen
+[[manager.prepend_keymap]]
+on   = [ "M" ]
+run  = "plugin --sync max-preview"
+desc = "Maximize or restore preview"
+
+## Minimize the preview screen
+[[manager.prepend_keymap]]
+on   = [ "M" ]
+run  = "plugin --sync hide-preview"
+desc = "Hide or show preview"
+
+## Open smart filter
+[[manager.prepend_keymap]]
+on   = [ "F" ]
+run  = "plugin smart-filter"
+desc = "Smart filter"
+
+## Compressing files using ouch
+[[manager.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch --args=zip"
+desc = "Compress with ouch"

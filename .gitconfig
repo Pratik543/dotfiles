@@ -49,7 +49,7 @@
 	defaultBranch = main
 
 [alias]
-	alias = "!f(){ git config -l | grep alias | sort | fzf; };f"
+	alias = "!f(){ git config -l | grep alias | sort | fzf --layout=reverse; };f"
 	s = status --short --branch
 	st = status
 	ct = commit

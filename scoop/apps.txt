@@ -1,0 +1,67 @@
+# dev tools
+scoop install vagrant vscode ngrok filezilla insomnia mongodb git gsudo openssh openssl coreutils
+
+
+buckets : main extras versions nerd-fonts
+
+owned apps : 7zip aria2 bat btop curlie delta discord eza fastfetch fd fx fzf glazewm glow hunt-and-peck komorebi lazygit less mpv neovim nodejs-lts notion oh-my-posh onefetch ouch python python312 ripgrep rust steam tealdeer tokei whkd yazi z 
+
+# new apps to checkout
+git-filter-repo
+wireshark
+fiddler
+graphviz
+nasm
+sqlite
+rustup
+kotlin-native
+beyondcompare
+sysinternals
+winscp
+spacesniffer 
+llvm
+gitkraken
+dotnet-sdk
+virtualbox-np
+adb
+nmap
+
+# Useful commands such as "sudo" and "shasum"
+psutils
+
+# TODO: find a 32bit version to be able to open old .idb files, IDA free is 64bit and uses .i64 only
+ida-free
+
+# Docker Toolbox (installs docker client and docker-machine)
+docker
+
+# JDK + JRE
+openjdk
+
+ffmpeg
+
+# pack and unpack Android APK files (doesn't decompile)
+apktool
+
+# unpack and decompile android apk
+jadx
+
+# TODO: consider for android reversing
+#dex2jar
+
+# Java decompiler (the command is jd-cli)
+jd-cmd
+# C# decompiler
+ilspy
+# Flash decompiler
+ffdec
+
+# x86 PC emulator
+bochs
+
+# PPSSPP - a PSP emulator
+ppsspp
+
+# a game emulator for several consoles
+bizhawk
+

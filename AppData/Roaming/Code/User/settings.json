@@ -201,7 +201,7 @@
   "gitlens.hovers.avatarSize": 60,
   "gitlens.hovers.changesDiff": "hunk",
   "gitlens.ai.experimental.provider": "openai",
-  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
+  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-16k",
   // "gitlens.hovers.currentLine.details": true,
   // ->Live Server Settings
   "liveServer.settings.donotShowInfoMsg": true,
@@ -226,6 +226,7 @@
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit"
   },
+  "files.defaultLanguage": "txt", //txt syntax extension setting
 
   // Other Extensions
   "extensions.autoUpdate": "onlyEnabledExtensions",
@@ -251,17 +252,17 @@
   "projectManager.git.baseFolders": ["C:\\Users\\Pratik"],
   "projectManager.sortList": "Recent",
   "projectManager.removeCurrentProjectFromList": false,
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.runInTerminal": true,
-  "codeium.enableCodeLens": true,
-  "glassit.alpha": 255,
+  // "code-runner.clearPreviousOutput": true,
+  // "code-runner.runInTerminal": true,
+  "codeium.enableCodeLens": false,
+  // "glassit.alpha": 255,
   "eslint.enable": true,
   "eslint.codeAction.showDocumentation": {
     "enable": true
   },
 
   // Fonts
-  "editor.fontFamily": "'Monaspace Neon','Geist Mono','Fira Code','Operator Mono',Consolas,'Courier New', monospace",
+  "editor.fontFamily": "'OperatorMonoSSmLig','Monaspace Neon','Geist Mono','Fira Code','Space Mono',Consolas,'Courier New', monospace",
   // "editor.fontLigatures": true, //for Fira Code
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "editor.fontWeight": "200",
@@ -275,10 +276,17 @@
   // Terminal Appearance
   "terminal.integrated.env.windows": {},
   "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "overrideName": true,
+      "path": "C:\\Users\\Pratik\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe"
+    }
+  },
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
   "terminal.integrated.stickyScroll.enabled": true,
   "terminal.integrated.fontSize": 16,
-  "terminal.integrated.shellIntegration.suggestEnabled": true,
+  // "terminal.integrated.shellIntegration.suggestEnabled": true,
   "terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’|",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.localEchoLatencyThreshold": -1,
@@ -302,15 +310,14 @@
   "window.commandCenter": false,
   "window.titleBarStyle": "custom",
   "window.menuBarVisibility": "compact",
-  "window.density.editorTabHeight": "default",
-  "window.confirmBeforeClose": "always",
+  "window.confirmBeforeClose": "never",
   "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.location": "top",
   "workbench.layoutControl.enabled": false,
   "workbench.iconTheme": "symbols",
-  "workbench.colorTheme": "Bearded Theme Arc",
+  "workbench.colorTheme": "Bearded Theme feat. Will",
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "workbench.sideBar.location": "right",
   "workbench.tree.renderIndentGuides": "always",
@@ -421,5 +428,25 @@
     "typescriptreact": "javascript"
   },
   "tailwindCSS.lint.cssConflict": "error",
-  "prisma.showPrismaDataPlatformNotification": false
+  "prisma.showPrismaDataPlatformNotification": false,
+  "codeium.enableConfig": {
+    "*": false
+  },
+  // For auto-completion for komorebi
+  "json.schemas": [
+    {
+      "fileMatch": ["komorebi.json"],
+      "url": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.json"
+    }
+  ],
+  // Apc UI Settings
+  "apc.font.family": "Geist Mono",
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.smoothScrolling": true
+  // "apc.electron": {
+  //   "opacity": 0.9,
+  //   "vibrancy": "tooltip",
+  //   "backgroundColor": "rgba(255, 255, 255, .9)",
+  //   "visualEffectState": "active"
+  // }
 }

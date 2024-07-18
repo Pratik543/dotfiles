@@ -1,0 +1,51 @@
+{
+	"$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.25/schema.json",
+	"app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+	"window_hiding_behaviour": "Minimize",
+	"cross_monitor_move_behaviour": "Insert",
+	"default_workspace_padding": 0,
+	"default_container_padding": 1,
+	"border": true,
+	"border_width": 2,
+	"border_offset": -1,
+	"border_style": "Rounded",
+	"border_colours": {
+		"single": "#fdff00",
+		"stack": "#fdff00",
+		"monocle": "#ff3399",
+		"unfocused": "#858585"
+	},
+	"stackbar": {
+		"height": 35,
+		"mode": "OnStack",
+		"label": "Title",
+		"tabs": {
+			"width": 230,
+			"focused_text": "#339bc4",
+			"unfocused_text": "#b3b3b3",
+			"background": "#2e2e2e"
+		}
+	},
+	"monitors": [
+		{
+			"workspaces": [
+				{
+					"name": "I",
+					"layout": "BSP"
+				},
+				{
+					"name": "II",
+					"layout": "RightMainVerticalStack"
+				},
+				{
+					"name": "III",
+					"layout": "BSP"
+				},
+				{
+					"name": "IV",
+					"layout": "Grid"
+				}
+			]
+		}
+	]
+}
