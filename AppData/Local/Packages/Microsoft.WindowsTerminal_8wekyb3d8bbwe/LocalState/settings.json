@@ -9,6 +9,10 @@
       "keys": "pgdn"
     },
     {
+      "command": "find",
+      "keys": "ctrl+shift+f"
+    },
+    {
       "command": {
         "action": "resizePane",
         "direction": "left"
@@ -16,8 +20,11 @@
       "keys": "ctrl+left"
     },
     {
-      "command": "find",
-      "keys": "ctrl+shift+f"
+      "command": {
+        "action": "splitPane",
+        "split": "down"
+      },
+      "keys": "ctrl+/"
     },
     {
       "command": "unbound",
@@ -96,10 +103,7 @@
       "keys": "alt+down"
     },
     {
-      "command": {
-        "action": "splitPane",
-        "split": "down"
-      },
+      "command": "unbound",
       "keys": "alt+v"
     },
     {
@@ -127,17 +131,23 @@
     },
     {
       "command": {
-        "action": "moveFocus",
-        "direction": "down"
-      },
-      "keys": "alt+j"
-    },
-    {
-      "command": {
         "action": "splitPane",
         "split": "right"
       },
-      "keys": "ctrl+d"
+      "keys": "ctrl+\\"
+    },
+    {
+      "command": {
+        "action": "quakeMode"
+      },
+      "keys": "alt+`"
+    },
+    {
+      "command": {
+        "action": "moveFocus",
+        "direction": "down"
+      },
+      "keys": "ctrl+alt+j"
     },
     {
       "command": "closePane",
@@ -152,16 +162,17 @@
     },
     {
       "command": {
-        "action": "quakeMode"
-      },
-      "keys": "alt+1"
-    },
-    {
-      "command": {
         "action": "moveFocus",
         "direction": "right"
       },
-      "keys": "alt+l"
+      "keys": "ctrl+alt+l"
+    },
+    {
+      "command": {
+        "action": "resizePane",
+        "direction": "down"
+      },
+      "keys": "ctrl+down"
     },
     {
       "command": "switchSelectionEndpoint"
@@ -174,24 +185,17 @@
     },
     {
       "command": {
-        "action": "resizePane",
-        "direction": "down"
-      },
-      "keys": "ctrl+down"
-    },
-    {
-      "command": {
         "action": "moveFocus",
         "direction": "up"
       },
-      "keys": "alt+k"
+      "keys": "ctrl+alt+k"
     },
     {
       "command": {
         "action": "moveFocus",
         "direction": "left"
       },
-      "keys": "alt+h"
+      "keys": "ctrl+alt+h"
     }
   ],
   "copyFormatting": "none",
@@ -212,14 +216,16 @@
     },
     "list": [
       {
-        "backgroundImage": "C:\\Users\\Pratik\\Downloads\\Wallpapers\\terminal-themes\\996774.jpg",
+        "backgroundImage": "C:\\Users\\Pratik\\Downloads\\Wallpapers\\terminal-themes\\962966.jpg",
         "backgroundImageAlignment": "bottom",
         "backgroundImageOpacity": 0.25,
-        "colorScheme": "tokyonight-storm",
+        "colorScheme": "One Half Dark",
+        "commandline": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.4.3.0_x64__8wekyb3d8bbwe\\pwsh.exe",
         "cursorShape": "vintage",
+        "elevate": false,
         "experimental.retroTerminalEffect": false,
         "font": {
-          "face": "FiraCode Nerd Font Mono"
+          "face": "GeistMono Nerd Font"
         },
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
@@ -242,7 +248,7 @@
         },
         "guid": "{5eb7faa9-32b4-4329-8b31-949b6a5832b7}",
         "hidden": false,
-        "icon": "C:\\Users\\Pratik\\Downloads\\Wallpapers\\git_.png",
+        "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
         "name": "Git Bash",
         "opacity": 25,
         "padding": "20",
@@ -271,6 +277,11 @@
         "hidden": true,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
+      },
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "Windows PowerShell"
       }
     ]
   },
