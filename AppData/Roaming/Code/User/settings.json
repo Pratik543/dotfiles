@@ -2,15 +2,28 @@
   // Auto Import
   "typescript.suggest.autoImports": true,
   "javascript.suggest.autoImports": true,
+
   "javascript.preferences.importModuleSpecifier": "shortest",
   "typescript.preferences.importModuleSpecifier": "shortest",
+
   "javascript.suggest.paths": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "javascript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.completeFunctionCalls": true,
+
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.enabled": "all",
+
   "javascript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
 
   // Extensions
+  // draw.io
+  // "hediet.vscode-drawio.theme": "Kennedy",
+  // "hediet.vscode-drawio.resizeImages": null,
+
   // ->Vim Settings
   "vim.leader": "<space>",
   "vim.hlsearch": true, // Enables highlighting of search matches
@@ -27,34 +40,9 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      // Renames the current symbol variables, functions, classes, methods etc
-      "before": ["leader", "r"],
-      "commands": ["editor.action.rename"]
-    },
-    {
-      // Writes (saves) the current file
-      "before": ["leader", "w"],
-      "commands": [":w!"]
-    },
-    {
-      // Quits the current file
-      "before": ["leader", "q"],
-      "commands": [":q!"]
-    },
-    {
-      // Writes (saves) and quits the current file
-      "before": ["leader", "x"],
-      "commands": [":x!"]
-    },
-    {
       // Selects all text in the file
       "before": ["<c-a>"],
       "after": ["g", "g", "V", "G"]
-    },
-    {
-      // Shows hover information for the symbol under the cursor
-      "before": ["<leader>", "k"],
-      "commands": ["editor.action.showHover"]
     },
     {
       // Moves to the previous marker
@@ -67,11 +55,6 @@
       "commands": ["editor.action.marker.next"]
     },
     {
-      // Opens the quick fix menu
-      "before": ["<leader>", "c", "a"],
-      "commands": ["editor.action.quickFix"]
-    },
-    {
       // Moves the cursor to the start of the line
       "before": ["H"],
       "after": ["^"]
@@ -80,15 +63,12 @@
       // Moves the cursor to the end of the line
       "before": ["L"],
       "after": ["$"]
-    },
-    {
-      "before": ["<leader>", "g", "d"],
-      "commands": ["gitlens.diffLineWithWorking"]
     }
   ],
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1 //To improve performance
   },
+  "telemetry.telemetryLevel": "off",
   // ->Todo Tree Settings
   "todo-tree.tree.showCountsInTree": true,
   "todo-tree.general.showActivityBarBadge": true,
@@ -100,21 +80,27 @@
     "FIXIT",
     "FIX",
     "BUG",
-    "[-]",
+    "[ ]",
     "[x]",
     "DEBUG",
     "NOW",
     "WARN",
-    "WIP"
+    "WIP",
+    "UNDONE",
+    "DONE",
+    "REMOVE"
   ],
   "todo-tree.general.tagGroups": {
     "FIXME": ["FIXME", "FIXIT", "FIX"]
+    // "TODO": ["TODO", "WIP", "NOW", "UNDONE"],
+    // "BUG": ["BUG", "DEBUG", "WARN"]
   },
   "todo-tree.highlights.defaultHighlight": {
     "gutterIcon": true
   },
   "todo-tree.highlights.customHighlight": {
     "TODO": {
+      //ICONS LIST https://primer.style/foundations/icons
       "icon": "tasklist",
       "iconColour": "#FF8C00",
       "type": "tag",
@@ -122,16 +108,16 @@
       "foreground": "#FFFFFF",
       "fontWeight": "bold"
     },
-    "[-]": {
-      "icon": "tasklist",
-      "iconColour": "#FF8C00",
+    "[x]": {
+      "icon": "verified",
+      "iconColour": "#1c6c08",
       "type": "tag",
       "background": "#60CD34",
       "foreground": "#FFFFFF",
       "fontWeight": "bold"
     },
-    "[x]": {
-      "icon": "tasklist",
+    "[ ]": {
+      "icon": "checklist",
       "iconColour": "#FF8C00",
       "type": "tag",
       "background": "#ff1a1a",
@@ -185,6 +171,20 @@
       "background": "#f3ee6d",
       "foreground": "#100303",
       "fontWeight": "bold"
+    },
+    "UNDONE": {
+      "icon": "x-circle",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold"
+    },
+    "REMOVE": {
+      "icon": "trash",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#e84a5f"
     }
   },
   "todo-tree.filtering.excludeGlobs": [
@@ -248,12 +248,11 @@
   "svg.preview.mode": "svg",
   "svg.preview.background": "transparent",
   "symbols.hidesExplorerArrows": false,
-  "rapidapi.terminalLink.enabled": false,
   "projectManager.git.baseFolders": ["C:\\Users\\Pratik"],
   "projectManager.sortList": "Recent",
   "projectManager.removeCurrentProjectFromList": false,
-  // "code-runner.clearPreviousOutput": true,
-  // "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.runInTerminal": true,
   "codeium.enableCodeLens": false,
   // "glassit.alpha": 255,
   "eslint.enable": true,
@@ -262,7 +261,7 @@
   },
 
   // Fonts
-  "editor.fontFamily": "'OperatorMonoSSmLig','Monaspace Neon','Geist Mono','Fira Code','Space Mono',Consolas,'Courier New', monospace",
+  "editor.fontFamily": "'Monaspace Neon','Geist Mono','Fira Code','Space Mono',Consolas,'Courier New', monospace",
   // "editor.fontLigatures": true, //for Fira Code
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "editor.fontWeight": "200",
@@ -274,15 +273,13 @@
   "markdown.preview.fontFamily": "Geist Mono",
 
   // Terminal Appearance
-  "terminal.integrated.env.windows": {},
-  "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "terminal.integrated.profiles.windows": {
-    "PowerShell": {
-      "source": "PowerShell",
-      "overrideName": true,
-      "path": "C:\\Users\\Pratik\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe"
-    }
+  "terminal.integrated.env.windows": {
+    "PSExecutionPolicyReference": "RemoteSigned"
   },
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.smoothScrolling": true,
+  "workbench.activityBar.location": "top",
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
   "terminal.integrated.stickyScroll.enabled": true,
   "terminal.integrated.fontSize": 16,
@@ -300,6 +297,7 @@
     "workbench.files.action.focusFilesExplorer",
     "workbench.action.gotoSymbol"
   ],
+  "terminal.integrated.suggest.enabled": true,
   // -------------------------------------------------
   // Editor Appearance
   "security.workspace.trust.untrustedFiles": "open",
@@ -307,17 +305,13 @@
   "explorer.confirmDelete": false,
   "explorer.compactFolders": false,
   "window.zoomLevel": -0.5,
-  "window.commandCenter": false,
   "window.titleBarStyle": "custom",
-  "window.menuBarVisibility": "compact",
   "window.confirmBeforeClose": "never",
   "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
-  "workbench.activityBar.location": "top",
-  "workbench.layoutControl.enabled": false,
   "workbench.iconTheme": "symbols",
-  "workbench.colorTheme": "Bearded Theme feat. Will",
+  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
   "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "workbench.sideBar.location": "right",
   "workbench.tree.renderIndentGuides": "always",
@@ -430,23 +424,11 @@
   "tailwindCSS.lint.cssConflict": "error",
   "prisma.showPrismaDataPlatformNotification": false,
   "codeium.enableConfig": {
-    "*": false
+    "*": true
   },
-  // For auto-completion for komorebi
-  "json.schemas": [
-    {
-      "fileMatch": ["komorebi.json"],
-      "url": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.json"
-    }
-  ],
   // Apc UI Settings
-  "apc.font.family": "Geist Mono",
-  "terminal.integrated.enableImages": true,
-  "terminal.integrated.smoothScrolling": true
-  // "apc.electron": {
-  //   "opacity": 0.9,
-  //   "vibrancy": "tooltip",
-  //   "backgroundColor": "rgba(255, 255, 255, .9)",
-  //   "visualEffectState": "active"
-  // }
+  "apc.imports": ["${userHome}/custom-vscode.css"],
+  "window.menuBarVisibility": "compact",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false
 }
