@@ -198,6 +198,7 @@
       "keys": "ctrl+alt+h"
     }
   ],
+  "alwaysShowTabs": true,
   "copyFormatting": "none",
   "copyOnSelect": true,
   "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -216,21 +217,21 @@
     },
     "list": [
       {
-        "backgroundImage": "C:\\Users\\Pratik\\Downloads\\Wallpapers\\terminal-themes\\962966.jpg",
+        "backgroundImage": "C:\\Users\\Pratik\\Downloads\\Wallpapers\\terminal-themes\\5797325.jpg",
         "backgroundImageAlignment": "bottom",
         "backgroundImageOpacity": 0.25,
-        "colorScheme": "One Half Dark",
-        "commandline": "C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.4.3.0_x64__8wekyb3d8bbwe\\pwsh.exe",
+        "colorScheme": "One Half Dark (Moded)",
+        "commandline": "C:/Program Files/PowerShell/7/pwsh.exe",
         "cursorShape": "vintage",
         "elevate": false,
         "experimental.retroTerminalEffect": false,
         "font": {
-          "face": "GeistMono Nerd Font"
+          "face": "DaddyTimeMono Nerd Font"
         },
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
         "name": "PowerShell",
-        "opacity": 100,
+        "opacity": 80,
         "padding": "10",
         "source": "Windows.Terminal.PowershellCore"
       },
@@ -257,19 +258,19 @@
         "useAcrylic": true
       },
       {
-        "backgroundImage": "C:\\Users\\Pratik\\Downloads\\Wallpapers\\terminal-themes\\2789549.jpg",
+        "backgroundImage": "C:\\Users\\Pratik\\Downloads\\Wallpapers\\terminal-themes\\722891.png",
         "backgroundImageOpacity": 0.2,
-        "colorScheme": "tokyonight-storm",
+        "colorScheme": "One Half Dark (Moded)",
         "cursorShape": "underscore",
-        "experimental.retroTerminalEffect": true,
+        "experimental.retroTerminalEffect": false,
         "font": {
-          "face": "Fira Code"
+          "face": "GeistMono Nerd Font Mono"
         },
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": false,
         "name": "Command Prompt",
-        "opacity": 96,
-        "padding": "10",
+        "opacity": 90,
+        "padding": "5",
         "useAcrylic": true
       },
       {
@@ -587,7 +588,9 @@
     }
   ],
   "showTabsInTitlebar": true,
+  "showTerminalTitleInTitlebar": false,
   "tabSwitcherMode": "mru",
+  "tabWidthMode": "equal",
   "themes": [],
   "trimPaste": false,
   "useAcrylicInTabRow": true
