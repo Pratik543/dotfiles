@@ -1,10 +1,9 @@
 # dev tools
 scoop install vagrant vscode ngrok filezilla insomnia mongodb git gsudo openssh openssl coreutils
 
-
 buckets : main extras versions nerd-fonts
 
-owned apps : 7zip aria2 bat btop curlie delta discord eza fastfetch fd fx fzf glazewm glow hunt-and-peck komorebi lazygit less mpv neovim nodejs-lts notion oh-my-posh onefetch ouch python python312 ripgrep rust steam tealdeer tokei whkd yazi z 
+owned apps : 7zip aria2 bat btop curlie delta discord eza fastfetch fd fx fzf glazewm glow gsudo hunt-and-peck komorebi lazygit less mpv neovim nodejs-lts notion oh-my-posh onefetch ouch python python312 ripgrep rust steam tealdeer time tokei uv whkd yazi z 
 
 # new apps to checkout
 git-filter-repo
