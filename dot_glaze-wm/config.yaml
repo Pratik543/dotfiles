@@ -73,11 +73,11 @@ bar:
     - type: "window title"
   components_right:
     - type: "cpu"
-      label: "CPU: {percent_usage}% "
+      label: "CPU: {percent_usage}% " # 
       # How often this counter is refreshed.
       refresh_interval_ms: 1000
     - type: "memory"
-      label: "RAM: {percent_usage}%"
+      label: "RAM: {percent_usage}%" # 
       # How often this counter is refreshed.
       refresh_interval_ms: 3000
     # - type: "system tray"
@@ -91,6 +91,17 @@ bar:
       label_draining: "󱟢 {battery_level}% "
       label_power_saver: "󱧦 {battery_level}% " # Multiple attributes can be changed at once:
       label_charging: "<attr ff='Arial' fg='#228B22' fw='400' fs='13px'>⚡</attr>{battery_level}% "
+    - type: "network"
+      foreground: "#ffffff"
+      padding: "0 8px"
+      font_family: "FiraCode Nerd Font"
+      label_no_internet: ""
+      label_ethernet: "󰈁"
+      label_wifi_strength_0: "󰤯"
+      label_wifi_strength_25: "󰤟"
+      label_wifi_strength_50: "󰤢"
+      label_wifi_strength_75: "󰤥"
+      label_wifi_strength_100: "󰤨"
     - type: "binding mode"
       background: "#ffffff33"
       margin: "0 4px 0 0"
@@ -102,14 +113,25 @@ bar:
 
 workspaces:
   - name: "1"
+  #  display_name: " "
   - name: "2"
+  #  display_name: " "
   - name: "3"
+  #  display_name: " "
   - name: "4"
+  #  display_name: "󰨞"
   - name: "5"
+  #  display_name: " "
   - name: "6"
+  #  display_name: " "
   - name: "7"
+  #  display_name: " "
   - name: "8"
+  #  display_name: " "
   - name: "9"
+  #  display_name: " "
+  - name: "0"
+  #  display_name: "󰅶 "
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
