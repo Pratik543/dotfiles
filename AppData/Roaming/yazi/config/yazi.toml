@@ -10,9 +10,10 @@ sort_sensitive = false
 sort_reverse = false
 sort_dir_first = true
 linemode = "none"
-show_hidden = false
+show_hidden = true
 show_symlink = true
 scrolloff = 5
+mouse_events   = [ "click", "scroll" ]
 
 [preview]
 tab_size = 2
@@ -46,12 +47,14 @@ reveal = [
 extract = [
 	# { run = 'extract "$1"', desc = "Extract here", for = "unix" },
 	# { run = 'extract "%1"', desc = "Extract here", for = "windows" },
-  { run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
-	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+	# { run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
+	# { run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 play = [
-	{ run = 'mpv "$@"', orphan = true, for = "unix" },
-	{ run = 'mpv "%1"', orphan = true, for = "windows" },
+	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
+	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 
@@ -102,6 +105,7 @@ rules = [
 		"open",
 		"reveal",
 	] },
+
 ]
 
 [tasks]
@@ -114,8 +118,13 @@ suppress_preload = false
 
 [plugin]
 
+fetchers = [
+	# Mimetype
+	{ id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
+]
+
 preloaders = [
-	{ name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },
+	# { name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },
 	# Image
 	{ mime = "image/*", run = "image" },
 	# Video
@@ -126,10 +135,10 @@ preloaders = [
 previewers = [
 	{ name = "*/", run = "folder", sync = true },
 	# Code
-	{ mime = "text/*", run = "code" },
-	{ mime = "*/{xml,javascript,x-wine-extension-ini}", run = "code" },
+	{ mime = "text/*", run = "bat" },
+	{ mime = "*/{xml,javascript,x-wine-extension-ini}", run = "bat" },
 	# JSON
-	{ mime = "application/json", run = "json" },
+	{ mime = "application/json", run = "bat" },
 	# Image
 	{ mime = "image/vnd.djvu", run = "noop" },
 	{ mime = "image/*", run = "image" },
@@ -142,6 +151,9 @@ previewers = [
 	# { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", run = "archive" },
 	# Fallback
 	{ name = "*", run = "file" },
+	# Font
+	{ mime = "font/*", run = "font" },
+	{ mime = "application/vnd.ms-opentype", run = "font" },
 ]
 prepend_previewers = [
   # md previewer
@@ -220,8 +232,7 @@ open_offset = [0, 1, 50, 7]
 sort_by = "none"
 sort_sensitive = false
 sort_reverse = false
+sort_translit  = false
 
 [log]
 enabled = false
-
-[headsup]

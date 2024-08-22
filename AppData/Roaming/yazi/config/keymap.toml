@@ -35,7 +35,7 @@ desc = "Maximize or restore preview"
 
 ## Minimize the preview screen
 [[manager.prepend_keymap]]
-on   = [ "M" ]
+on   = [ "H" ]
 run  = "plugin --sync hide-preview"
 desc = "Hide or show preview"
 
@@ -50,3 +50,37 @@ desc = "Smart filter"
 on = ["C"]
 run = "plugin ouch --args=zip"
 desc = "Compress with ouch"
+
+## Call PowerShell
+[[manager.prepend_keymap]]
+on   = "<C-s>"
+run  = 'shell "pwsh.exe" --block --confirm'
+desc = "Open PowerShell here"
+
+[[input.prepend_keymap]]
+on   = "<Esc>"
+run  = "close"
+desc = "Cancel input"
+
+[[manager.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+# not working
+# The latest main branch of Yazi is required at the moment. Support shell: bash, zsh ,fish ,nushell
+[[manager.prepend_keymap]]
+on   = [ "f","g" ]
+run  = "plugin fg"
+desc = "find file by content (fuzzy match)"
+
+[[manager.prepend_keymap]]
+on   = [ "f","G" ]
+run  = "plugin fg --args='rg'"
+desc = "find file by content (ripgrep match)"
+
+[[manager.prepend_keymap]]
+on   = [ "f","f" ]
+run  = "plugin fg --args='fzf'"
+desc = "find file by filename"
+#
