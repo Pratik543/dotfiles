@@ -1,94 +1,99 @@
 {
-	"$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.json",
-	"app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
-	"window_hiding_behaviour": "Cloak",
-	"cross_monitor_move_behaviour": "Insert",
-	"default_workspace_padding": 0,
-	"default_container_padding": 1,
-	"animation": {
-		"enabled": true,
-		"duration": 350,
-		"style": "EaseInOutExpo",
-		"fps": 60
-	},
-	"border": false,
-	"border_implementation": "Windows",
-	"border_width": 2,
-	"border_offset": -1,
-	"border_style": "Square",
-	"border_colours": {
-		"single": "#fdff00",
-		"stack": "#fdff00",
-		"monocle": "#ff3399",
-		"unfocused": "#858585"
-	},
-	"stackbar": {
-		"height": 35,
-		"mode": "OnStack",
-		"label": "Title",
-		"tabs": {
-			"width": 230,
-			"focused_text": "#94c00e",
-			"unfocused_text": "#b3b3b3",
-			"background": "#2e2e2e",
-			"font_family": "monaspace",
-			"font_size": 20
-		}
-	},
-	"transparency": true,
-	"transparency_alpha": 230,
-	"float_rules": [
-		{
-			"kind": "Exe",
-			"id": "explorer.exe",
-			"matching_strategy": "Equals"
-		},
-		{
-			"kind": "Exe",
-			"id": "Discord.exe",
-			"matching_strategy": "Equals"
-		},
-		{
-			"kind": "Title",
-			"id": "Skype",
-			"matching_strategy": "Equals"
-		},
-		{
-			"kind": "Exe",
-			"id": "Telegram.exe",
-			"matching_strategy": "Equals"
-		},
-		{
-			"kind": "Title",
-			"id": "Settings",
-			"matching_strategy": "Equals"
-		},
-		{
-			"kind": "Title",
-			"id": "Microsoft Store",
-			"matching_strategy": "Equals"
-		}
-	],
-	"monitors": [
-		{
-			"workspaces": [
-				{
-					"name": "I",
-					"layout": "BSP"
-				},
-				{
-					"name": "II",
-					"layout": "BSP"
-				},
-				{
-					"name": "III",
-					"layout": "BSP"
-				},
-				{
-					"name": "IV",
-					"layout": "Grid"
-				}
-			]
-		}
-	]
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 0,
+  "default_container_padding": 1,
+  "animation": {
+    "enabled": true,
+    "duration": 350,
+    "style": "EaseInOutExpo",
+    "fps": 60
+  },
+  "border": false,
+  "border_implementation": "Windows",
+  "border_width": 2,
+  "border_offset": -1,
+  "border_style": "Square",
+  "border_colours": {
+    "single": "#fdff00",
+    "stack": "#fdff00",
+    "monocle": "#ff3399",
+    "unfocused": "#858585"
+  },
+  "stackbar": {
+    "height": 35,
+    "mode": "OnStack",
+    "label": "Title",
+    "tabs": {
+      "width": 230,
+      "focused_text": "#94c00e",
+      "unfocused_text": "#b3b3b3",
+      "background": "#2e2e2e",
+      "font_family": "monaspace",
+      "font_size": 20
+    }
+  },
+  "transparency": true,
+  "transparency_alpha": 230,
+  "float_rules": [
+    {
+      "kind": "Exe",
+      "id": "explorer.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "Discord.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Skype",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "Telegram.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Settings",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Microsoft Store",
+      "matching_strategy": "Equals"
+    }
+  ],
+  "layout": {
+    "type": "monocle",
+    "width": "70%"
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "I",
+          "layout": "BSP"
+        },
+        {
+          "name": "II",
+          "layout": "BSP"
+        },
+        {
+          "name": "III",
+          "layout": "BSP"
+        },
+        {
+          "name": "IV",
+          "layout": "Grid"
+        }
+      ]
+    }
+  ]
 }
+
