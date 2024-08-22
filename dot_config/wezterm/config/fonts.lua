@@ -7,7 +7,7 @@ local font_size = platform().is_mac and 12 or 10
 return {
   -- font = wezterm.font(font),
   font = wezterm.font_with_fallback {
-    font, "GeistMono Nerd Font", 'DengXian',
+    font, "GeistMono Nerd Font", 'FiraCode Nerd Font',
   },
   font_size = font_size,
 

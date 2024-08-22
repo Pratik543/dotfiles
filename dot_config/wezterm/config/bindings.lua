@@ -56,15 +56,10 @@ local keys = {
     mods = mod.CTRL,
     action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
   },
-  {
-    key = [[-]],
-    mods = mod.SUPER,
-    action = act.CloseCurrentPane({ confirm = true }),
-  },
 
   -- panes: zoom+close pane
-  { key = "=",          mods = mod.CTRL,      action = act.TogglePaneZoomState },
-  { key = "-",          mods = mod.CTRL,      action = act.CloseCurrentPane({ confirm = false }) },
+  { key = "=",          mods = mod.CTRL_SHIFT,      action = act.TogglePaneZoomState },
+  { key = "w",          mods = mod.CTRL,      action = act.CloseCurrentPane({ confirm = false }) },
 
   -- panes: navigation
   { key = "k",          mods = mod.SUPER_REV, action = act.ActivatePaneDirection("Up") },
@@ -73,19 +68,20 @@ local keys = {
   { key = "l",          mods = mod.SUPER_REV, action = act.ActivatePaneDirection("Right") },
 
   -- panes: resize
-  { key = "UpArrow",    mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Up", 1 }) },
-  { key = "DownArrow",  mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Down", 1 }) },
-  { key = "LeftArrow",  mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Left", 1 }) },
-  { key = "RightArrow", mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Right", 1 }) },
+  { key = "UpArrow",    mods = mod.CTRL, action = act.AdjustPaneSize({ "Up", 1 }) },
+  { key = "DownArrow",  mods = mod.CTRL, action = act.AdjustPaneSize({ "Down", 1 }) },
+  { key = "LeftArrow",  mods = mod.CTRL, action = act.AdjustPaneSize({ "Left", 1 }) },
+  { key = "RightArrow", mods = mod.CTRL, action = act.AdjustPaneSize({ "Right", 1 }) },
 
   -- fonts --
   -- fonts: resize
-  { key = "+",    mods = mod.CTRL_SHIFT,     action = act.IncreaseFontSize },
-  { key = "_",  mods = mod.CTRL_SHIFT,     action = act.DecreaseFontSize },
-  { key = "r",          mods = "ALT|CTRL",     action = act.ResetFontSize },
+  { key = [[=]],    mods = mod.CTRL,     action = act.IncreaseFontSize },
+  { key = [[-]],  mods = mod.CTRL,     action = act.DecreaseFontSize },
+  { key = "r",    mods = mod.SUPER_REV,     action = act.ResetFontSize },
 
   -- key-tables --
   -- resizes fonts
+  -- Not using resize font and panes mods written below
   {
     key = "f",
     mods = "LEADER",
@@ -202,7 +198,7 @@ local mouse_bindings = {
 return {
   disable_default_key_bindings = true,
   disable_default_mouse_bindings = true,
-  leader = { key = "Space", mods = "CTRL|SHIFT" },
+  leader = { key = "Space", mods = "CTRL" },
   keys = keys,
   key_tables = key_tables,
   mouse_bindings = mouse_bindings,
