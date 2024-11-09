@@ -3,6 +3,7 @@
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.yaml",
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
+  "alt_focus_hack": true,
   "default_workspace_padding": 0,
   "default_container_padding": 1,
   "animation": {
@@ -37,42 +38,6 @@
   },
   "transparency": true,
   "transparency_alpha": 230,
-  "float_rules": [
-    {
-      "kind": "Exe",
-      "id": "explorer.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "Discord.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Title",
-      "id": "Skype",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "Telegram.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Title",
-      "id": "Settings",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Title",
-      "id": "Microsoft Store",
-      "matching_strategy": "Equals"
-    }
-  ],
-  "layout": {
-    "type": "monocle",
-    "width": "70%"
-  },
   "monitors": [
     {
       "workspaces": [
@@ -82,11 +47,11 @@
         },
         {
           "name": "II",
-          "layout": "BSP"
+          "layout": "UltrawideVerticalStack"
         },
         {
           "name": "III",
-          "layout": "BSP"
+          "layout": "RightMainVerticalStack"
         },
         {
           "name": "IV",
@@ -96,4 +61,3 @@
     }
   ]
 }
-
