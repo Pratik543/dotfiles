@@ -16,6 +16,9 @@
   "javascript.inlayHints.parameterNames.enabled": "all",
   "typescript.inlayHints.parameterNames.enabled": "all",
 
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+
   "javascript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
 
@@ -26,6 +29,7 @@
 
   // ->Vim Settings
   "vim.leader": "<space>",
+  "vim.easymotion": true,
   "vim.hlsearch": true, // Enables highlighting of search matches
   "vim.foldfix": true,
   "vim.useSystemClipboard": true,
@@ -63,12 +67,16 @@
       // Moves the cursor to the end of the line
       "before": ["L"],
       "after": ["$"]
+    },
+    {
+      "before": ["<leader> ;"],
+      "commands": ["whichkey.show"]
     }
   ],
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1 //To improve performance
   },
-  "telemetry.telemetryLevel": "off",
+  "telemetry.telemetryLevel": "all",
   // ->Todo Tree Settings
   "todo-tree.tree.showCountsInTree": true,
   "todo-tree.general.showActivityBarBadge": true,
@@ -220,6 +228,11 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "ruff.nativeServer": "on", //python lsp server
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.organizeImports": "explicit",
@@ -279,7 +292,6 @@
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableImages": true,
   "terminal.integrated.smoothScrolling": true,
-  "workbench.activityBar.location": "top",
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
   "terminal.integrated.stickyScroll.enabled": true,
   "terminal.integrated.fontSize": 16,
@@ -297,7 +309,7 @@
     "workbench.files.action.focusFilesExplorer",
     "workbench.action.gotoSymbol"
   ],
-  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.suggest.enabled": false,
   // -------------------------------------------------
   // Editor Appearance
   "security.workspace.trust.untrustedFiles": "open",
@@ -311,8 +323,6 @@
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.iconTheme": "symbols",
-  "workbench.colorTheme": "Bearded Theme Arc Eggplant",
-  "workbench.trustedDomains.promptInTrustedWorkspace": true,
   "workbench.sideBar.location": "right",
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.indent": 9,
@@ -427,8 +437,13 @@
     "*": true
   },
   // Apc UI Settings
-  "apc.imports": ["${userHome}/custom-vscode.css"],
+  // "apc.imports": ["${userHome}/custom-vscode.css"], //vscode new update 1.94.0 broke the extension
+  "vscode_custom_css.imports": ["file:///C:/Users/Pratik/custom-vscode.css"],
   "window.menuBarVisibility": "compact",
   "workbench.layoutControl.enabled": false,
-  "window.commandCenter": false
+  "window.commandCenter": false,
+  "workbench.trustedDomains.promptInTrustedWorkspace": false,
+  "update.mode": "manual",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.colorTheme": "Bearded Theme Black & Amethyst"
 }
