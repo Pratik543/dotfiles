@@ -11,6 +11,7 @@ alt + shift + r         : komorebic reload-configuration
 # The apps will be focused if open, or launched if not open
 # alt + f                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
 alt + b                 : if ($wshell.AppActivate('Brave') -eq $False) { start brave }
+alt + w                 : if ($wshell.AppActivate('Wezterm') -eq $False) { open "C:/Program Files/WezTerm/wezterm-gui.exe" }
 
 alt + q                 : komorebic close
 alt + m                 : komorebic minimize
@@ -53,7 +54,7 @@ alt + shift + m         : komorebic toggle-monocle
 
 # Window manager options
 # alt + shift + t         : komorebic retile
-alt + shift + t         : komorebic enable & komrebic transparency-alpha 100
+alt + shift + t         : komorebic toggle-transparency
 alt + p                 : komorebic toggle-pause
 
 # Layouts
