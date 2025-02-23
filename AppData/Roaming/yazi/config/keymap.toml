@@ -4,12 +4,12 @@
 
 [[manager.prepend_keymap]]
 on = ["<Enter>"]
-run = "plugin --sync smart-enter"
+run = "plugin smart-enter"
 desc = "Enter the child directory, or open the selected file"
 
 [[manager.prepend_keymap]]
 on = ["l"]
-run = "plugin --sync smart-enter"
+run = "plugin smart-enter"
 desc = "Enter the child directory, or open the selected file"
 
 [[manager.prepend_keymap]]
@@ -30,13 +30,13 @@ desc = "for redo the last operation"
 ## Maximize the preview screen
 [[manager.prepend_keymap]]
 on   = [ "M" ]
-run  = "plugin --sync max-preview"
+run  = "plugin max-preview"
 desc = "Maximize or restore preview"
 
 ## Minimize the preview screen
 [[manager.prepend_keymap]]
 on   = [ "H" ]
-run  = "plugin --sync hide-preview"
+run  = "plugin hide-preview"
 desc = "Hide or show preview"
 
 ## Open smart filter
@@ -67,20 +67,8 @@ on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
 
-# not working
-# The latest main branch of Yazi is required at the moment. Support shell: bash, zsh ,fish ,nushell
+#lazygit
 [[manager.prepend_keymap]]
-on   = [ "f","g" ]
-run  = "plugin fg"
-desc = "find file by content (fuzzy match)"
-
-[[manager.prepend_keymap]]
-on   = [ "f","G" ]
-run  = "plugin fg --args='rg'"
-desc = "find file by content (ripgrep match)"
-
-[[manager.prepend_keymap]]
-on   = [ "f","f" ]
-run  = "plugin fg --args='fzf'"
-desc = "find file by filename"
-#
+on   = [ "g", "l" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
