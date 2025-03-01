@@ -29,15 +29,15 @@ desc = "for redo the last operation"
 
 ## Maximize the preview screen
 [[manager.prepend_keymap]]
-on   = [ "M" ]
-run  = "plugin max-preview"
-desc = "Maximize or restore preview"
+on   = "T"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
 
 ## Minimize the preview screen
 [[manager.prepend_keymap]]
-on   = [ "H" ]
-run  = "plugin hide-preview"
-desc = "Hide or show preview"
+on   = "T"
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
 
 ## Open smart filter
 [[manager.prepend_keymap]]
@@ -57,6 +57,11 @@ on   = "<C-s>"
 run  = 'shell "pwsh.exe" --block --confirm'
 desc = "Open PowerShell here"
 
+[[manager.prepend_keymap]]
+on   = "!"
+run  = 'shell "pwsh.exe" --block --confirm'
+desc = "Open PowerShell here"
+
 [[input.prepend_keymap]]
 on   = "<Esc>"
 run  = "close"
@@ -72,3 +77,9 @@ desc = "Chmod on selected files"
 on   = [ "g", "l" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
+
+#system-clipboard
+[[manager.prepend_keymap]]
+on = "<C-y>"
+run = ["plugin system-clipboard"]
+desc = "Copy Files to System Clipboard"
