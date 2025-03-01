@@ -243,7 +243,6 @@ Set-Alias -Name pn -Value pnpm
 Set-Alias -Name of -Value onefetch
 Set-Alias -Name ff -Value fastfetch
 Set-Alias -Name kb -Value komorebic 
-Set-Alias -Name ya -Value yazi
 Set-Alias -Name rgp -Value Invoke-PsFzfRipgrep
 Set-Alias -Name ss -Value Invoke-FuzzyScoop
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
