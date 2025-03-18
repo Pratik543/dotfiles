@@ -11,16 +11,20 @@ Import-Module Terminal-Icons
 Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-# Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key "RightArrow" -Function Complete
 Set-PSReadlineOption -PredictionViewStyle ListView
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadlineKeyHandler -Key "Ctrl+j" -Function NextHistory
 Set-PSReadlineKeyHandler -Key "Ctrl+k" -Function PreviousHistory
 Set-PSReadLineOption -Colors @{
-    Command = 'Yellow'
-    Parameter = 'Green'
-    String = 'DarkCyan'
+    "Command" = "Yellow"
+    "Parameter" = "Green"
+    "Operator" = "Red"
+    "Variable" = "Cyan"
+    "String" = "DarkCyan"
+    "Number" = "Magenta"
+    "Member" = "Gray"
+    "Default" = "White"
 }
 
 # Fzf
@@ -91,6 +95,10 @@ function google {
 
 function host {
     start "http://localhost:$args"
+}
+
+function rmf([string]$path) {
+    Remove-Item -Recurse -Force $path
 }
 
 # Clipboard Utilities
@@ -240,6 +248,7 @@ Set-Alias -Name editProfile -Value Invoke-EditPwshProfile
 Set-Alias -Name fzfp -Value previewFileWithSyntaxHighlighting
 Set-Alias -Name tldrp -Value previewtldrpages
 Set-Alias -Name pn -Value pnpm
+Set-Alias -Name y -Value yazi
 Set-Alias -Name of -Value onefetch
 Set-Alias -Name ff -Value fastfetch
 Set-Alias -Name kb -Value komorebic 
