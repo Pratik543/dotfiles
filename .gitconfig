@@ -48,6 +48,16 @@
 [init]
 	defaultBranch = main
 
+[apply]
+	whitespace = fix
+
+[fetch]
+	prune = true
+	output = compact
+
+[commit]
+	gpgSign = false
+
 [alias]
 	alias = "!f(){ git config -l | grep alias | sort | fzf --layout=reverse; };f"
 	s = status --short --branch
