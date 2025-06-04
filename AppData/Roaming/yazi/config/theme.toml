@@ -46,17 +46,25 @@ border_style = { fg = "#7f849c" }
 # Highlighting
 syntect_theme = ""
 
-[status]
-separator_open = ""
-separator_close = ""
-# separator_style = { fg = "#45475a", bg = "#45475a" }
-
 [mode]
 
 # Mode
 normal_main = { fg = "#1e1e2e", bg = "#89b4fa", bold = true }
 normal_alt = { fg = "#1e1e2e", bg = "#a6e3a1", bold = true }
 # mode_unset = { fg = "#1e1e2e", bg = "#f2cdcd", bold = true }
+
+# Select mode
+select_main = { bg = "red", bold = true }
+select_alt  = { fg = "red", bg = "gray" }
+
+# Unset mode
+unset_main = { bg = "red", bold = true }
+unset_alt  = { fg = "red", bg = "gray" }
+
+[status]
+overall = {}
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
 # Progress
 progress_label = { fg = "#ffffff", bold = true }
@@ -70,6 +78,63 @@ perm_write = { fg = "#f38ba8" }
 perm_exec = { fg = "#a6e3a1" }
 perm_sep = { fg = "#7f849c" }
 
+[which]
+cols = 3
+mask = { bg = "#313244" }
+cand = { fg = "#94e2d5" }
+rest = { fg = "#9399b2" }
+desc = { fg = "#f5c2e7" }
+separator = "  "
+separator_style = { fg = "#585b70" }
+
+# : Confirmation {{{
+
+[confirm]
+border     = { fg = "blue" }
+title      = { fg = "blue" }
+content    = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+# : }}}
+
+# : Spotter {{{
+
+[spot]
+border = { fg = "blue" }
+title  = { fg = "blue" }
+
+# Table
+tbl_col  = { fg = "blue" }
+tbl_cell = { fg = "yellow", reversed = true }
+
+# : }}}
+
+# : Notification {{{
+
+[notify]
+title_info  = { fg = "green" }
+title_warn  = { fg = "yellow" }
+title_error = { fg = "red" }
+
+# Icons
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+# : }}}
+
+# : Picker {{{
+
+[pick]
+border   = { fg = "blue" }
+active   = { fg = "magenta", bold = true }
+inactive = {}
+
+# : }}}
+
 [input]
 border = { fg = "#89b4fa" }
 title = {}
@@ -81,18 +146,24 @@ selected = { reversed = true }
 # active = { fg = "#f5c2e7" }
 # inactive = {}
 
+# : Completion {{{
+
+[cmp]
+border   = { fg = "blue" }
+active   = { reversed = true }
+inactive = {}
+
+# Icons
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+# : }}}
+
 [tasks]
 border = { fg = "#89b4fa" }
 title = {}
 hovered = { underline = true }
-
-[which]
-mask = { bg = "#313244" }
-cand = { fg = "#94e2d5" }
-rest = { fg = "#9399b2" }
-desc = { fg = "#f5c2e7" }
-separator = "  "
-separator_style = { fg = "#585b70" }
 
 [help]
 on = { fg = "#f5c2e7" }
@@ -102,27 +173,31 @@ hovered = { bg = "#585b70", bold = true }
 footer = { fg = "#45475a", bg = "#cdd6f4" }
 
 [filetype]
-
 rules = [
     # Images
     { mime = "image/*", fg = "#94e2d5" },
 
     # Videos
-    { mime = "video/*", fg = "#f9e2af" },
-    { mime = "audio/*", fg = "#f9e2af" },
+    { mime = "{audio,video}/*", fg = "#f9e2af" },
+
 
     # Symbolic links
     { name = "*/", is = "link"  , fg = "cyan" },
     { name = "*/", is = "orphan", fg = "red" },
 
     # Archives
-    { mime = "application/zip", fg = "#f5c2e7" },
-    { mime = "application/gzip", fg = "#f5c2e7" },
-    { mime = "application/x-tar", fg = "#f5c2e7" },
-    { mime = "application/x-bzip", fg = "#f5c2e7" },
-    { mime = "application/x-bzip2", fg = "#f5c2e7" },
-    { mime = "application/x-7z-compressed", fg = "#f5c2e7" },
-    { mime = "application/x-rar", fg = "#f5c2e7" },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f5c2e7" },
+
+    # Documents
+    { mime = "application/{pdf,doc,rtf}", fg = "cyan" },
+
+    # Special files
+    { name = "*", is = "orphan", bg = "red" },
+    { name = "*", is = "exec"  , fg = "green" },
+
+    # Dummy files
+    { name = "*", is = "dummy", bg = "red" },
+    { name = "*/", is = "dummy", bg = "red" },
 
     # Fallback
     { name = "*", fg = "#cdd6f4" },
@@ -131,6 +206,23 @@ rules = [
 
 # Icons
 [icon]
+globs = []
+
+dirs = [
+    { name = "*.config/"    , text = " " },
+    { name = "*.git/"       , text = " " },
+    { name = ".github"      , text = "" },
+    { name = "*Desktop/"    , text = " " },
+    { name = "*Development/", text = " " },
+    { name = "*Documents/"  , text = " " },
+    { name = "*Downloads/"  , text = " " },
+    { name = "*Library/"    , text = " " },
+    { name = "*Movies/"     , text = " " },
+    { name = "*Music/"      , text = " " },
+    { name = "*Pictures/"   , text = " " },
+    { name = "*Public/"     , text = " " },
+    { name = "*Videos/"     , text = " " },
+]
 files = [
     { name = ".SRCINFO", text = "󰣇", fg = "#89b4fa" },
     { name = ".Xauthority", text = "", fg = "#fab387" },
@@ -684,19 +776,23 @@ files = [
     { name = "*.zsh", text = "", fg = "#a6e3a1" },
     { name = "*.zst", text = "", fg = "#fab387" },
     { name = "*.🔥", text = "", fg = "#fab387" },
-    # Directories
-	  { name = "*.config/"    , text = " " },
-	  { name = "*.git/"       , text = " " },
-	  { name = "*Desktop/"    , text = " " },
-	  { name = "*Development/", text = " " },
-	  { name = "*Documents/"  , text = " " },
-	  { name = "*Downloads/"  , text = " " },
-	  { name = "*Library/"    , text = " " },
-	  { name = "*Movies/"     , text = " " },
-	  { name = "*Music/"      , text = " " },
-	  { name = "*Pictures/"   , text = " " },
-	  { name = "*Public/"     , text = " " },
-	  { name = "*Videos/"     , text = " " },
+]
+
+conds = [
+	# Special files
+	{ if = "orphan", text = "" },
+	{ if = "link", text = "" },
+	{ if = "block", text = "" },
+	{ if = "char", text = "" },
+	{ if = "fifo", text = "" },
+	{ if = "sock", text = "" },
+	{ if = "sticky", text = "" },
+	{ if = "dummy", text = "" },
+
+	# Fallback
+	{ if = "dir", text = "" },
+	{ if = "exec", text = "" },
+	{ if = "!dir", text = "" },
 ]
 
 # : }}}
