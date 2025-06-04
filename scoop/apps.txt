@@ -3,7 +3,7 @@ scoop install vagrant vscode ngrok filezilla insomnia mongodb git gsudo openssh 
 
 buckets : main extras versions nerd-fonts
 
-owned apps : 7zip aria2 bat btop curlie delta discord eza fastfetch fd fx fzf glazewm glow gsudo hunt-and-peck komorebi lazygit less mpv neovim nodejs-lts notion oh-my-posh onefetch ouch python python312 ripgrep rust steam tealdeer time tokei uv whkd yazi z 
+owned apps : 7zip adb aria2 bat bleachbit btop curlie dark delta discord ditto eza fastfetch fd ffmpeg fx fzf glazewm glow gsudo hunt-and-peck innounp komorebi lazygit less localsend mediainfo mpc-be mpv neovim nodejs-lts obsidian oh-my-posh onefetch ouch poppler ripgrep rust scoop-search scrcpy sharex steam tealdeer time tokei topgrade uv whkd wiztree yazi zoxide
 
 # new apps to checkout
 git-filter-repo
