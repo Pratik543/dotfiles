@@ -298,7 +298,7 @@
   // "terminal.integrated.shellIntegration.suggestEnabled": true,
   "terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’|",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.localEchoLatencyThreshold": -1,
+  "terminal.integrated.localEchoLatencyThreshold": 0,
   "terminal.integrated.scrollback": 1000,
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.cursorBlinking": true,
@@ -309,7 +309,6 @@
     "workbench.files.action.focusFilesExplorer",
     "workbench.action.gotoSymbol"
   ],
-  "terminal.integrated.suggest.enabled": false,
   // -------------------------------------------------
   // Editor Appearance
   "security.workspace.trust.untrustedFiles": "open",
@@ -351,7 +350,7 @@
   "editor.accessibilitySupport": "off",
   "editor.colorDecorators": true,
   "editor.renderWhitespace": "all",
-  "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
   "editor.showDeprecated": true,
   "editor.suggest.showStatusBar": true,
@@ -432,9 +431,8 @@
     "typescriptreact": "javascript"
   },
   "tailwindCSS.lint.cssConflict": "error",
-  "prisma.showPrismaDataPlatformNotification": false,
   "codeium.enableConfig": {
-    "*": true
+    "*": false
   },
   // Apc UI Settings
   // "apc.imports": ["${userHome}/custom-vscode.css"], //vscode new update 1.94.0 broke the extension
@@ -445,5 +443,6 @@
   "workbench.trustedDomains.promptInTrustedWorkspace": false,
   "update.mode": "manual",
   "workbench.editor.empty.hint": "hidden",
-  "workbench.colorTheme": "Bearded Theme Black & Amethyst"
+  "workbench.colorTheme": "Bearded Theme Vivid Black",
+  "vim.smartRelativeLine": true
 }

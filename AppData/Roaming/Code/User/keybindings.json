@@ -267,14 +267,14 @@
     "command": "deleteRight"
   },
   {
-    "key": "alt+i",
+    "key": "shift+j",
     "command": "editor.action.moveLinesDownAction",
-    "when": "editorTextFocus || editorHasSelection"
+    "when": "editor.hasSelection"
   },
   {
-    "key": "alt+u",
+    "key": "shift+k",
     "command": "editor.action.moveLinesUpAction",
-    "when": "editorTextFocus || editorHasSelection"
+    "when": "editor.hasSelection"
   },
   {
     "key": "alt+shift+i",
