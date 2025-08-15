@@ -2,7 +2,7 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 # "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[manager]
+[mgr]
 
 keymap = [
 	{ on = "<Esc>", run = "escape",             desc = "Exit visual mode, clear selection, or cancel search" },
@@ -365,109 +365,108 @@ keymap = [
 
 	# Filtering
 	{ on = "f", run = "filter", desc = "Filter help items" },
+
+	# Additional Custom Keymaps
+	{ on = [ "@", "a" ], run  = 'shell "code ." --block --confirm',   desc = "Open parent directory in vscode" },
+	{ on = [ "@", "f" ], run  = 'shell "code %1" --block --confirm',  desc = "Open selected file in vscode" },
 ]
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/Ape/smart-enter.yazi
 on = ["<Enter>"]
 run = "plugin smart-enter"
 desc = "Enter the child directory, or open the selected file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["l"]
 run = "plugin smart-enter"
 desc = "Enter the child directory, or open the selected file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<Backspace>"]
 run = "leave"
 desc = "Go back to the parent directory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "u" ]
 run  = 'undo'
 desc = "for undo the last operation"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "U" ]
 run  = 'redo'
 desc = "for redo the last operation"
 
 ## Maximize the preview screen
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
 on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
 
 ## Minimize the preview screen
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "T"
 run  = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
 
 ## Open smart filter
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/yazi-rs/plugins/tree/main/smart-filter.yazi
 on   = [ "F" ]
 run  = "plugin smart-filter"
 desc = "Smart filter"
 
 ## Compressing files using ouch
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/ndtoan96/ouch.yazi
 on = ["C"]
 run = "plugin ouch --args=zip"
 desc = "Compress with ouch"
 
 ## Call PowerShell
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<C-s>"
 run  = 'shell "pwsh.exe" --block --confirm'
 desc = "Open PowerShell here"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "!"
 run  = 'shell "explorer ." --block --confirm'
 desc = "Open File Explorer here"
-
-[[manager.prepend_keymap]]
-on   = "@"
-run  = 'shell "code ." --block --confirm'
-desc = "Open VsCode here"
 
 [[input.prepend_keymap]]
 on   = "<Esc>"
 run  = "close"
 desc = "Cancel input"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/yazi-rs/plugins/tree/main/chmod.yazi
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
 
 #lazygit
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/Lil-Dank/lazygit.yazi
 on   = [ "g", "l" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
 
 #system-clipboard
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/orhnk/system-clipboard.yazi
 on = "<C-y>"
 run = ["plugin system-clipboard"]
 desc = "Copy Files to System Clipboard"
 
 # glow.yazi
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 # https://github.com/Reledia/glow.yazi
 on = ["<S-j>"]
 run = "seek -5" 
 desc = "Scroll up 5 lines in preview"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<S-k>"]
 run = "seek 5" 
 desc = "Scroll down 5 lines in preview" 
