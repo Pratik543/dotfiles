@@ -12,7 +12,7 @@
 
 [mgr]
 ratio = [1, 4, 3]
-sort_by = "btime"    #"alphabetical"
+sort_by = "btime"
 sort_sensitive = false
 sort_reverse = false
 sort_dir_first = true
@@ -133,17 +133,7 @@ preloaders = [
 	{ mime = "font/*", run = "font" },
 	{ mime = "application/ms-opentype", run = "font" },
 ]
-# prepend_previewers = [
-#   # md previewer
-#   { name = "*.md", run = "glow" },
-# # Archive previewer
-# 	{ mime = "application/*zip",            run = "ouch" },
-# 	{ mime = "application/x-tar",           run = "ouch" },
-# 	{ mime = "application/x-bzip2",         run = "ouch" },
-# 	{ mime = "application/x-7z-compressed", run = "ouch" },
-# 	{ mime = "application/x-rar",           run = "ouch" },
-# 	{ mime = "application/x-xz",            run = "ouch" },
-# ]
+
 previewers = [
 	{ name = "*/", run = "folder" },
 	# Code
