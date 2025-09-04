@@ -365,14 +365,32 @@ keymap = [
 
 	# Filtering
 	{ on = "f", run = "filter", desc = "Filter help items" },
-
-	# Additional Custom Keymaps
-	{ on = [ "@", "a" ], run  = 'shell "code ." --block --confirm',   desc = "Open parent directory in vscode" },
-	{ on = [ "@", "f" ], run  = 'shell "code %1" --block --confirm',  desc = "Open selected file in vscode" },
 ]
 
+# Plugins 
+
+# 1. chmod.yazi
+# https://github.com/yazi-rs/plugins/tree/main/chmod.yazi
 [[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+# 2. glow.yazi
+# https://github.com/Reledia/glow.yazi
+[[mgr.prepend_keymap]]
+on = ["<S-j>"]
+run = "seek 5" 
+desc = "Scroll up 5 lines in preview"
+
+[[mgr.prepend_keymap]]
+on = ["<S-k>"]
+run = "seek -5" 
+desc = "Scroll down 5 lines in preview" 
+
+# 3. smart-enter.yazi
 # https://github.com/Ape/smart-enter.yazi
+[[mgr.prepend_keymap]]
 on = ["<Enter>"]
 run = "plugin smart-enter"
 desc = "Enter the child directory, or open the selected file"
@@ -382,24 +400,37 @@ on = ["l"]
 run = "plugin smart-enter"
 desc = "Enter the child directory, or open the selected file"
 
+# 4. smart-filter.yazi
+# https://github.com/yazi-rs/plugins/tree/main/smart-filter.yazi
 [[mgr.prepend_keymap]]
-on = ["<Backspace>"]
-run = "leave"
-desc = "Go back to the parent directory"
+on   = [ "F" ]
+run  = "plugin smart-filter"
+desc = "Smart filter"
 
+# 5. system-clipboard.yazi
+# https://github.com/orhnk/system-clipboard.yazi
 [[mgr.prepend_keymap]]
-on   = [ "u" ]
-run  = 'undo'
-desc = "for undo the last operation"
+on = "<C-y>"
+run = ["plugin system-clipboard"]
+desc = "Copy Files to System Clipboard"
 
+# 6. lazygit.yazi
+# https://github.com/Lil-Dank/lazygit.yazi
 [[mgr.prepend_keymap]]
-on   = [ "U" ]
-run  = 'redo'
-desc = "for redo the last operation"
+on   = [ "g", "l" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
 
+# 7. git.yazi
+# https://github.com/yazi-rs/plugins/tree/main/git.yazi
+
+# 8. full-border.yazi
+# https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
+
+# 9.toggle-pane.yazi
+# https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
 ## Maximize the preview screen
 [[mgr.prepend_keymap]]
-# https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
 on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
@@ -410,19 +441,23 @@ on   = "T"
 run  = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
 
-## Open smart filter
-[[mgr.prepend_keymap]]
-# https://github.com/yazi-rs/plugins/tree/main/smart-filter.yazi
-on   = [ "F" ]
-run  = "plugin smart-filter"
-desc = "Smart filter"
-
-## Compressing files using ouch
-[[mgr.prepend_keymap]]
+# 10. ouch.yazi
 # https://github.com/ndtoan96/ouch.yazi
+#  Compressing files using ouch
+[[mgr.prepend_keymap]]
 on = ["C"]
 run = "plugin ouch --args=zip"
 desc = "Compress with ouch"
+
+# 11. slight-diff.yazi
+# https://github.com/YushiSora/slight-diff.yazi
+[[mgr.prepend_keymap]]
+on   = "<C-d>"
+run  = "plugin slight-diff"
+desc = "Diff the selected with the hovered file"
+
+
+# Custom Keymaps
 
 ## Call PowerShell
 [[mgr.prepend_keymap]]
@@ -435,44 +470,12 @@ on   = "!"
 run  = 'shell "explorer ." --block --confirm'
 desc = "Open File Explorer here"
 
-[[input.prepend_keymap]]
-on   = "<Esc>"
-run  = "close"
-desc = "Cancel input"
+[[mgr.prepend_keymap]]
+on   = ["@", "a"]
+run  = 'shell "code ." --block --confirm'
+desc = "Open Parent Directory in Vscode"
 
 [[mgr.prepend_keymap]]
-# https://github.com/yazi-rs/plugins/tree/main/chmod.yazi
-on   = [ "c", "m" ]
-run  = "plugin chmod"
-desc = "Chmod on selected files"
-
-#lazygit
-[[mgr.prepend_keymap]]
-# https://github.com/Lil-Dank/lazygit.yazi
-on   = [ "g", "l" ]
-run  = "plugin lazygit"
-desc = "run lazygit"
-
-#system-clipboard
-[[mgr.prepend_keymap]]
-# https://github.com/orhnk/system-clipboard.yazi
-on = "<C-y>"
-run = ["plugin system-clipboard"]
-desc = "Copy Files to System Clipboard"
-
-# glow.yazi
-[[mgr.prepend_keymap]]
-# https://github.com/Reledia/glow.yazi
-on = ["<S-j>"]
-run = "seek -5" 
-desc = "Scroll up 5 lines in preview"
-[[mgr.prepend_keymap]]
-on = ["<S-k>"]
-run = "seek 5" 
-desc = "Scroll down 5 lines in preview" 
-
-# git.yazi
-# https://github.com/yazi-rs/plugins/tree/main/git.yazi
-
-# full-border.yazi
-# https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
+on   = ["@", "f"]
+run  = 'shell "code %1" --block --confirm'
+desc = "Open Selected File in Vscode"
