@@ -1,0 +1,171 @@
+
+version big
+
+" -- gui normal at startup
+set initmode=i
+
+set blockstylecaret
+set blockstylecaret_mode = solid
+
+" Change parameters
+set shell = pwsh
+set cmd_fontsize = 25
+set cmd_fontname = Geist Mono
+set cmd_bgcolor = FFEA00
+set cmd_fontcolor = 1A1A1A
+" -- easyclick font
+set easyclick_bgcolor= FFEA00
+set easyclick_fontcolor= 1A1A1A
+set easyclick_fontname = Geist Mono
+set easyclick_fontsize = 14
+set easyclick_fontweight = 900
+" -- gridmove font
+set gridmove_fontname    = Geist Mono
+set gridmove_fontsize    = 20
+set gridmove_bgcolor     = 000000
+set gridmove_fontcolor   = FFFF00
+set gridmove_fontweight  = 1000
+" -- gui font
+set gui_fontname = Geist Mono
+set gui_fontsize = 30
+
+" -- mouse setup
+" set mouse acceleration
+set cursor_accel=215
+set cursor_resolution=750
+
+" 1. Gui Normal Mode
+
+" @ Mouse Movement 
+gnnoremap h <move_cursor_left>
+gnnoremap <left> <move_cursor_left>
+gnnoremap l <move_cursor_right>
+gnnoremap <right> <move_cursor_right>
+gnnoremap k <move_cursor_up>
+gnnoremap <up> <move_cursor_up>
+gnnoremap j <move_cursor_down>
+gnnoremap <down> <move_cursor_down>
+
+" @ Mouse Clicking 
+gnnoremap o <click_left>
+gnnoremap a <click_right>
+
+" @ Mouse Scrolling 
+gnnoremap <ctrl-u> <scroll_up>
+gnnoremap <ctrl-e> <scroll_down>
+gnnoremap <ctrl-h> <scroll_left>
+gnnoremap <ctrl-l> <scroll_right>
+gnnoremap K <scroll_up_halfpage>
+gnnoremap J <scroll_down_halfpage>
+gnnoremap H <scroll_left_halfpage>
+gnnoremap L <scroll_right_halfpage>
+
+" @ Mouse Jumping 
+gnnoremap 0 <jump_cursor_to_left>
+gnnoremap ^ <jump_cursor_to_left>
+gnnoremap <home> <jump_cursor_to_left>
+gnnoremap $ <jump_cursor_to_right>
+gnnoremap <end> <jump_cursor_to_right>
+gnnoremap gm <jump_cursor_to_hcenter>
+gnnoremap M <jump_cursor_to_vcenter>
+gnnoremap t <jump_cursor_to_active_window>
+
+" @ Complex Mouse Controls easyclick
+gnnoremap <alt-]> <jump_cursor_with_keybrd_layout>
+gnnoremap <alt-]> <easyclick><click_left>
+gnnoremap f <easyclick><click_left>
+
+" 2. Insert Mode
+" Define useful shortcuts
+inoremap <alt-]> <easyclick><click_left>
+inoremap <alt-[> <to_gui_normal>
+inoremap <F8> <to_instant_gui_normal>
+inoremap <ctrl-[> <to_resident>
+
+" @ Mode Transition 
+gnnoremap <alt-[> <to_gui_normal>
+gnnoremap <ctrl-[> <to_resident>
+
+gnnoremap : <to_command>
+gnnoremap i <to_insert>
+gnnoremap I <click_left><to_edi_normal>
+
+
+" @ Commands
+command exit <exit>
+command sleep <sleep>
+command guinormal <to_gui_normal>
+command gn <to_gui_normal>
+command resident <to_resident>
+command insert <to_insert>
+command i <to_insert>
+command mkdir <makedir>
+command md <makedir>
+
+
+" To avoid colisions of keybindings
+autocmd AppEnter nvim.exe <to_resident>
+autocmd AppLeave nvim.exe <to_insert>
+
+" Gaming
+" autocmd AppEnter steam.exe <to_resident>
+" autocmd AppLeave steam.exe <to_insert>
+
+" To use Chrome Remote Desktop
+" autocmd AppEnter chrome.exe <to_resident>
+" autocmd AppLeave chrome.exe <to_insert>
+
+" To use Brave Remote Desktop
+" autocmd AppEnter brave.exe <to_resident>
+" autocmd AppLeave brave.exe <to_insert>
+
+" To use firefox Remote Desktop
+" autocmd AppEnter firefox.exe <to_resident>
+" autocmd AppLeave firefox.exe <to_insert>
+
+" INFO: -- Window Movement
+" Focus Windows
+gnnoremap <alt-h> <select_left_window>
+gnnoremap <alt-j> <select_lower_window>
+gnnoremap <alt-k> <select_upper_window>
+gnnoremap <alt-l> <select_right_window>
+
+gnnoremap <ctrl-h> <move_window_left>
+gnnoremap <ctrl-j> <move_window_down>
+gnnoremap <ctrl-k> <move_window_up>
+gnnoremap <ctrl-l> <move_window_right>
+gnnoremap <ctrl-w><ctrl-w> <switch_window>
+gnnoremap <alt-tab> <switch_window>
+
+gnnoremap <alt-M> <maximize_current_window>
+gnnoremap <alt-m> <minimize_current_window>
+gnnoremap <alt-H> <snap_current_window_to_left>
+gnnoremap <alt-J> <snap_current_window_to_bottom>
+gnnoremap <alt-K> <snap_current_window_to_top>
+gnnoremap <alt-L> <snap_current_window_to_right>
+gnnoremap <alt-[> <rotate_windows>
+gnnoremap <alt-]> <rotate_windows_in_reverse>
+
+" Rezie Windows
+gnnoremap <alt-0> <increase_window_width>
+gnnoremap <alt-9> <decrease_window_width>
+gnnoremap <alt-shift-0> <increase_window_height>
+gnnoremap <alt-shift-9> <decrease_window_height>
+
+" Workspaces / V Desktop
+gnnoremap <alt-d> <create_new_vdesktop>
+gnnoremap <alt-x> <close_current_vdesktop>
+gnnoremap <alt-shift-o> <switch_to_left_vdesktop>
+gnnoremap <alt-shift-p> <switch_to_right_vdesktop>
+
+" @ Window Open/Close
+gnnoremap <C-w>c <open_new_window>
+gnnoremap <C-w>d <close_current_window>
+gnnoremap <C-w>= <arrange_windows>
+
+" Misc
+gnnoremap <alt-shift-tab> <taskview>
+gnnoremap / <search_pattern>
+gnnoremap <win> <open_startmenu>
+gnnoremap <gt> <goto_next_page>
+gnnoremap <gT> <goto_prev_page>
