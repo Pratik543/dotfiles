@@ -71,16 +71,14 @@
 .monaco-hover {
   /* box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.45) !important; */
   padding: 5px !important;
-  /* background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important; */
+  background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important;
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5) !important;
   border-radius: 15px !important;
-  /* border: 1px solid rgba(255, 255, 255, 0.5) !important; */
-  backdrop-filter: blur(25px) !important;
-  /* border-left: 1px solid rgba(255, 255, 255, 0.5) !important; */
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  
+  backdrop-filter: blur(5px) !important;
+  /* background-color: rgba(255,255,255,0.40) !important; */
+  border: none !important;
+
   font-family: "Geist Mono", monospace !important;
-  color: rgba(255, 255, 255, 0.6) !important;";
 }
 
 /* Project title's style at the top. */
@@ -169,23 +167,39 @@
 }
 
 /* ------------ Activity Bar ------------ */
-.monaco-workbench .activitybar>.content {
+.monaco-workbench .activitybar > .content {
   justify-content: center;
 }
 
-.monaco-workbench .activitybar>.content>.composite-bar {
+.monaco-workbench .activitybar > .content > .composite-bar {
   margin-bottom: inherit;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-label.codicon {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-label.codicon {
   border-radius: 12px !important;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-item.checked .active-item-indicator:before {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-item.checked
+  .active-item-indicator:before {
   border-left-color: transparent !important;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-item {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-item {
   /* background: var(--vscode-editor-lineHighlightBackground) !important; */
   border-radius: 12px;
   margin-bottom: 4px;
@@ -219,32 +233,64 @@ li.action-item.icon.checked a.action-label.codicon {
   border-radius: 12px !important;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-label.codicon,
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-label:not(.codicon) {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-label.codicon,
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-label:not(.codicon) {
   width: 36px !important;
   height: 36px !important;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-label:not(.codicon) {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-label:not(.codicon) {
   padding: 0;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-label:not(.codicon):hover {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-label:not(.codicon):hover {
   background-color: var(--vscode-input-foreground) !important;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .action-item:focus .active-item-indicator:before {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .action-item:focus
+  .active-item-indicator:before {
   border-left-color: transparent !important;
 }
 
-.monaco-workbench .activitybar>.content :not(.monaco-menu)>.monaco-action-bar .badge .badge-content {
+.monaco-workbench
+  .activitybar
+  > .content
+  :not(.monaco-menu)
+  > .monaco-action-bar
+  .badge
+  .badge-content {
   position: absolute;
   top: 16px;
   right: 4px;
 }
 
 /* ------------ Sidebar ------------ */
-.monaco-workbench .part>.composite.title>.title-actions {
+.monaco-workbench .part > .composite.title > .title-actions {
   padding-left: 0;
   margin-left: -16px;
 }
@@ -261,7 +307,7 @@ li.action-item.icon.checked a.action-label.codicon {
   margin-left: 4px !important;
 }
 
-.show-file-icons .folder-icon::before, 
+.show-file-icons .folder-icon::before,
 .show-file-icons .rootfolder-icon::before {
   filter: brightness(0.6);
 }
@@ -271,5 +317,3 @@ li.action-item.icon.checked a.action-label.codicon {
 .part.sidebar .welcome-view-content:focus {
   outline-color: transparent !important;
 }
-
-

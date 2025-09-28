@@ -71,6 +71,26 @@
     {
       "before": ["<leader> ;"],
       "commands": ["whichkey.show"]
+    },
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"] // Single char delete to black hole
+    },
+    {
+      // Delete operations use black hole register (preserves clipboard)
+      "before": ["d"],
+      "after": ["\"", "_", "d"] // Deletes to black hole register
+    },
+    {
+      "before": ["c"],
+      "after": ["\"", "_", "c"] // Change text using black hole register
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      // Visual mode paste without overwriting clipboard
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"] // Paste + restore register
     }
   ],
   "extensions.experimental.affinity": {
@@ -443,6 +463,7 @@
   "workbench.trustedDomains.promptInTrustedWorkspace": false,
   "update.mode": "manual",
   "workbench.editor.empty.hint": "hidden",
-  "workbench.colorTheme": "Bearded Theme Vivid Black",
-  "vim.smartRelativeLine": true
+  "documentViewer.readOnly": false,
+  "workbench.colorTheme": "Eva Dark Italic Bold",
+  "workbench.secondarySideBar.defaultVisibility": "hidden"
 }

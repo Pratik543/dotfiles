@@ -479,3 +479,8 @@ desc = "Open Parent Directory in Vscode"
 on   = ["@", "f"]
 run  = 'shell "code %1" --block --confirm'
 desc = "Open Selected File in Vscode"
+
+[[mgr.prepend_keymap]]
+on   = "$"
+run = 'shell "wt.exe -d ." --confirm'
+desc = "Open PowerShell here in a new tab"
