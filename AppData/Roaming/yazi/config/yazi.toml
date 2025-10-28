@@ -40,8 +40,9 @@ ueberzug_offset = [0, 0, 0, 0]
 [opener]
 edit = [
 	{ run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-	{ run = 'nvim "%*"', block = true,desc = "EDITOR", for = "windows" },
-	# { run = 'code "%*"', orphan = true, desc = "code", for = "windows" },
+	{ run = 'nvim "%*"', block = true,desc = "Edit using nvim", for = "windows" },
+	{ run = 'code "%*"', orphan = true, desc = "Edit using VSCode", for = "windows" },
+	{ run = 'notepad "%*"', orphan = true, desc = "Edit using Notepad", for = "windows" },
 	# { run = 'code -w "%*"', block = true, desc = "code (block)", for = "windows" },
 ]
 open = [
@@ -59,8 +60,8 @@ reveal = [
 ]
 extract = [
 	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
-	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
-	# { run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
+	# { run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
+	{ run = 'ouch d -y "%*"', desc = "Extract here with ouch", for = "windows" },
 	# { run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
 ]
 play = [
@@ -95,8 +96,8 @@ rules = [
 micro_workers = 10
 macro_workers = 10
 bizarre_retry = 3
-image_alloc = 536870912  # 512MB
-image_bound = [5000, 5000]
+image_alloc = 838860800 # Maximum memory allocated for image preview decoding (800MB) , Needed for large camera images like 3888x5184, prevents preview errors
+image_bound = [8000, 8000] # Maximum dimensions allowed for image previews [width, height] in pixels
 suppress_preload = false
 
 [plugin]
