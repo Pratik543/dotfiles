@@ -96,7 +96,7 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1 //To improve performance
   },
-  "telemetry.telemetryLevel": "all",
+  "telemetry.telemetryLevel": "off",
   // ->Todo Tree Settings
   "todo-tree.tree.showCountsInTree": true,
   "todo-tree.general.showActivityBarBadge": true,
@@ -222,14 +222,14 @@
   ],
 
   // ->GitLens Settings
-  "gitlens.statusBar.enabled": true,
-  "gitlens.statusBar.command": "gitlens.openCommitOnRemote",
-  "gitlens.blame.avatars": true,
-  "gitlens.hovers.avatars": true,
-  "gitlens.hovers.avatarSize": 60,
-  "gitlens.hovers.changesDiff": "hunk",
-  "gitlens.ai.experimental.provider": "openai",
-  "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-16k",
+  // "gitlens.statusBar.enabled": true,
+  // "gitlens.statusBar.command": "gitlens.openCommitOnRemote",
+  // "gitlens.blame.avatars": true,
+  // "gitlens.hovers.avatars": true,
+  // "gitlens.hovers.avatarSize": 60,
+  // "gitlens.hovers.changesDiff": "hunk",
+  // "gitlens.ai.experimental.provider": "openai",
+  // "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-16k",
   // "gitlens.hovers.currentLine.details": true,
   // ->Live Server Settings
   "liveServer.settings.donotShowInfoMsg": true,
@@ -248,9 +248,21 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "[python]": {
+  "[jenkinsfile]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
+  },
+  "[groovy]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
+  },
+  // "[python]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.defaultFormatter": "charliermarsh.ruff"
+  // },
+
+  "files.associations": {
+    "[Jj]enkinsfile*": "groovy"
   },
   "ruff.nativeServer": "on", //python lsp server
   "editor.codeActionsOnSave": {
@@ -280,7 +292,6 @@
   },
   "svg.preview.mode": "svg",
   "svg.preview.background": "transparent",
-  "symbols.hidesExplorerArrows": false,
   "projectManager.git.baseFolders": ["C:\\Users\\Pratik"],
   "projectManager.sortList": "Recent",
   "projectManager.removeCurrentProjectFromList": false,
@@ -292,13 +303,16 @@
   "eslint.codeAction.showDocumentation": {
     "enable": true
   },
+  "groovyLint.enable": true,
+  "groovyLint.format.enable": true,
 
   // Fonts
-  "editor.fontFamily": "'Monaspace Neon','Geist Mono','Fira Code','Space Mono',Consolas,'Courier New', monospace",
+  "editor.fontFamily": "'Victor Mono','Monaspace Neon','Geist Mono','Fira Code','Space Mono',Consolas,'Courier New', monospace",
   // "editor.fontLigatures": true, //for Fira Code
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "editor.fontWeight": "200",
   "editor.fontSize": 19,
+  "editor.lineHeight": 24,
   "scm.inputFontFamily": "Geist Mono",
   "chat.editor.fontFamily": "Geist Mono",
   "debug.console.fontFamily": "Geist Mono",
@@ -312,13 +326,13 @@
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableImages": true,
   "terminal.integrated.smoothScrolling": true,
-  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+  "terminal.integrated.fontFamily": "'Victor Mono',FiraCode Nerd Font Mono",
   "terminal.integrated.stickyScroll.enabled": true,
   "terminal.integrated.fontSize": 16,
   // "terminal.integrated.shellIntegration.suggestEnabled": true,
   "terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’|",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.localEchoLatencyThreshold": 0,
+  // "terminal.integrated.localEchoLatencyThreshold": 0,
   "terminal.integrated.scrollback": 1000,
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.cursorBlinking": true,
@@ -341,7 +355,7 @@
   "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
-  "workbench.iconTheme": "symbols",
+  "workbench.iconTheme": "mizu",
   "workbench.sideBar.location": "right",
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.indent": 9,
@@ -370,7 +384,7 @@
   "editor.accessibilitySupport": "off",
   "editor.colorDecorators": true,
   "editor.renderWhitespace": "all",
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.showDeprecated": true,
   "editor.suggest.showStatusBar": true,
@@ -406,7 +420,7 @@
   "editor.gotoLocation.multipleDeclarations": "goto",
   "editor.renderLineHighlight": "all",
   "editor.guides.highlightActiveBracketPair": true,
-  "editor.unicodeHighlight.nonBasicASCII": true,
+  "editor.unicodeHighlight.nonBasicASCII": false,
   "outline.icons": true,
   "outline.problems.enabled": true,
   // Git
@@ -452,7 +466,7 @@
   },
   "tailwindCSS.lint.cssConflict": "error",
   "codeium.enableConfig": {
-    "*": false
+    "*": true
   },
   // Apc UI Settings
   // "apc.imports": ["${userHome}/custom-vscode.css"], //vscode new update 1.94.0 broke the extension
@@ -463,7 +477,8 @@
   "workbench.trustedDomains.promptInTrustedWorkspace": false,
   "update.mode": "manual",
   "workbench.editor.empty.hint": "hidden",
-  "documentViewer.readOnly": false,
-  "workbench.colorTheme": "Eva Dark Italic Bold",
-  "workbench.secondarySideBar.defaultVisibility": "hidden"
+  // "documentViewer.readOnly": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "security.workspace.trust.startupPrompt": "never"
 }
