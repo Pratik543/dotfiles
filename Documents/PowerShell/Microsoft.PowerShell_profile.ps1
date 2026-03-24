@@ -47,7 +47,9 @@ function unzip ($file) {
 }
 
 function reload {
-    & $profile
+    # Restart the shell with the current working directory preserved
+    Start-Process pwsh -WorkingDirectory (Get-Location) -NoNewWindow
+    exit
 }
 
 function pkill {
@@ -102,7 +104,7 @@ function rmf([string]$path) {
 }
 
 # Clipboard Utilities
-function cpy { Set-Clipboard $args[0] }
+function cpy { Set-Clipboard }
 
 function pst { Get-Clipboard }
 
@@ -249,14 +251,14 @@ Set-Alias -Name fzfp -Value previewFileWithSyntaxHighlighting
 Set-Alias -Name tldrp -Value previewtldrpages
 Set-Alias -Name pn -Value pnpm
 Set-Alias -Name y -Value yazi
-Set-Alias -Name of -Value onefetch
 Set-Alias -Name ff -Value fastfetch
 Set-Alias -Name kb -Value komorebic 
 Set-Alias -Name rgp -Value Invoke-PsFzfRipgrep
 Set-Alias -Name ss -Value Invoke-FuzzyScoop
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
+Set-Alias -Name ip -Value Get-PubIP
 
 # Loading Scripts
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
-. $HOME\dotfiles\Documents\PowerShell\python_scripts.ps1
+# . $HOME\dotfiles\Documents\PowerShell\python_scripts.ps1
