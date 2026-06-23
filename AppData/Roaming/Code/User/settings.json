@@ -274,7 +274,7 @@
   "files.defaultLanguage": "txt", //txt syntax extension setting
 
   // Other Extensions
-  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.autoUpdate": "on",
   "extensions.ignoreRecommendations": true,
   "npm.autoDetect": "on",
   "npm-intellisense.importES6": true,
@@ -341,7 +341,9 @@
   "terminal.integrated.commandsToSkipShell": [
     "workbench.action.toggleSidebarVisibility",
     "workbench.files.action.focusFilesExplorer",
-    "workbench.action.gotoSymbol"
+    "workbench.action.gotoSymbol",
+    "kilo-code.new.agentManagerOpen",
+    "kilo-code.new.agentManager.showTerminal"
   ],
   // -------------------------------------------------
   // Editor Appearance
