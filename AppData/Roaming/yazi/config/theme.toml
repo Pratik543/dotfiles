@@ -1,6 +1,6 @@
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+#:schema https://yazi-rs.github.io/schemas/theme.json
 
 # vim:fileencoding=utf-8:foldmethod=marker
 
@@ -182,8 +182,8 @@ rules = [
 
 
     # Symbolic links
-    { name = "*/", is = "link"  , fg = "cyan" },
-    { name = "*/", is = "orphan", fg = "red" },
+    { url = "*/", is = "link"  , fg = "cyan" },
+    { url = "*/", is = "orphan", fg = "red" },
 
     # Archives
     { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f5c2e7" },
@@ -192,16 +192,16 @@ rules = [
     { mime = "application/{pdf,doc,rtf}", fg = "cyan" },
 
     # Special files
-    { name = "*", is = "orphan", bg = "red" },
-    { name = "*", is = "exec"  , fg = "green" },
+    { url = "*", is = "orphan", bg = "red" },
+    { url = "*", is = "exec"  , fg = "green" },
 
     # Dummy files
-    { name = "*", is = "dummy", bg = "red" },
-    { name = "*/", is = "dummy", bg = "red" },
+    { url = "*", is = "dummy", bg = "red" },
+    { url = "*/", is = "dummy", bg = "red" },
 
     # Fallback
-    { name = "*", fg = "#cdd6f4" },
-    { name = "*/", fg = "#89b4fa" },
+    { url = "*", fg = "#cdd6f4" },
+    { url = "*/", fg = "#89b4fa" },
 ]
 
 # Icons

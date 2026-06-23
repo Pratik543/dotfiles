@@ -8,7 +8,8 @@
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 # plugins to checkout relative-motions.yazi ,
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+#:schema https://yazi-rs.github.io/schemas/yazi.json
+
 
 [mgr]
 ratio = [ 1, 2, 3 ]
@@ -61,6 +62,13 @@ open = [
 	{ run = 'start "" %s1', orphan = true,  desc = "Open", for = "windows" },
 	{ run = "termux-open %s1",              desc = "Open", for = "android" },
 ]
+vex = [
+	# Vex is a beautiful, fast, and feature-rich terminal-based Excel and CSV viewer & editor built with Go.
+	{ run = "vex %s", block = true, desc = "Open with vex", for = "windows" },
+]
+picview = [
+	{ run = 'picview %s1', orphan = true,     desc = "Open", for = "windows" },
+]
 reveal = [
 	{ run = "xdg-open %d1",         desc = "Reveal", for = "linux" },
 	{ run = "open -R %s1",          desc = "Reveal", for = "macos" },
@@ -81,9 +89,10 @@ download = [
 rules = [
 	{url= "*/", use = [ "edit", "open", "reveal" ] },
 
+	{ mime = "text/csv", use = [ "vex", "edit", "reveal" ] },
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "picview", "reveal" ] },
 
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 
@@ -114,9 +123,9 @@ suppress_preload = false
 [plugin]
 fetchers = [
 	# Mimetype
-	{ id = "mime", url = "*/",         run = "mime.dir", prio = "high" },
-	{ id = "mime", url = "local://*",  run = "mime.local", prio = "high" },
-	{ id = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
+	{ url = "*/",         run = "mime.dir",    prio = "high", group = "mime" },
+	{ url = "local://*",  run = "mime.local",  prio = "high", group = "mime" },
+	{ url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
 
 ]
 
