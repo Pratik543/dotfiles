@@ -1,35 +1,54 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-oh-my-posh init  pwsh --config $HOME/dotfiles/Documents/PowerShell/customized-posh-themes/myposh3.omp.json | Invoke-Expression
+# ---- Cache dir ----
+$cacheDir = "$HOME\.cache\pwsh"
+if (-not (Test-Path $cacheDir)) { New-Item -ItemType Directory -Path $cacheDir -Force | Out-Null }
 
-# fastfetch # This command loads the fastfetch module when the profile is loaded
+# ---- oh-my-posh (cached) ----
+$ompConfig = "$HOME/dotfiles/Documents/PowerShell/customized-posh-themes/myposh3.omp.json"
+$ompCache  = "$cacheDir\omp-init.ps1"
+if (-not (Test-Path $ompCache) -or (Get-Item $ompConfig).LastWriteTime -gt (Get-Item $ompCache).LastWriteTime) {
+    oh-my-posh init pwsh --config $ompConfig | Out-File -FilePath $ompCache -Encoding utf8
+}
+. $ompCache
 
-Import-Module Terminal-Icons
+# ---- zoxide (cached) ----
+$zoxideCache = "$cacheDir\zoxide-init.ps1"
+$zoxideExe   = (Get-Command zoxide -ErrorAction SilentlyContinue).Source
+if ($zoxideExe -and (-not (Test-Path $zoxideCache) -or (Get-Item $zoxideExe).LastWriteTime -gt (Get-Item $zoxideCache).LastWriteTime)) {
+    zoxide init powershell | Out-File -FilePath $zoxideCache -Encoding utf8
+}
+if (Test-Path $zoxideCache) { . $zoxideCache }
 
 # PSReadLine
 Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-Set-PSReadlineKeyHandler -Key "RightArrow" -Function Complete
 Set-PSReadlineOption -PredictionViewStyle ListView
+Set-PSReadlineKeyHandler -Key "RightArrow" -Function Complete
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadlineKeyHandler -Key "Ctrl+j" -Function NextHistory
 Set-PSReadlineKeyHandler -Key "Ctrl+k" -Function PreviousHistory
 Set-PSReadLineOption -Colors @{
-    "Command" = "Yellow"
+    "Command"   = "Yellow"
     "Parameter" = "Green"
-    "Operator" = "Red"
-    "Variable" = "Cyan"
-    "String" = "DarkCyan"
-    "Number" = "Magenta"
-    "Member" = "Gray"
-    "Default" = "White"
+    "Operator"  = "Red"
+    "Variable"  = "Cyan"
+    "String"    = "DarkCyan"
+    "Number"    = "Magenta"
+    "Member"    = "Gray"
+    "Default"   = "White"
+
 }
 
-# Fzf
-Import-Module PSFzf
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+# ---- Defer heavy, non-critical modules until the prompt is idle ----
+$null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -MaxTriggerCount 1 -Action {
+    Import-Module Terminal-Icons
+    Import-Module PSFzf
+    Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+    Set-PSReadlineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+}
 
 # Utilities
 function whereis ($command) {
@@ -53,11 +72,6 @@ function reload {
 }
 
 function pkill {
-    # $selectedProcess = Get-Process | Select-Object -ExpandProperty ProcessName | fzf --layout=reverse --ansi --border=bold --preview-window='right,60%' --preview "echo This process will be killed if pressed enter"
-    # if ($selectedProcess) {
-    #     Stop-Process -InputObject (Get-Process -Name $selectedProcess)
-    #     Write-Output($selectedProcess + " is sucessfully killed")
-    # }
     Invoke-FuzzyKillProcess
 }
 
@@ -110,7 +124,7 @@ function pst { Get-Clipboard }
 
 # WinUtil
 function winutil {
-	iwr -useb https://christitus.com/win | iex
+    iwr -useb https://christitus.com/win | iex
 }
 
 function Get-PubIP { 
@@ -121,119 +135,6 @@ function Get-PubIP {
 function sysinfo {
     Get-ComputerInfo
 }
-
-# =============================================================================
-#
-# Utility functions for zoxide.
-#
-
-# Call zoxide binary, returning the output as UTF-8.
-function global:__zoxide_bin {
-    $encoding = [Console]::OutputEncoding
-    try {
-        [Console]::OutputEncoding = [System.Text.Utf8Encoding]::new()
-        $result = zoxide @args
-        return $result
-    } finally {
-        [Console]::OutputEncoding = $encoding
-    }
-}
-
-# pwd based on zoxide's format.
-function global:__zoxide_pwd {
-    $cwd = Get-Location
-    if ($cwd.Provider.Name -eq "FileSystem") {
-        $cwd.ProviderPath
-    }
-}
-
-# cd + custom logic based on the value of _ZO_ECHO.
-function global:__zoxide_cd($dir, $literal) {
-    $dir = if ($literal) {
-        Set-Location -LiteralPath $dir -Passthru -ErrorAction Stop
-    } else {
-        if ($dir -eq '-' -and ($PSVersionTable.PSVersion -lt 6.1)) {
-            Write-Error "cd - is not supported below PowerShell 6.1. Please upgrade your version of PowerShell."
-        }
-        elseif ($dir -eq '+' -and ($PSVersionTable.PSVersion -lt 6.2)) {
-            Write-Error "cd + is not supported below PowerShell 6.2. Please upgrade your version of PowerShell."
-        }
-        else {
-            Set-Location -Path $dir -Passthru -ErrorAction Stop
-        }
-    }
-}
-
-# =============================================================================
-#
-# Hook configuration for zoxide.
-#
-
-# Hook to add new entries to the database.
-$global:__zoxide_oldpwd = __zoxide_pwd
-function global:__zoxide_hook {
-    $result = __zoxide_pwd
-    if ($result -ne $global:__zoxide_oldpwd) {
-        if ($null -ne $result) {
-            zoxide add "--" $result
-        }
-        $global:__zoxide_oldpwd = $result
-    }
-}
-
-# Initialize hook.
-$global:__zoxide_hooked = (Get-Variable __zoxide_hooked -ErrorAction SilentlyContinue -ValueOnly)
-if ($global:__zoxide_hooked -ne 1) {
-    $global:__zoxide_hooked = 1
-    $global:__zoxide_prompt_old = $function:prompt
-
-    function global:prompt {
-        if ($null -ne $__zoxide_prompt_old) {
-            & $__zoxide_prompt_old
-        }
-        $null = __zoxide_hook
-    }
-}
-
-# =============================================================================
-#
-# When using zoxide with --no-cmd, alias these internal functions as desired.
-#
-
-# Jump to a directory using only keywords.
-function global:__zoxide_z {
-    if ($args.Length -eq 0) {
-        __zoxide_cd ~ $true
-    }
-    elseif ($args.Length -eq 1 -and ($args[0] -eq '-' -or $args[0] -eq '+')) {
-        __zoxide_cd $args[0] $false
-    }
-    elseif ($args.Length -eq 1 -and (Test-Path $args[0] -PathType Container)) {
-        __zoxide_cd $args[0] $true
-    }
-    else {
-        $result = __zoxide_pwd
-        if ($null -ne $result) {
-            $result = __zoxide_bin query --exclude $result "--" @args
-        }
-        else {
-            $result = __zoxide_bin query "--" @args
-        }
-        if ($LASTEXITCODE -eq 0) {
-            __zoxide_cd $result $true
-        }
-    }
-}
-
-# Jump to a directory using interactive search.
-function global:__zoxide_zi {
-    $result = __zoxide_bin query -i "--" @args
-    if ($LASTEXITCODE -eq 0) {
-        __zoxide_cd $result $true
-    }
-}
-
-# =============================================================================
 
 # Alias
 Remove-Alias cp
@@ -255,10 +156,4 @@ Set-Alias -Name ff -Value fastfetch
 Set-Alias -Name kb -Value komorebic 
 Set-Alias -Name rgp -Value Invoke-PsFzfRipgrep
 Set-Alias -Name ss -Value Invoke-FuzzyScoop
-Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
-Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 Set-Alias -Name ip -Value Get-PubIP
-
-# Loading Scripts
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
-# . $HOME\dotfiles\Documents\PowerShell\python_scripts.ps1
