@@ -27,7 +27,7 @@ mouse_events   = [ "click", "scroll" ]
 title_format   = "Yazi: {cwd}"
 
 [preview]
-wrap = "no"
+wrap = "yes"
 tab_size = 2
 max_width = 1000 # 600
 max_height = 1000 # 900
@@ -88,7 +88,7 @@ download = [
 
 [open]
 rules = [
-	{ mime = "*/", use = [ "edit", "open", "reveal" ] },
+	#{ mime = "*/", use = [ "edit", "open", "reveal" ] },
 	{ mime = "text/csv", use = [ "vex", "edit", "reveal" ] },
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	{ mime = "image/*", use = [ "picview", "reveal" ] },

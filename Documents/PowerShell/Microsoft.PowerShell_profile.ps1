@@ -28,8 +28,8 @@ Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadlineOption -PredictionViewStyle ListView
 Set-PSReadlineKeyHandler -Key "RightArrow" -Function Complete
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-Set-PSReadlineKeyHandler -Key "Ctrl+j" -Function NextHistory
-Set-PSReadlineKeyHandler -Key "Ctrl+k" -Function PreviousHistory
+Set-PSReadlineKeyHandler -Key "Alt+j" -Function NextHistory
+Set-PSReadlineKeyHandler -Key "Alt+k" -Function PreviousHistory
 Set-PSReadLineOption -Colors @{
     "Command"   = "Yellow"
     "Parameter" = "Green"
@@ -148,7 +148,7 @@ Set-Alias -Name touch -Value New-Item
 Set-Alias -Name open -Value Invoke-Item
 Set-Alias -Name su -Value admin
 Set-Alias -Name editProfile -Value Invoke-EditPwshProfile
-Set-Alias -Name fzfp -Value previewFileWithSyntaxHighlighting
+# Set-Alias -Name fzfp -Value previewFileWithSyntaxHighlighting
 Set-Alias -Name tldrp -Value previewtldrpages
 Set-Alias -Name pn -Value pnpm
 Set-Alias -Name y -Value yazi
@@ -157,3 +157,7 @@ Set-Alias -Name kb -Value komorebic
 Set-Alias -Name rgp -Value Invoke-PsFzfRipgrep
 Set-Alias -Name ss -Value Invoke-FuzzyScoop
 Set-Alias -Name ip -Value Get-PubIP
+
+# . "$HOME\.config\fzf\fzf.ps1"
+
+
