@@ -6,7 +6,7 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
+          "options": {
             "root_icon": "root"
           },
           "template": "\uf0e7 <#ffffff>in</> ",
@@ -15,7 +15,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "style": "full"
           },
           "template": "{{ .Path }} ",
@@ -24,7 +24,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "fetch_status": true
           },
           "template": "<#ffffff>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
@@ -33,7 +33,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "fetch_version": true
           },
           "template": "<#ffffff>via</> \ue781 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
@@ -42,28 +42,65 @@
           "style": "plain"
         },
         {
-          "template": "x{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
-          "foreground": "#C94A16",
-          "type": "exit",
+          "options": {
+            "display_mode": "context",
+            "fetch_version": true,
+            "fetch_virtual_env": true
+          },
+          "template": "<#ffffff>in</> \ue235 {{ if .Venv }}(venv: {{ .Venv }}) {{ end }}{{ .Full }} ",
+          "foreground": "#FFDE57",
+          "type": "python",
           "style": "plain"
         },
         {
-          "properties": {
+          "template": "{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }} ",
+          "foreground": "#C94A16",
+          "type": "status",
+          "style": "plain"
+        },
+        {
+          "options": {
             "threshold": 0
           },
           "template": "<#ffffff>took</> {{ .FormattedMs }} ",
-          "foreground": "#67f2d1",
+          "foreground": "#67F2D1",
           "type": "executiontime",
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "time_format": "15:04 pm | Monday"
           },
           "template": "<#ffffff>at</> {{ .CurrentDate | date .Format }}",
-          "foreground": "#b7c1ac",
+          "foreground": "#B7C1AC",
           "type": "time",
           "style": "plain"
+        },
+        {
+          "type": "sysinfo",
+          "style": "plain",
+          "powerline_symbol": "\ue0b0",
+          "template": " \uf4bc {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB)",
+          "foreground": "#b7c1ac",
+          "foreground_templates": [
+            "{{ if gt .PhysicalPercentUsed 80.0 }}#A40202{{ end }}",
+            "{{ if gt .PhysicalPercentUsed 60.0 }}#E5C07B{{ end }}",
+            "{{ if le .PhysicalPercentUsed 60.0 }}#98C379{{ end }}"
+          ]
+        },
+        {
+          "type": "aws",
+          "style": "plain",
+          "powerline_symbol": "\ue0b0",
+          "options": {
+            "display_default": false
+          },
+          "template": " \uf270 {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} ",
+          "cache": {
+            "duration": "1h",
+            "strategy": "session"
+          },
+          "foreground": "#FF9900"
         }
       ]
     },
