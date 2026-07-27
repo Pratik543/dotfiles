@@ -1,327 +1,156 @@
 {
-  // Auto Import
-  "typescript.suggest.autoImports": true,
-  "javascript.suggest.autoImports": true,
-
-  "javascript.preferences.importModuleSpecifier": "shortest",
-  "typescript.preferences.importModuleSpecifier": "shortest",
-
-  "javascript.suggest.paths": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-
-  "javascript.suggest.completeFunctionCalls": true,
-  "typescript.suggest.completeFunctionCalls": true,
-
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterNames.enabled": "all",
-
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.parameterTypes.enabled": true,
-
-  "javascript.preferences.importModuleSpecifierEnding": "minimal",
-  "typescript.preferences.importModuleSpecifierEnding": "minimal",
-
-  // Extensions
-  // draw.io
-  // "hediet.vscode-drawio.theme": "Kennedy",
-  // "hediet.vscode-drawio.resizeImages": null,
-
-  // ->Vim Settings
-  "vim.leader": "<space>",
-  "vim.easymotion": true,
-  "vim.hlsearch": true, // Enables highlighting of search matches
-  "vim.foldfix": true,
-  "vim.useSystemClipboard": true,
-  "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.textColor": "white",
-  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<C-g>"],
-      "after": ["<Esc>"]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      // Selects all text in the file
-      "before": ["<c-a>"],
-      "after": ["g", "g", "V", "G"]
-    },
-    {
-      // Moves to the previous marker
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      // Moves to the next marker
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      // Moves the cursor to the start of the line
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      // Moves the cursor to the end of the line
-      "before": ["L"],
-      "after": ["$"]
-    },
-    {
-      "before": ["<leader> ;"],
-      "commands": ["whichkey.show"]
-    },
-    {
-      "before": ["x"],
-      "after": ["\"", "_", "x"] // Single char delete to black hole
-    },
-    {
-      // Delete operations use black hole register (preserves clipboard)
-      "before": ["d"],
-      "after": ["\"", "_", "d"] // Deletes to black hole register
-    },
-    {
-      "before": ["c"],
-      "after": ["\"", "_", "c"] // Change text using black hole register
-    }
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      // Visual mode paste without overwriting clipboard
-      "before": ["p"],
-      "after": ["p", "g", "v", "y"] // Paste + restore register
-    }
-  ],
-  "extensions.experimental.affinity": {
-    "vscodevim.vim": 1 //To improve performance
-  },
+  // ============================================================================
+  // Editor Appearance
+  // ============================================================================
+  "window.zoomLevel": -0.5,
+  "window.titleBarStyle": "custom",
+  "window.confirmBeforeClose": "never",
+  "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}",
+  "window.menuBarVisibility": "compact",
+  "window.commandCenter": false,
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "workbench.iconTheme": "mizu",
+  "workbench.sideBar.location": "right",
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.tree.indent": 9,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.layoutControl.enabled": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.list.smoothScrolling": true,
+  "workbench.trustedDomains.promptInTrustedWorkspace": false,
+  "zenMode.hideLineNumbers": false,
+  // "zenMode.showTabs": "single",
+  "security.workspace.trust.untrustedFiles": "open",
+  "security.workspace.trust.startupPrompt": "never",
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "update.mode": "manual",
   "telemetry.telemetryLevel": "off",
-  // ->Todo Tree Settings
-  "todo-tree.tree.showCountsInTree": true,
-  "todo-tree.general.showActivityBarBadge": true,
-  "todo-tree.general.statusBar": "top three",
-  "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
-  "todo-tree.general.tags": [
-    "TODO",
-    "FIXME",
-    "FIXIT",
-    "FIX",
-    "BUG",
-    "[ ]",
-    "[x]",
-    "DEBUG",
-    "NOW",
-    "WARN",
-    "WIP",
-    "UNDONE",
-    "DONE",
-    "REMOVE"
-  ],
-  "todo-tree.general.tagGroups": {
-    "FIXME": ["FIXME", "FIXIT", "FIX"]
-    // "TODO": ["TODO", "WIP", "NOW", "UNDONE"],
-    // "BUG": ["BUG", "DEBUG", "WARN"]
+  // "glassit.alpha": 255,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.js": "${capture}.js.map, ${capture}.*.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js, ${capture}.*.js, ${capture}.*.ts, ${capture}.*.tsx",
+    "*.ts": "${capture}.js, ${capture}.*.jsx, ${capture}.*.tsx",
+    "*.tsx": "${capture}.ts, ${capture}.*.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, yarn.lock",
+    "*": "${basename}.*.${extname}",
   },
-  "todo-tree.highlights.defaultHighlight": {
-    "gutterIcon": true
+  "explorer.incrementalNaming": "smart",
+  "outline.icons": true,
+  "outline.problems.enabled": true,
+  "search.showLineNumbers": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
   },
-  "todo-tree.highlights.customHighlight": {
-    "TODO": {
-      //ICONS LIST https://primer.style/foundations/icons
-      "icon": "tasklist",
-      "iconColour": "#FF8C00",
-      "type": "tag",
-      "background": "#CF7200",
-      "foreground": "#FFFFFF",
-      "fontWeight": "bold"
-    },
-    "[x]": {
-      "icon": "verified",
-      "iconColour": "#1c6c08",
-      "type": "tag",
-      "background": "#60CD34",
-      "foreground": "#FFFFFF",
-      "fontWeight": "bold"
-    },
-    "[ ]": {
-      "icon": "checklist",
-      "iconColour": "#FF8C00",
-      "type": "tag",
-      "background": "#ff1a1a",
-      "foreground": "#FFFFFF",
-      "fontWeight": "bold"
-    },
-    "FIXME": {
-      "icon": "tools",
-      "iconColour": "#00FF00",
-      "type": "tag",
-      // "background": "#008000",
-      "foreground": "#FFFF00",
-      "fontWeight": "bold"
-    },
-    "BUG": {
-      "icon": "bug",
-      "iconColour": "#FF0000",
-      "type": "tag",
-      "background": "#800000",
-      "foreground": "#FFFFFF",
-      "fontWeight": "bold"
-    },
-    "DEBUG": {
-      "icon": "dependabot",
-      "iconColour": "#ffd500",
-      "type": "tag",
-      "background": "#aa0202",
-      "foreground": "#f3ee6d",
-      "fontWeight": "bold"
-    },
-    "WIP": {
-      "icon": "flame",
-      "iconColour": "#eeff00",
-      "type": "tag",
-      "background": "#f3ee6d",
-      "foreground": "#100303",
-      "fontWeight": "bold"
-    },
-    "NOW": {
-      "icon": "hourglass",
-      "iconColour": "#eeff00",
-      "type": "tag",
-      "background": "#f3ee6d",
-      "foreground": "#100303",
-      "fontWeight": "bold"
-    },
-    "WARN": {
-      "icon": "alert",
-      "iconColour": "#eeff00",
-      "type": "tag",
-      "background": "#f3ee6d",
-      "foreground": "#100303",
-      "fontWeight": "bold"
-    },
-    "UNDONE": {
-      "icon": "x-circle",
-      "iconColour": "#eeff00",
-      "type": "tag",
-      "background": "#f3ee6d",
-      "foreground": "#100303",
-      "fontWeight": "bold"
-    },
-    "REMOVE": {
-      "icon": "trash",
-      "type": "tag",
-      "background": "#f3ee6d",
-      "foreground": "#e84a5f"
-    }
-  },
-  "todo-tree.filtering.excludeGlobs": [
-    "**/node_modules/**",
-    "**/vendor/**",
-    "**/.github/**"
-  ],
-
-  // ->GitLens Settings
-  // "gitlens.statusBar.enabled": true,
-  // "gitlens.statusBar.command": "gitlens.openCommitOnRemote",
-  // "gitlens.blame.avatars": true,
-  // "gitlens.hovers.avatars": true,
-  // "gitlens.hovers.avatarSize": 60,
-  // "gitlens.hovers.changesDiff": "hunk",
-  // "gitlens.ai.experimental.provider": "openai",
-  // "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-16k",
-  // "gitlens.hovers.currentLine.details": true,
-  // ->Live Server Settings
-  "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.AdvanceCustomBrowserCmdLine": "brave",
-  "liveServer.settings.fullReload": true,
-  // ->Prettier Formatter Settings
-  "prettier.semi": true,
-  "prettier.singleQuote": false,
-  "prettier.singleAttributePerLine": true,
-  "prettier.trailingComma": "all",
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jenkinsfile]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
-  },
-  "[groovy]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
-  },
-  // "[python]": {
-  //   "editor.formatOnSave": true,
-  //   "editor.defaultFormatter": "charliermarsh.ruff"
-  // },
-
   "files.associations": {
-    "[Jj]enkinsfile*": "groovy"
-  },
-  "ruff.nativeServer": "on", //python lsp server
-  "editor.codeActionsOnSave": {
-    "source.addMissingImports": "explicit",
-    "source.organizeImports": "explicit",
-    "source.fixAll": "explicit",
-    "source.fixAll.eslint": "explicit"
+    "[Jj]enkinsfile*": "groovy",
   },
   "files.defaultLanguage": "txt", //txt syntax extension setting
-
-  // Other Extensions
-  "extensions.autoUpdate": "on",
-  "extensions.ignoreRecommendations": true,
-  "npm.autoDetect": "on",
-  "npm-intellisense.importES6": true,
-  "npm-intellisense.importQuotes": "'",
-  "npm-intellisense.importLinebreak": ";\r\n",
-  "npm-intellisense.importDeclarationType": "const",
-  "npm-intellisense.showBuildInLibs": true,
-  "npm-intellisense.scanDevDependencies": true,
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "typescript": "typescriptreact",
-    "javascriptreact": "javascriptreact",
-    "typescriptreact": "typescriptreact"
+  "files.enableTrash": true,
+  "files.readonlyInclude": {
+    "dist/**": true,
   },
-  "svg.preview.mode": "svg",
-  "svg.preview.background": "transparent",
-  "projectManager.git.baseFolders": ["C:\\Users\\Pratik"],
-  "projectManager.sortList": "Recent",
-  "projectManager.removeCurrentProjectFromList": false,
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.runInTerminal": true,
-  "codeium.enableCodeLens": false,
-  // "glassit.alpha": 255,
-  "eslint.enable": true,
-  "eslint.codeAction.showDocumentation": {
-    "enable": true
-  },
-  "groovyLint.enable": true,
-  "groovyLint.format.enable": true,
 
-  // Fonts
+  // ============================================================================
+  // Editor Behavior
+  // ============================================================================
   "editor.fontFamily": "'Victor Mono','Monaspace Neon','Geist Mono','Fira Code','Space Mono',Consolas,'Courier New', monospace",
   // "editor.fontLigatures": true, //for Fira Code
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "editor.fontWeight": "200",
   "editor.fontSize": 19,
   "editor.lineHeight": 24,
+  "editor.suggestSelection": "first",
+  "editor.suggest.insertMode": "replace",
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.preview": true,
+  "editor.snippetSuggestions": "top",
+  "editor.showDeprecated": true,
+  "editor.parameterHints.enabled": true,
+  "editor.suggest.showTypeParameters": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSurroundingLines": 5,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.linkedEditing": true,
+  "editor.tabCompletion": "on",
+  "editor.mouseWheelZoom": false,
+  "editor.accessibilitySupport": "off",
+  "editor.colorDecorators": true,
+  "editor.renderWhitespace": "all",
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.renderLineHighlight": "all",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.unicodeHighlight.allowedCharacters": {
+    " ": true,
+    "‘": true,
+  },
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "documentViewer.readOnly": false,
+
+  // ============================================================================
+  // Language-specific Formatters
+  // ============================================================================
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+  },
+  "[jenkinsfile]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint",
+  },
+  "[groovy]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint",
+  },
+  // "[python]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.defaultFormatter": "charliermarsh.ruff"
+  // },
+
+  // ============================================================================
+  // Fonts (SCM, Chat, Debug, etc.)
+  // ============================================================================
   "scm.inputFontFamily": "Geist Mono",
   "chat.editor.fontFamily": "Geist Mono",
   "debug.console.fontFamily": "Geist Mono",
   "editor.codeLensFontFamily": "Geist Mono",
   "markdown.preview.fontFamily": "Geist Mono",
 
-  // Terminal Appearance
+  // ============================================================================
+  // Terminal
+  // ============================================================================
   "terminal.integrated.env.windows": {
-    "PSExecutionPolicyReference": "RemoteSigned"
+    "PSExecutionPolicyReference": "RemoteSigned",
   },
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableImages": true,
@@ -343,96 +172,250 @@
     "workbench.files.action.focusFilesExplorer",
     "workbench.action.gotoSymbol",
     "kilo-code.new.agentManagerOpen",
-    "kilo-code.new.agentManager.showTerminal"
+    "kilo-code.new.agentManager.showTerminal",
   ],
-  // -------------------------------------------------
-  // Editor Appearance
-  "security.workspace.trust.untrustedFiles": "open",
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "explorer.compactFolders": false,
-  "window.zoomLevel": -0.5,
-  "window.titleBarStyle": "custom",
-  "window.confirmBeforeClose": "never",
-  "window.title": "${rootName}${separator}${dirty}${activeEditorMedium}",
-  "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": true,
-  "workbench.iconTheme": "mizu",
-  "workbench.sideBar.location": "right",
-  "workbench.tree.renderIndentGuides": "always",
-  "workbench.tree.indent": 9,
-  "zenMode.hideLineNumbers": false,
-  // "zenMode.showTabs": "single",
-  "editor.suggestSelection": "first",
-  "editor.unicodeHighlight.invisibleCharacters": false,
-  "editor.unicodeHighlight.allowedCharacters": {
-    " ": true,
-    "‘": true
+
+  // ============================================================================
+  // JavaScript / TypeScript
+  // ============================================================================
+  "js/ts.suggest.autoImports": true,
+  "js/ts.preferences.importModuleSpecifier": "shortest",
+  "js/ts.suggest.paths": true,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.suggest.completeFunctionCalls": true,
+  "js/ts.inlayHints.parameterNames.enabled": "all",
+  "js/ts.inlayHints.parameterTypes.enabled": true,
+  "js/ts.preferences.importModuleSpecifierEnding": "minimal",
+
+  // ============================================================================
+  // Vim
+  // ============================================================================
+  "vim.leader": "<space>",
+  "vim.easymotion": true,
+  "vim.hlsearch": true, // Enables highlighting of search matches
+  "vim.foldfix": true,
+  "vim.useSystemClipboard": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.textColor": "white",
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-g>"],
+      "after": ["<Esc>"],
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      // Selects all text in the file
+      "before": ["<c-a>"],
+      "after": ["g", "g", "V", "G"],
+    },
+    {
+      // Moves to the previous marker
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"],
+    },
+    {
+      // Moves to the next marker
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"],
+    },
+    {
+      // Moves the cursor to the start of the line
+      "before": ["H"],
+      "after": ["^"],
+    },
+    {
+      // Moves the cursor to the end of the line
+      "before": ["L"],
+      "after": ["$"],
+    },
+    {
+      "before": ["<leader> ;"],
+      "commands": ["whichkey.show"],
+    },
+    {
+      // Single char delete to black hole
+      "before": ["x"],
+      "after": ["\"", "_", "x"],
+    },
+    {
+      // Delete operations use black hole register (preserves clipboard)
+      "before": ["d"],
+      "after": ["\"", "_", "d"], // Deletes to black hole register
+    },
+    {
+      // Change text using black hole register
+      "before": ["c"],
+      "after": ["\"", "_", "c"],
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      // Visual mode paste without overwriting clipboard
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"], // Paste + restore register
+    },
+  ],
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1, //To improve performance
   },
-  "editor.unicodeHighlight.ambiguousCharacters": false,
-  "editor.guides.bracketPairs": true,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-  "editor.cursorBlinking": "phase",
-  "editor.cursorSurroundingLines": 5,
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.inlineSuggest.enabled": true,
-  "editor.stickyScroll.enabled": true,
-  "editor.smoothScrolling": true,
-  "editor.suggest.insertMode": "replace",
-  "editor.linkedEditing": true,
-  // "editor.tabCompletion": "on",
-  "editor.mouseWheelZoom": false,
-  "editor.accessibilitySupport": "off",
-  "editor.colorDecorators": true,
-  "editor.renderWhitespace": "all",
-  "editor.lineNumbers": "relative",
-  "editor.minimap.enabled": false,
-  "editor.showDeprecated": true,
-  "editor.suggest.showStatusBar": true,
-  "editor.suggest.preview": true,
-  "editor.snippetSuggestions": "top",
-  "search.showLineNumbers": true,
-  "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.pinnedTabsOnSeparateRow": true,
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.patterns": {
-    "*.js": "${capture}.js.map, ${capture}.*.js, ${capture}.d.ts",
-    "*.jsx": "${capture}.js, ${capture}.*.js, ${capture}.*.ts, ${capture}.*.tsx",
-    "*.ts": "${capture}.js, ${capture}.*.jsx, ${capture}.*.tsx",
-    "*.tsx": "${capture}.ts, ${capture}.*.ts",
-    "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, yarn.lock",
-    "*": "${basename}.*.${extname}"
+
+  // ============================================================================
+  // Todo Tree
+  // ============================================================================
+  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.general.showActivityBarBadge": true,
+  "todo-tree.general.statusBar": "top three",
+  "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "FIXIT",
+    "FIX",
+    "BUG",
+    "[ ]",
+    "[x]",
+    "DEBUG",
+    "NOW",
+    "WARN",
+    "WIP",
+    "UNDONE",
+    "DONE",
+    "REMOVE",
+  ],
+  "todo-tree.general.tagGroups": {
+    "FIXME": ["FIXME", "FIXIT", "FIX"],
+    // "TODO": ["TODO", "WIP", "NOW", "UNDONE"],
+    // "BUG": ["BUG", "DEBUG", "WARN"]
   },
-  "explorer.incrementalNaming": "smart",
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/bower_components": true,
-    "**/*.code-search": true
+  "todo-tree.highlights.defaultHighlight": {
+    "gutterIcon": true,
   },
-  "files.readonlyInclude": {
-    "dist/**": true
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      //ICONS LIST https://primer.style/foundations/icons
+      "icon": "tasklist",
+      "iconColour": "#FF8C00",
+      "type": "tag",
+      "background": "#CF7200",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold",
+    },
+    "[x]": {
+      "icon": "verified",
+      "iconColour": "#1c6c08",
+      "type": "tag",
+      "background": "#60CD34",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold",
+    },
+    "[ ]": {
+      "icon": "checklist",
+      "iconColour": "#FF8C00",
+      "type": "tag",
+      "background": "#ff1a1a",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold",
+    },
+    "FIXME": {
+      "icon": "tools",
+      "iconColour": "#00FF00",
+      "type": "tag",
+      // "background": "#008000",
+      "foreground": "#FFFF00",
+      "fontWeight": "bold",
+    },
+    "BUG": {
+      "icon": "bug",
+      "iconColour": "#FF0000",
+      "type": "tag",
+      "background": "#800000",
+      "foreground": "#FFFFFF",
+      "fontWeight": "bold",
+    },
+    "DEBUG": {
+      "icon": "dependabot",
+      "iconColour": "#ffd500",
+      "type": "tag",
+      "background": "#aa0202",
+      "foreground": "#f3ee6d",
+      "fontWeight": "bold",
+    },
+    "WIP": {
+      "icon": "flame",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold",
+    },
+    "NOW": {
+      "icon": "hourglass",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold",
+    },
+    "WARN": {
+      "icon": "alert",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold",
+    },
+    "UNDONE": {
+      "icon": "x-circle",
+      "iconColour": "#eeff00",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#100303",
+      "fontWeight": "bold",
+    },
+    "REMOVE": {
+      "icon": "trash",
+      "type": "tag",
+      "background": "#f3ee6d",
+      "foreground": "#e84a5f",
+    },
   },
-  "files.enableTrash": true,
-  "workbench.list.smoothScrolling": true,
-  "editor.parameterHints.enabled": true,
-  "editor.suggest.showTypeParameters": true,
-  "editor.gotoLocation.multipleDeclarations": "goto",
-  "editor.renderLineHighlight": "all",
-  "editor.guides.highlightActiveBracketPair": true,
-  "editor.unicodeHighlight.nonBasicASCII": false,
-  "outline.icons": true,
-  "outline.problems.enabled": true,
+  "todo-tree.filtering.excludeGlobs": [
+    "**/node_modules/**",
+    "**/vendor/**",
+    "**/.github/**",
+  ],
+
+  // ============================================================================
+  // Prettier
+  // ============================================================================
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "prettier.singleAttributePerLine": true,
+  "prettier.trailingComma": "all",
+
+  // ============================================================================
   // Git
+  // ============================================================================
+  // "gitlens.statusBar.enabled": true,
+  // "gitlens.statusBar.command": "gitlens.openCommitOnRemote",
+  // "gitlens.blame.avatars": true,
+  // "gitlens.hovers.avatars": true,
+  // "gitlens.hovers.avatarSize": 60,
+  // "gitlens.hovers.changesDiff": "hunk",
+  // "gitlens.ai.experimental.provider": "openai",
+  // "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-16k",
+  // "gitlens.hovers.currentLine.details": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.untrackedChanges": "separate",
   "git.detectSubmodules": true,
   "git.showPushSuccessNotification": true,
 
-  // errorlens
+  // ============================================================================
+  // Error Lens
+  // ============================================================================
   "errorLens.statusBarIconsEnabled": true,
   "errorLens.statusBarIconsUseBackground": false,
   "errorLens.margin": "3ch",
@@ -440,11 +423,13 @@
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "hint", "info"],
   "errorLens.messageEnabled": true,
   "errorLens.messageBackgroundMode": "message",
-  "errorLens.messageTemplate": " ◩ $message $count", // ▣ ◩ ◐ ◩
+  "errorLens.messageTemplate": " ◩ $message $count",
   "errorLens.gutterIconsEnabled": true,
   "errorLens.gutterIconSet": "squareRounded",
 
-  // Css
+  // ============================================================================
+  // CSS
+  // ============================================================================
   "css.validate": false,
   "css.completion.completePropertyWithSemicolon": true,
   "css.completion.triggerPropertyValueCompletion": true,
@@ -453,34 +438,64 @@
   "css.lint.boxModel": "warning",
   "css.customData": [],
 
-  // tailwindcss
+  // ============================================================================
+  // Tailwind CSS
+  // ============================================================================
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.experimental.classRegex": [
-    "tw`([^`]*)", // tw`...`
-    "tw=\"([^\"]*)", // <div tw="..." />
-    "tw={\"([^\"}]*)", // <div tw={"..."} />
-    "tw\\.\\w+`([^`]*)", // tw.xxx`...`
-    "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
+    "tw`([^`]*)",
+    "tw=\"([^\"]*)",
+    "tw={\"([^\"}]*)",
+    "tw\\.\\w+`([^`]*)",
+    "tw\\(.*?\\)`([^`]*)",
   ],
   "tailwindCSS.includeLanguages": {
     "typescript": "javascript",
-    "typescriptreact": "javascript"
+    "typescriptreact": "javascript",
   },
   "tailwindCSS.lint.cssConflict": "error",
-  "codeium.enableConfig": {
-    "*": true
+
+  // ============================================================================
+  // Extensions & Other
+  // ============================================================================
+  "extensions.autoUpdate": "on",
+  "extensions.ignoreRecommendations": true,
+  "npm.autoDetect": "on",
+  "npm-intellisense.importES6": true,
+  "npm-intellisense.importQuotes": "'",
+  "npm-intellisense.importLinebreak": ";\r\n",
+  "npm-intellisense.importDeclarationType": "const",
+  "npm-intellisense.showBuildInLibs": true,
+  "npm-intellisense.scanDevDependencies": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "javascriptreact": "javascriptreact",
+    "typescriptreact": "typescriptreact",
   },
-  // Apc UI Settings
+  "svg.preview.mode": "img",
+  "svg.preview.background": "transparent",
+  "projectManager.git.baseFolders": ["C:\\Users\\Pratik"],
+  "projectManager.sortList": "Recent",
+  "projectManager.removeCurrentProjectFromList": false,
+  "eslint.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true,
+  },
+  "groovyLint.enable": true,
+  "groovyLint.format.enable": true,
+  "ruff.nativeServer": "on",
+  "codeium.enableConfig": {
+    "*": true,
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "brave",
+  "liveServer.settings.fullReload": true,
   // "apc.imports": ["${userHome}/custom-vscode.css"], //vscode new update 1.94.0 broke the extension
   "vscode_custom_css.imports": ["file:///C:/Users/Pratik/custom-vscode.css"],
-  "window.menuBarVisibility": "compact",
-  "workbench.layoutControl.enabled": false,
-  "window.commandCenter": false,
-  "workbench.trustedDomains.promptInTrustedWorkspace": false,
-  "update.mode": "manual",
-  "workbench.editor.empty.hint": "hidden",
-  // "documentViewer.readOnly": false,
-  "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "security.allowedUNCHosts": ["wsl.localhost"],
-  "security.workspace.trust.startupPrompt": "never"
+  "kilo-code.new.agentWorkStyle": "unset",
+  "kilo-code.new.autocomplete.enableAutoTrigger": true,
+  "kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": true,
+  "kilo-code.new.autocomplete.enableChatAutocomplete": true,
 }
