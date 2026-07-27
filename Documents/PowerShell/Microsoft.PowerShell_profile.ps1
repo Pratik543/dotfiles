@@ -42,9 +42,10 @@ Set-PSReadLineOption -Colors @{
 
 }
 
+Import-Module Terminal-Icons
+
 # ---- Defer heavy, non-critical modules until the prompt is idle ----
 $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -MaxTriggerCount 1 -Action {
-    Import-Module Terminal-Icons
     Import-Module PSFzf
     Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
     Set-PSReadlineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
@@ -148,7 +149,7 @@ Set-Alias -Name touch -Value New-Item
 Set-Alias -Name open -Value Invoke-Item
 Set-Alias -Name su -Value admin
 Set-Alias -Name editProfile -Value Invoke-EditPwshProfile
-# Set-Alias -Name fzfp -Value previewFileWithSyntaxHighlighting
+Set-Alias -Name fzfp -Value previewFileWithSyntaxHighlighting
 Set-Alias -Name tldrp -Value previewtldrpages
 Set-Alias -Name pn -Value pnpm
 Set-Alias -Name y -Value yazi
