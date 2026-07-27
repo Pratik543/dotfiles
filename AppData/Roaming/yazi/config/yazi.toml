@@ -29,8 +29,8 @@ title_format   = "Yazi: {cwd}"
 [preview]
 wrap = "yes"
 tab_size = 2
-max_width = 1000 # 600
-max_height = 1000 # 900
+max_width = 10000 
+max_height = 10000
 cache_dir = ""
 image_delay = 30
 image_filter = "triangle"
@@ -111,7 +111,7 @@ preload_workers  = 2
 process_workers  = 5
 bizarre_retry = 3
 image_alloc = 838860800 # Maximum memory allocated for image preview decoding (800MB) , Needed for large camera images like 3888x5184, prevents preview errors
-image_bound = [10000, 10000] # Maximum dimensions allowed for image previews [width, height] in pixels
+image_bound = [ 65535, 65535 ] # Maximum dimensions allowed for image previews [width, height] in pixels
 suppress_preload = false
 
 [plugin]
@@ -184,7 +184,7 @@ previewers = [
 	{ mime = "inode/empty", run = "empty" },
 	# Fallback
 	{ mime = "*", run = "file" },
-	{ mime = "*.md", run = "glow" }
+  { mime = "*.md", run = "glow" }
 ]
 
 [input]
