@@ -3,9 +3,15 @@ local colors = require("colors.custom")
 -- local fonts = require('config.fonts')
 
 return {
+  -- behaviours
+  automatically_reload_config = true,
+  check_for_updates = false,
+  exit_behavior = "CloseOnCleanExit",
+  status_update_interval = 1000,
+
   term = "xterm-256color",
   animation_fps = 60,
-  max_fps = 60,
+  max_fps = 120,
   front_end = "WebGpu",
   webgpu_power_preference = "HighPerformance",
 
@@ -26,13 +32,15 @@ return {
   background = {
     {
       -- source = { File = wezterm.config_dir .. "/backdrops/space.jpg" },
-      source = { File = "C:/Users/Pratik/Downloads/Wallpapers/terminal-themes/5797234.jpg" },
+      source = {
+        File = "C:/Users/Pratik/Downloads/Wallpapers/terminal-themes/stars-silver-surfer-black-background-hd.jpg",
+      },
     },
     {
       source = { Color = "#1A1B26" },
       height = "100%",
       width = "100%",
-      opacity = 0.6,
+      opacity = 0.8,
     },
   },
 
@@ -45,7 +53,7 @@ return {
 
   -- tab bar
   enable_tab_bar = true,
-  hide_tab_bar_if_only_one_tab = false,
+  hide_tab_bar_if_only_one_tab = true,
   use_fancy_tab_bar = true,
   tab_max_width = 25,
   show_tab_index_in_tab_bar = true,
