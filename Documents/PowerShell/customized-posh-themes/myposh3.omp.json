@@ -47,7 +47,7 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": "<#ffffff>in</> \ue235 {{ if .Venv }}(venv: {{ .Venv }}) {{ end }}{{ .Full }} ",
+          "template": "<#ffffff>in</> \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
           "foreground": "#FFDE57",
           "type": "python",
           "style": "plain"
