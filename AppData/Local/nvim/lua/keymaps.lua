@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("i", "<C-g>", "<Esc>", { desc = "go to escape mode from insert mode" })
+vim.keymap.set("i", "<Esc>", "<Esc>", { desc = "Go to normal mode" })
+vim.keymap.set("i", "<C-g>", "<Esc>", { desc = "Go to normal mode (alternative)" })
 vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" }) --Normally, if you select text and paste (p/P), the deleted text goes into the default register, overwriting what you just pasted.
 --This mapping avoids that by sending deleted text to the black hole register ("_).
 vim.keymap.set("v", "p", '"_dp', opts)
