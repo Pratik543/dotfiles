@@ -50,7 +50,7 @@ return {
   })
     
     -- Neo-tree keymaps
-    vim.keymap.set("n", "<C-e>", ":Neotree toggle<CR>", { silent = true })
-    vim.keymap.set("n", "<leader>o", ":Neotree focus<CR>", { silent = true })
+    vim.keymap.set("n", "<C-e>", ":Neotree toggle<CR>", { silent = true, desc = "Toggle file tree" })
+    vim.keymap.set("n", "<leader>o", ":Neotree focus<CR>", { silent = true, desc = "Focus file tree" })
   end,
 }

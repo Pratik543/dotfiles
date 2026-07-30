@@ -181,6 +181,19 @@ return {
 		gitbrowse = { enabled = true },
 		-- Enable other useful Snacks features
 		bigfile = { enabled = true },
+		indent = {
+			enabled = true,
+			indent = {
+				char = "│",
+				only_scope = false,
+				only_current = false,
+			},
+			scope = {
+				enabled = true, -- highlight the current scope
+				char = "│",
+			},
+			animate = { enabled = false },
+		},
 		notifier = {
 			enabled = true,
 			timeout = 3000,
@@ -318,6 +331,12 @@ return {
 				vim.api.nvim_set_hl(0, "SnacksDashboardFile", { fg = colors.cyan }) -- FILE NAMES COLOR (init.lua, image.lua, telescope.lua, etc.) - Try: colors.cyan, colors.purple, colors.green
 				vim.api.nvim_set_hl(0, "SnacksDashboardDir", { fg = colors.comment }) -- DIRECTORY/PATH COLOR (path prefixes)
 				vim.api.nvim_set_hl(0, "SnacksDashboardSpecial", { fg = colors.purple }) -- SPECIAL ELEMENTS COLOR
+
+					-- ========================================================
+					-- INDENT GUIDE COLORS (snacks indent module)
+					-- ========================================================
+					vim.api.nvim_set_hl(0, "SnacksIndent", { fg = colors.comment }) -- normal indent guides
+					vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = colors.blue }) -- active scope guide
 
 				-- ========================================================
 				-- DEBUG GLOBALS

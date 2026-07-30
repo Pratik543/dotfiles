@@ -52,7 +52,7 @@ return {
     -- Paste image from clipboard
     { "<leader>v", "<cmd>PasteImage<cr>", desc = "Paste Image from Clipboard" },
 
-    -- Open image under cursor in Preview.app
+    -- Open image under cursor in default app
     {
       "<leader>io",
       function()
@@ -65,15 +65,19 @@ return {
           or file:match("%.webp$")
           or file:match("%.avif$")
         then
-          vim.cmd("silent ! open " .. vim.fn.shellescape(file))
+          if vim.fn.has("win32") == 1 then
+            vim.cmd("silent ! start \"\" " .. vim.fn.shellescape(file))
+          else
+            vim.cmd("silent ! open " .. vim.fn.shellescape(file))
+          end
         else
           vim.notify("Not an image file", vim.log.levels.WARN)
         end
       end,
-      desc = "Open Image in Preview.app",
+      desc = "Open Image",
     },
 
-    -- Show image in Finder
+    -- Show image in Explorer/Finder
     {
       "<leader>if",
       function()
@@ -86,12 +90,16 @@ return {
           or file:match("%.webp$")
           or file:match("%.avif$")
         then
-          vim.cmd("silent ! open -R " .. vim.fn.shellescape(file))
+          if vim.fn.has("win32") == 1 then
+            vim.cmd("silent ! explorer /select," .. vim.fn.shellescape(file))
+          else
+            vim.cmd("silent ! open -R " .. vim.fn.shellescape(file))
+          end
         else
           vim.notify("Not an image file", vim.log.levels.WARN)
         end
       end,
-      desc = "Show Image in Finder",
+      desc = "Show Image in Explorer",
     },
 
     -- Preview Markdown file in web browser

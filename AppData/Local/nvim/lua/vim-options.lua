@@ -15,8 +15,8 @@ else
 end
 
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
+vim.cmd("set tabstop=1")
+vim.cmd("set softtabstop=1")
 vim.cmd("set shiftwidth=2")
 
 -- Options
@@ -66,19 +66,30 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 
--- Terminal keybind
+-- Terminal toggle (built-in, runs in background)
+local term_buf = nil
 vim.keymap.set("n", "<leader>t", function()
-	if vim.bo.buftype == "terminal" then
-		vim.cmd("close")
+	if term_buf and vim.api.nvim_buf_is_valid(term_buf) then
+		local win_id = vim.fn.bufwinid(term_buf)
+		if win_id ~= -1 then
+			vim.api.nvim_win_hide(win_id)
+		else
+			vim.cmd("botright split | resize 12")
+			vim.api.nvim_win_set_buf(0, term_buf)
+			vim.cmd("startinsert")
+		end
 	else
 		vim.cmd("botright split | resize 12 | terminal pwsh")
+		term_buf = vim.api.nvim_get_current_buf()
 		vim.cmd("startinsert")
 	end
-end, { silent = true })
+end, { desc = "Toggle terminal" })
 
-vim.keymap.set("t", "<Esc>", function()
-	vim.cmd("close")
-end, { silent = true, desc = "Toggle terminal (PowerShell)" })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+vim.keymap.set("t", "<leader>t", function()
+	local win_id = vim.api.nvim_get_current_win()
+	vim.api.nvim_win_hide(win_id)
+end, { desc = "Hide terminal" })
 
 -- Close floating windows with q (safe for macros)
 vim.keymap.set("n", "q", function()

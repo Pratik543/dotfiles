@@ -35,10 +35,10 @@ return {
 
     vim.keymap.set({ "v" }, "I", function()
       require("my-nvim-micro-plugins.multicursors").add_multicursors_at_line_starts()
-    end)
+    end, { desc = "Add cursors at line starts" })
 
     vim.keymap.set({ "v" }, "A", function()
       require("my-nvim-micro-plugins.multicursors").add_multicursors_at_line_ends()
-    end)
+    end, { desc = "Add cursors at line ends" })
   end,
 }

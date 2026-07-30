@@ -33,6 +33,8 @@ return {
 				"jdtls", -- Java
 				"html", -- HTML
 				"cssls", -- CSS
+				"jsonls", -- JSON
+				"yamlls", -- YAML
 			},
 			automatic_installation = true,
 		},
@@ -41,6 +43,9 @@ return {
 	-- nvim-lspconfig
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"b0o/schemastore.nvim", -- JSON/YAML schemas
+		},
 		config = function()
 			-- === UI: Hover & Signature Help ===
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
@@ -115,6 +120,28 @@ return {
 					"--completion-style=detailed",
 					"--header-insertion=iwyu",
 					"--cross-file-rename",
+				},
+			})
+
+			-- JSON & YAML: schema-aware validation/completion via schemastore.nvim
+			local ok_ss, schemastore = pcall(require, "schemastore")
+
+			vim.lsp.config("jsonls", {
+				settings = {
+					json = {
+						schemas = ok_ss and schemastore.json.schemas() or nil,
+						validate = { enable = true },
+					},
+				},
+			})
+
+			vim.lsp.config("yamlls", {
+				settings = {
+					yaml = {
+						schemaStore = { enable = false, url = "" }, -- use schemastore.nvim instead
+						schemas = ok_ss and schemastore.yaml.schemas() or nil,
+						format = { enable = false }, -- let prettier handle formatting
+					},
 				},
 			})
 		end,

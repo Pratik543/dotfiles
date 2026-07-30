@@ -32,5 +32,12 @@ return {
 			end,
 			desc = "Buffer Local Keymaps (which-key)",
 		},
+		{
+			"<leader>/",
+			function()
+				require("fzf-lua").keymaps()
+			end,
+			desc = "Search Keymaps (fzf-lua)",
+		},
 	},
 }

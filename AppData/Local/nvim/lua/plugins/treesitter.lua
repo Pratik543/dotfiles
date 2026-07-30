@@ -11,7 +11,7 @@ return {
 		end
 
 		configs.setup({
-			ensure_installed = { "lua", "python", "javascript", "html", "css", "java" },
+			ensure_installed = { "lua", "python", "javascript", "html", "css", "java", "yaml", "json", "jsonc" },
 			sync_install = false,
 			auto_install = true,
 			highlight = {

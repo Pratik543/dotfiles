@@ -143,42 +143,42 @@ return {
 		local opts = { silent = true }
 
 		-- Start/Continue debugging
-		vim.keymap.set("n", "<F5>", dap.continue, opts)
+		vim.keymap.set("n", "<F5>", dap.continue, vim.tbl_extend("force", opts, { desc = "Start/Continue debugger" }))
 
 		-- Step over/into/out
-		vim.keymap.set("n", "<F10>", dap.step_over, opts)
-		vim.keymap.set("n", "<F11>", dap.step_into, opts)
-		vim.keymap.set("n", "<F12>", dap.step_out, opts)
+		vim.keymap.set("n", "<F10>", dap.step_over, vim.tbl_extend("force", opts, { desc = "Step over" }))
+		vim.keymap.set("n", "<F11>", dap.step_into, vim.tbl_extend("force", opts, { desc = "Step into" }))
+		vim.keymap.set("n", "<F12>", dap.step_out, vim.tbl_extend("force", opts, { desc = "Step out" }))
 
 		-- Toggle breakpoint
-		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, opts)
+		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, vim.tbl_extend("force", opts, { desc = "Toggle breakpoint" }))
 
 		-- Conditional breakpoint
 		vim.keymap.set("n", "<leader>B", function()
 			dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-		end, opts)
+		end, vim.tbl_extend("force", opts, { desc = "Conditional breakpoint" }))
 
 		-- Log point
 		vim.keymap.set("n", "<leader>lp", function()
 			dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-		end, opts)
+		end, vim.tbl_extend("force", opts, { desc = "Log point" }))
 
 		-- Open REPL
-		vim.keymap.set("n", "<leader>dr", dap.repl.open, opts)
+		vim.keymap.set("n", "<leader>dr", dap.repl.open, vim.tbl_extend("force", opts, { desc = "Debug REPL" }))
 
 		-- Run last debug session
-		vim.keymap.set("n", "<leader>dl", dap.run_last, opts)
+		vim.keymap.set("n", "<leader>dl", dap.run_last, vim.tbl_extend("force", opts, { desc = "Run last debug session" }))
 
 		-- Terminate debug session
-		vim.keymap.set("n", "<leader>dt", dap.terminate, opts)
+		vim.keymap.set("n", "<leader>dt", dap.terminate, vim.tbl_extend("force", opts, { desc = "Terminate debug session" }))
 
 		-- Toggle DAP UI
-		vim.keymap.set("n", "<leader>du", dapui.toggle, opts)
+		vim.keymap.set("n", "<leader>du", dapui.toggle, vim.tbl_extend("force", opts, { desc = "Toggle debug UI" }))
 
 		-- Evaluate expression
 		vim.keymap.set({ "n", "v" }, "<leader>de", function()
 			dapui.eval()
-		end, opts)
+		end, vim.tbl_extend("force", opts, { desc = "Evaluate expression" }))
 
 		-- Python-specific keymaps
 		vim.keymap.set("n", "<leader>dpt", function()
