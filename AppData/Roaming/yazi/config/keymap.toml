@@ -523,3 +523,8 @@ desc = "Open Selected File in Vscode"
 on   = "$"
 run = 'shell "wt.exe -d ." --confirm'
 desc = "Open PowerShell here in a new tab"
+
+[[mgr.prepend_keymap]]
+on   = ["@", "o"]
+run  = 'shell "wt.exe -d %s -p ""PowerShell"" opencode" --confirm'
+desc = "Open hovered directory in Opencode (new pwsh tab)"
